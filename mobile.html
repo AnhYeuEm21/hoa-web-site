@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
@@ -908,6 +908,532 @@
       cursor: pointer;
     }
     .btn-lecture-nav.secondary { background: #1e293b; color: #cbd5e1; }
+  
+/* ==========================================================================
+   BRIEF 10 ĐIỂM: CSS PHÂN CẤP MÀU SẮC, TOOLTIP, TƯƠNG TÁC GIẤU GIẢI & PHAO THI
+   ========================================================================== */
+
+/* 1. KHỐI MÀU XANH CHO LÝ THUYẾT DỊCH TIẾNG NGƯỜI */
+.box-theory {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(13, 148, 136, 0.05) 100%);
+  border-left: 5px solid #2563eb;
+  border-radius: 0 14px 14px 0;
+  padding: 20px 24px;
+  margin: 22px 0;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.08);
+}
+.box-theory .box-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 850;
+  padding: 4px 12px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+.box-theory h4 {
+  color: #1d4ed8;
+  margin-top: 6px;
+  margin-bottom: 10px;
+  font-size: 1.15rem;
+}
+[data-theme="dark"] .box-theory {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.12) 0%, rgba(20, 184, 166, 0.08) 100%);
+  border-left-color: #38bdf8;
+}
+[data-theme="dark"] .box-theory h4 {
+  color: #38bdf8;
+}
+[data-theme="dark"] .box-theory .box-badge {
+  background: #0284c7;
+}
+
+/* 2. KHỐI MÀU VÀNG CHO MỔ XẺ CÔNG THỨC ĐẾN TẬN GỐC RỄ */
+.box-formula {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(217, 119, 6, 0.07) 100%);
+  border-left: 5px solid #d97706;
+  border-radius: 0 14px 14px 0;
+  padding: 22px 26px;
+  margin: 24px 0;
+  box-shadow: 0 3px 12px rgba(245, 158, 11, 0.12);
+}
+.box-formula .box-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #d97706;
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 850;
+  padding: 4px 12px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+.box-formula .formula-display {
+  background: rgba(255, 255, 255, 0.85);
+  border: 2px dashed #f59e0b;
+  border-radius: 12px;
+  padding: 14px 20px;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 1.18rem;
+  font-weight: 850;
+  color: #b45309;
+  text-align: center;
+  margin: 14px 0;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+[data-theme="dark"] .box-formula {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(180, 83, 9, 0.1) 100%);
+  border-left-color: #fbbf24;
+}
+[data-theme="dark"] .box-formula .formula-display {
+  background: rgba(15, 23, 42, 0.8);
+  border-color: #fbbf24;
+  color: #fde047;
+}
+
+/* 3. KHỐI MÀU ĐỎ CHO BẪY SAI NGU & LƯU Ý QUAN TRỌNG */
+.box-trap {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.12) 0%, rgba(220, 38, 38, 0.07) 100%);
+  border-left: 5px solid #ef4444;
+  border-radius: 0 14px 14px 0;
+  padding: 22px 26px;
+  margin: 24px 0;
+  box-shadow: 0 3px 12px rgba(239, 68, 68, 0.15);
+}
+.box-trap .box-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ef4444;
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 850;
+  padding: 4px 12px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+.box-trap h4 {
+  color: #b91c1c;
+  font-size: 1.15rem;
+  margin-bottom: 10px;
+}
+[data-theme="dark"] .box-trap {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.18) 0%, rgba(153, 27, 27, 0.12) 100%);
+  border-left-color: #f87171;
+}
+[data-theme="dark"] .box-trap h4 {
+  color: #fca5a5;
+}
+
+/* 4. TOOLTIP GIẢI NGHĨA TỨC THÌ (CHỐNG LÚ TỪ VỰNG CHUYÊN NGÀNH) */
+.chem-tip {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+  color: #1d4ed8;
+  font-weight: 750;
+  border-bottom: 2px dashed #3b82f6;
+  padding-bottom: 1px;
+  transition: all 0.2s ease;
+}
+[data-theme="dark"] .chem-tip {
+  color: #38bdf8;
+  border-bottom-color: #38bdf8;
+}
+.chem-tip:hover {
+  background: rgba(37, 99, 235, 0.1);
+  border-radius: 4px;
+}
+.chem-tip::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: 135%;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  background: #090d16;
+  color: #f8fafc;
+  font-size: 0.82rem;
+  font-weight: 500;
+  line-height: 1.45;
+  padding: 9px 13px;
+  border-radius: 10px;
+  white-space: normal;
+  width: max-content;
+  max-width: 270px;
+  text-align: left;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 2500;
+  border: 1px solid #334155;
+}
+.chem-tip::before {
+  content: "";
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  border-width: 6px;
+  border-style: solid;
+  border-color: #090d16 transparent transparent transparent;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 2501;
+}
+.chem-tip:hover::after, .chem-tip:hover::before,
+.chem-tip.tip-active::after, .chem-tip.tip-active::before {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+/* 5. PHẦN THỰC CHIẾN BÀI TẬP MẪU STEP-BY-STEP & GIẤU ĐÁP ÁN */
+.practice-card {
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
+  border-radius: 16px;
+  padding: 24px 28px;
+  margin: 26px 0;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+.practice-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary);
+}
+.practice-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+.practice-title {
+  font-weight: 850;
+  font-size: 1.15rem;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.practice-badge {
+  background: rgba(37, 99, 235, 0.12);
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+.practice-question {
+  font-size: 1.02rem;
+  line-height: 1.72;
+  color: var(--text-main);
+  background: var(--bg-primary);
+  padding: 16px 20px;
+  border-radius: 12px;
+  border-left: 4px solid var(--primary);
+  margin-bottom: 16px;
+}
+.btn-reveal-solution {
+  background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
+  color: #ffffff;
+  border: none;
+  padding: 11px 22px;
+  border-radius: 10px;
+  font-weight: 850;
+  font-size: 0.94rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.35);
+  user-select: none;
+}
+.btn-reveal-solution:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(234, 88, 12, 0.5);
+}
+.btn-reveal-solution:active {
+  transform: translateY(0);
+}
+.solution-box {
+  display: none;
+  margin-top: 18px;
+  padding: 22px 24px;
+  background: var(--code-bg);
+  border-radius: 14px;
+  border: 1.5px solid var(--border-color);
+  line-height: 1.76;
+  font-size: 0.96rem;
+  animation: slideDownFade 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.solution-box.open {
+  display: block;
+}
+@keyframes slideDownFade {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.solution-step {
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px dashed var(--border-color);
+}
+.solution-step:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+.step-heading {
+  font-weight: 850;
+  font-size: 0.98rem;
+  color: #0d9488;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+[data-theme="dark"] .step-heading {
+  color: #2dd4bf;
+}
+.step-heading.warning {
+  color: #e11d48;
+}
+[data-theme="dark"] .step-heading.warning {
+  color: #fb7185;
+}
+
+/* 6. GÓC TRÙM CUỐI: TÀI LIỆU BỎ TÚI / PHAO CỨU SINH 1 TRANG TRƯỚC GIỜ G */
+.btn-cheatsheet-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #10b981 0%, #0d9488 50%, #2563eb 100%);
+  color: #ffffff;
+  border: none;
+  padding: 13px 26px;
+  border-radius: 999px;
+  font-size: 1.02rem;
+  font-weight: 850;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(13, 148, 136, 0.4);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.btn-cheatsheet-trigger:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 28px rgba(13, 148, 136, 0.6);
+}
+
+/* Modal Phao Cứu Sinh */
+.cheat-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(8px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 3500;
+  padding: 16px;
+}
+.cheat-modal-overlay.active {
+  display: flex;
+}
+.cheat-modal-box {
+  background: var(--bg-card);
+  color: var(--text-main);
+  border-radius: 18px;
+  max-width: 1000px;
+  width: 100%;
+  max-height: 94vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+  border: 1.5px solid var(--border-color);
+}
+.cheat-modal-header {
+  padding: 16px 24px;
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.cheat-modal-header h3 {
+  font-size: 1.25rem;
+  font-weight: 850;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cheat-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.btn-print-cheat {
+  background: #10b981;
+  color: #ffffff;
+  border: none;
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+.btn-print-cheat:hover {
+  background: #059669;
+  transform: translateY(-1px);
+}
+.cheat-modal-body {
+  padding: 20px 24px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Cheat Sheet 1 Trang A4 Grid Layout */
+.cheat-sheet-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.cheat-card {
+  border: 1.5px solid var(--border-color);
+  border-radius: 12px;
+  padding: 14px 18px;
+  background: var(--bg-card);
+  box-shadow: var(--shadow-sm);
+}
+.cheat-card-header {
+  font-weight: 850;
+  font-size: 0.98rem;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1.5px solid var(--border-color);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cheat-list {
+  list-style: none;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+.cheat-list li {
+  margin-bottom: 6px;
+  position: relative;
+  padding-left: 14px;
+}
+.cheat-list li::before {
+  content: "•";
+  color: var(--primary);
+  font-weight: 900;
+  position: absolute;
+  left: 0;
+}
+.cheat-key {
+  font-weight: 800;
+  color: #b45309;
+}
+[data-theme="dark"] .cheat-key {
+  color: #fbbf24;
+}
+
+/* 7. PRINT MEDIA STYLES - CHUẨN 1 TRANG A4 SIÊU NÉN */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 5mm;
+  }
+  body * {
+    visibility: hidden !important;
+  }
+  #cheatSheetPrintArea, #cheatSheetPrintArea * {
+    visibility: visible !important;
+  }
+  #cheatSheetPrintArea {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 2mm !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    display: block !important;
+    font-size: 9.5pt !important;
+    line-height: 1.35 !important;
+  }
+  .cheat-sheet-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+  .cheat-card {
+    border: 1.5px solid #334155 !important;
+    padding: 8px 10px !important;
+    break-inside: avoid !important;
+    background: #ffffff !important;
+  }
+  .cheat-card-header {
+    font-size: 10pt !important;
+    color: #1e40af !important;
+    border-bottom: 1.5px solid #2563eb !important;
+    padding-bottom: 3px !important;
+    margin-bottom: 5px !important;
+  }
+  .cheat-list {
+    font-size: 8.5pt !important;
+    line-height: 1.3 !important;
+  }
+  .cheat-list li {
+    margin-bottom: 4px !important;
+  }
+  .cheat-header-print {
+    text-align: center !important;
+    margin-bottom: 8px !important;
+    padding-bottom: 6px !important;
+    border-bottom: 2px solid #1e3a8a !important;
+  }
+  .cheat-header-print h2 {
+    font-size: 13pt !important;
+    color: #1e3a8a !important;
+    margin: 0 !important;
+  }
+  .cheat-header-print p {
+    font-size: 8pt !important;
+    color: #475569 !important;
+    margin: 2px 0 0 0 !important;
+  }
+}
+
   </style>
 
 </head>
@@ -1003,19 +1529,31 @@
     <!-- ============================================================== -->
     <!-- TAB 1: NỀN TẢNG TẦNG 0 CHO NGƯỜI MẤT GỐC -->
     <!-- ============================================================== -->
+            <div style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap;">
+          <button class="btn-cheatsheet-trigger" onclick="openCheatSheet()">
+            🎒 TẢI BÍ KÍP TRƯỚC GIỜ G (Phao Cứu Sinh 1 Trang A4)
+          </button>
+          <button class="btn-tro-giang-ba-khi" onclick="openLectureModal('bai-1')" style="animation: none;">
+            🎙️ Mở Phòng Giảng Thầy Bá Khí
+          </button>
+        </div>
+
+
+    <!-- ============================================================== -->
+    <!-- TAB 1: NỀN TẢNG TẦNG 0 CHO NGƯỜI MẤT GỐC (BẢN MOBILE FULL A-Z) -->
+    <!-- ============================================================== -->
+    <div id="tang-0"></div>
     <section id="tab-mat-goc" class="tab-section active">
       <div class="section-heading-bar">
         <span class="section-star">🌟</span>
         <h2>PHẦN 1: NỀN TẢNG TẦNG 0 CHO NGƯỜI MẤT GỐC</h2>
       </div>
 
-
       <div class="card">
-        <h2>🔰 5 Khái Niệm "Tầng 0" Phải Hiểu</h2>
+        <h2>🔰 TẦNG 0: BỔ TRỢ TOÀN DIỆN LỖ HỔNG CẤP 2 & LỚP 10</h2>
         <button onclick="openLectureModal('bai-0')" style="width:100%; margin-bottom:14px; padding:12px 14px; border-radius:12px; background:linear-gradient(135deg, #f59e0b, #ef4444, #8b5cf6); color:#fff; border:none; font-weight:850; font-size:0.92rem; box-shadow:0 4px 15px rgba(239,68,68,0.45); cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px;">
           🔥 🎙️ TRỢ GIẢNG BÁ KHÍ (Thầy Giảng Full Tầng 0 Mất Gốc)
         </button>
-
 
         <!-- Khái niệm 1 -->
         <div class="accordion-item open">
@@ -1024,11 +1562,15 @@
             <span class="acc-icon">▼</span>
           </div>
           <div class="accordion-content">
-            <p>• <strong>Nguyên tử bình thường:</strong> Có số hạt dương (+) bằng số hạt âm (-) nên trung hòa về điện, không mang điện.</p>
-            <p>• <strong>Cation (Ion dương, có dấu +):</strong> Là nguyên tử <strong>BỊ MẤT BỚT electron âm (-)</strong>. Vì mất điện tích âm nên nó bị thừa điện tích dương! Ví dụ: Na⁺, K⁺, Ca²⁺, Al³⁺, NH₄⁺.</p>
-            <p>• <strong>Anion (Ion âm, có dấu -):</strong> Là nguyên tử <strong>NHẬN THÊM electron âm (-)</strong>. Nhận thêm đồ âm thì thành mang điện âm! Ví dụ: Cl⁻, NO₃⁻, SO₄²⁻, CO₃²⁻.</p>
-            <div class="analogy">
-              💡 <strong>Mẹo nhớ:</strong> Cho đi thứ xấu (cho e mang điện âm) &rarr; Trở thành người tốt (Cation mang dấu +). Nhận về thứ xấu (nhận e mang điện âm) &rarr; Trở thành người xấu (Anion mang dấu -).
+            <div class="box-theory">
+              <span class="box-badge">📘 Dịch Sang Tiếng Người</span>
+              <p>Nguyên tử như quả ổi: hạt nhân dương (+) ở ruột, đàn ruồi electron âm (-) bay quanh vỏ. Bình thường số (+) bằng số (-) nên trung hòa về điện.</p>
+              <p>• <strong><span class="chem-tip" data-tip="Ion mang điện tích dương (+) do nguyên tử bị mất bớt electron mang dấu âm.">Cation</span> (+):</strong> Là nguyên tử <strong>CHO ĐI electron âm (-)</strong>. Vứt bỏ cái xấu đi thì thành người tốt mang dấu <strong>dương (+)</strong>! Ví dụ: Na⁺, Mg²⁺, Al³⁺, NH₄⁺.</p>
+              <p>• <strong><span class="chem-tip" data-tip="Ion mang điện tích âm (-) do nguyên tử hút thêm electron mang dấu âm vào người.">Anion</span> (-):</strong> Là nguyên tử <strong>HÚT THÊM electron âm (-)</strong>. Hút thêm thứ xấu về mình thì thành mang dấu <strong>âm (-)</strong>! Ví dụ: Cl⁻, NO₃⁻, SO₄²⁻.</p>
+            </div>
+            <div class="box-trap">
+              <span class="box-badge">🚨 BẪY SAI NGU</span>
+              Học sinh hay lú: Cứ nghĩ cho đi là trừ (-), nhận là cộng (+). <strong>SAI BÉT!</strong> Vì thứ trao đổi là hạt electron mang điện âm (-)!
             </div>
           </div>
         </div>
@@ -1036,39 +1578,63 @@
         <!-- Khái niệm 2 -->
         <div class="accordion-item">
           <div class="accordion-header" onclick="toggleAccordion(this)">
-            <span>2. Proton H⁺ từ đâu mà ra? Tại sao acid lại nhường H⁺?</span>
+            <span>2. Proton H⁺ từ đâu ra? Tại sao acid nhường H⁺?</span>
             <span class="acc-icon">▼</span>
           </div>
           <div class="accordion-content">
-            <p>Nguyên tử Hydro (H) đơn giản nhất quả đất: chỉ gồm 1 hạt proton dương ở nhân và 1 hạt electron âm quay quanh. Khi Hydro bị mất electron, nó chỉ còn trơ trọi <strong>ĐÚNG 1 HẠT PROTON</strong>! Do đó, trong hoá học:</p>
+            <p>Nguyên tử Hydro (H) nghèo nhất vũ trụ: chỉ có 1 hạt proton (+) ở nhân và 1 electron (-) quay quanh. Khi bị cướp mất e duy nhất, nó chỉ còn trơ trọi <strong>ĐÚNG 1 HẠT PROTON</strong>!</p>
             <div class="eq"><strong>H⁺ chính là một hạt Proton!</strong></div>
-            <p>Khi ta nói <em>"Acid là chất nhường proton H⁺"</em> &rarr; Có nghĩa là phân tử acid (như HCl, HNO₃) khi thả vào nước sẽ vứt hạt H⁺ ra ngoài!</p>
+            <p>Khi sách viết <em>"Acid nhường proton H⁺"</em> &rarr; Có nghĩa là phân tử acid (HCl, HNO₃) là đại gia hào phóng vứt hạt H⁺ ra ngoài cho dung dịch!</p>
           </div>
         </div>
 
         <!-- Khái niệm 3 -->
         <div class="accordion-item">
           <div class="accordion-header" onclick="toggleAccordion(this)">
-            <span>3. Nồng độ Mol (<i>C</i><sub>M</sub> hoặc M) là gì?</span>
+            <span>3. Mổ Xẻ 4 Công Thức Mol Cốt Lõi</span>
             <span class="acc-icon">▼</span>
           </div>
           <div class="accordion-content">
-            <p>• <strong>Công thức gốc:</strong> <code>C<sub>M</sub> = n / V</code> (Số mol chia cho Thể tích lít).</p>
-            <p>• <strong>Hiểu bình dân:</strong> Giống như "độ ngọt" của một cốc nước đường. Càng nhiều thìa đường (n) bỏ vào một cốc nước (V) thì nồng độ càng đặc. Kí hiệu nồng độ mol trong ngoặc vuông: <code>[H⁺]</code> nghĩa là nồng độ của ion H⁺.</p>
+            <div class="box-formula">
+              <span class="box-badge">⚡ 1. Mol từ Khối lượng</span>
+              <div class="formula-display">n = m / M</div>
+              <p>• <strong>m:</strong> Khối lượng gam (BẮT BUỘC LÀ GAM, cấm để kg hay mg!).</p>
+              <p>• <strong>M:</strong> Khối lượng mol (H=1, C=12, N=14, O=16, Na=23, S=32, Cl=35.5, Fe=56, Cu=64).</p>
+            </div>
+
+            <div class="box-formula">
+              <span class="box-badge">⚡ 2. Mol Khí ở ĐKC Mới (25°C, 1 bar)</span>
+              <div class="formula-display">n = V / 24.79 &hArr; V = n &times; 24.79</div>
+              <div class="box-trap" style="margin-top:8px; padding:10px 14px;">
+                <span class="box-badge">🚨 BẪY CHIA 22.4 CŨ:</span>
+                SGK mới theo chuẩn IUPAC áp dụng số <strong>24.79 LÍT</strong>! Ai chia cho 22.4 cũ là ăn điểm 0 tròn trĩnh!
+              </div>
+            </div>
+
+            <div class="box-formula">
+              <span class="box-badge">⚡ 3. Nồng độ Mol (C_M hoặc Ngoặc Vuông [...])</span>
+              <div class="formula-display">C<sub>M</sub> = n / V<sub>dd</sub></div>
+              <p>• <strong>BẪY THỂ TÍCH:</strong> V<sub>dd</sub> <strong>BẮT BUỘC ĐỔI RA LÍT</strong>! Đề cho 200 mL phải chia 1000 = 0.2 Lít!</p>
+            </div>
+
+            <div class="box-formula">
+              <span class="box-badge">⚡ 4. Nồng độ phần trăm C% & m_dd</span>
+              <div class="formula-display">C% = (m<sub>ct</sub> / m<sub>dd</sub>) &times; 100% &nbsp;|&nbsp; m<sub>dd</sub> = V &times; d</div>
+            </div>
           </div>
         </div>
 
         <!-- Khái niệm 4 -->
         <div class="accordion-item">
           <div class="accordion-header" onclick="toggleAccordion(this)">
-            <span>4. Kí hiệu &Delta;H (Delta H) âm hay dương là gì?</span>
+            <span>4. Kí hiệu &Delta;H: Âm là Tỏa - Dương là Thu</span>
             <span class="acc-icon">▼</span>
           </div>
           <div class="accordion-content">
-            <p>• <strong>&Delta;H &lt; 0 (Số Âm): Phản ứng TỎA NHIỆT.</strong> Giống như ví tiền của bạn bị trừ tiền (âm) vì bạn cho đi &rarr; Hệ tỏa nhiệt ra môi trường sưởi ấm xung quanh.</p>
-            <p>• <strong>&Delta;H &gt; 0 (Số Dương): Phản ứng THU NHIỆT.</strong> Giống như ví bạn nhận thêm tiền (dương) &rarr; Hệ hút nhiệt từ môi trường vào trong làm xung quanh bị lạnh đi.</p>
+            <p>• <strong>&Delta;H &lt; 0 (Số Âm): TỎA NHIỆT.</strong> Ví tiền bị trừ âm vì cho đi &rarr; Hệ tỏa nhiệt làm nóng xung quanh.</p>
+            <p>• <strong>&Delta;H &gt; 0 (Số Dương): THU NHIỆT.</strong> Ví tiền cộng thêm dương vì nhận vào &rarr; Hệ hút nhiệt làm xung quanh lạnh buốt.</p>
             <div class="analogy">
-              💡 <strong>Thần chú nhớ đời:</strong> <em>"Âm là Tỏa - Dương là Thu"</em> (Ví âm thì tỏa ra, ví dương thì thu vào).
+              💡 <strong>Thần chú:</strong> <em>"Âm là Tỏa — Dương là Thu"</em>!
             </div>
           </div>
         </div>
@@ -1080,12 +1646,65 @@
             <span class="acc-icon">▼</span>
           </div>
           <div class="accordion-content">
-            <p>• <strong>Chất khử:</strong> Là chất <strong>CHO ĐI electron</strong> &rarr; Số oxi hóa <strong>TĂNG LÊN</strong>.</p>
-            <p>• <strong>Chất oxi hóa:</strong> Là chất <strong>NHẬN VỀ electron</strong> &rarr; Số oxi hóa <strong>GIẢM XUỐNG</strong>.</p>
-            <div class="eq"><strong>Khử Cho Tăng — O Nhận Giảm</strong></div>
-            <p>Ví dụ với Nitrogen (N): Có các số oxi hóa <code>-3, 0, +1, +2, +3, +4, +5</code>. Trong N₂ (số 0):</p>
-            <p>- Nếu số oxi hóa tăng lên +2 (tác dụng O₂) &rarr; N₂ là <strong>chất khử</strong>.</p>
-            <p>- Nếu số oxi hóa giảm xuống -3 (tác dụng H₂ hoặc kim loại) &rarr; N₂ là <strong>chất oxi hóa</strong>.</p>
+            <div class="eq"><strong>KHỬ CHO TĂNG — O NHẬN GIẢM</strong></div>
+            <p>• Chất khử: Cho e &rarr; Số oxi hóa TĂNG.</p>
+            <p>• Chất oxi hóa: Nhận e &rarr; Số oxi hóa GIẢM.</p>
+            <p>• <strong>Mẹo ghép hóa trị chéo 3s:</strong> A hóa trị a ghép với B hóa trị b &rarr; Chéo số: <code>A<sub>b</sub>B<sub>a</sub></code>. Ví dụ: Al (III) ghép SO₄ (II) &rarr; Chéo số thành <strong>Al₂(SO₄)₃</strong>!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- BÀI TẬP MẪU THỰC CHIẾN TẦNG 0 -->
+      <div class="practice-card">
+        <div class="practice-header">
+          <div class="practice-title">
+            <span>🎯 BÀI TẬP THỰC CHIẾN 1 (TẦNG 0): ĐỔI MOL Ở ĐKC</span>
+          </div>
+          <span class="practice-badge">ĐKC 24.79</span>
+        </div>
+        <div class="practice-question">
+          <strong>Đề bài:</strong> Ở 25°C và 1 bar, một bình kín chứa 4.958 Lít khí Nitrogen (N₂). Tính số mol N₂ và khối lượng của lượng khí này?
+        </div>
+        <button class="btn-reveal-solution" onclick="toggleSolution(this)">
+          👉 Bấm vào để xem đáp án hoặc ăn chửi nếu nghĩ sai 💥
+        </button>
+        <div class="solution-box">
+          <div class="solution-step">
+            <div class="step-heading">🔍 BƯỚC 1: SOI TỪ KHÓA & NHẬN DIỆN BẪY</div>
+            <p>Đề cho "25°C, 1 bar" &rarr; Điều kiện chuẩn mới! Chia cho <strong>24.79</strong> (cấm chia 22.4!).</p>
+          </div>
+          <div class="solution-step">
+            <div class="step-heading">📝 BƯỚC 2: TÓM TẮT & TÍNH TOÁN</div>
+            <p>• <code>n<sub>N₂</sub> = 4.958 / 24.79 = 0.2 mol</code>.</p>
+            <p>• <code>m<sub>N₂</sub> = 0.2 &times; 28 = 5.6 gam</code>.</p>
+            <p style="color:#10b981; font-weight:800;">👉 Đáp án: n = 0.2 mol; m = 5.6 gam!</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="practice-card">
+        <div class="practice-header">
+          <div class="practice-title">
+            <span>🎯 BÀI TẬP THỰC CHIẾN 2 (TẦNG 0): NỒNG ĐỘ MOL & ĐỔI mL</span>
+          </div>
+          <span class="practice-badge">Bẫy mL Sang Lít</span>
+        </div>
+        <div class="practice-question">
+          <strong>Đề bài:</strong> Hòa tan 8.0 gam NaOH vào nước thu được 250 mL dung dịch. Tính C<sub>M</sub> của dung dịch thu được?
+        </div>
+        <button class="btn-reveal-solution" onclick="toggleSolution(this)">
+          👉 Bấm vào để xem đáp án hoặc ăn chửi nếu nghĩ sai 💥
+        </button>
+        <div class="solution-box">
+          <div class="solution-step">
+            <div class="step-heading warning">🚨 BƯỚC 1: SOI BẪY THỂ TÍCH</div>
+            <p>250 mL bắt buộc phải đổi ra Lít: <code>V = 250 / 1000 = 0.25 Lít</code>!</p>
+          </div>
+          <div class="solution-step">
+            <div class="step-heading">🚀 BƯỚC 2: RÁP SỐ TÍNH TOÁN</div>
+            <p>• <code>n<sub>NaOH</sub> = 8.0 / 40 = 0.2 mol</code>.</p>
+            <p>• <code>C<sub>M</sub> = 0.2 / 0.25 = 0.8 M</code>.</p>
+            <p style="color:#10b981; font-weight:800;">👉 Đáp án: C<sub>M</sub> = 0.8 mol/L (M)!</p>
           </div>
         </div>
       </div>
@@ -1095,13 +1714,15 @@
     <!-- ============================================================== -->
     <!-- TAB 2: CHI TIẾT 5 BÀI HỌC (A - Z) -->
     <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- TAB 2: CHI TIẾT 5 BÀI HỌC (BẢN MOBILE FULL CHI TIẾT TỪ A ĐẾN Z) -->
+    <!-- ============================================================== -->
     <section id="tab-bai-hoc" class="tab-section">
       <div class="section-heading-bar">
         <span class="section-star">🌟</span>
         <h2>PHẦN 2: CHI TIẾT 5 BÀI HỌC SGK TỪ A ĐẾN Z</h2>
       </div>
 
-      
       <!-- BÀI 1 -->
       <div class="card" id="bai-1-card">
         <h2>⚖ BÀI 1: CÂN BẰNG HÓA HỌC</h2>
@@ -1111,45 +1732,78 @@
         
         <div class="accordion-item open">
           <div class="accordion-header" onclick="toggleAccordion(this)">
-            <span>1. Cân bằng động là gì?</span>
+            <span>1. Cân bằng động là gì? (Tưởng đứng yên mà chạy thục mạng)</span>
             <span class="acc-icon">▼</span>
           </div>
           <div class="accordion-content">
-            <p><strong>Hiểu như máy chạy bộ:</strong> Bạn chạy 10 km/h về phía trước, máy cuốn 10 km/h về sau. Người ngoài nhìn thấy bạn đứng yên, nhưng bạn vẫn đang chạy cật lực!</p>
-            <p>👉 <strong>Bản chất:</strong> Phản ứng không bao giờ dừng lại! Tốc độ tạo sản phẩm bằng đúng tốc độ phân hủy lại chất đầu: <strong><i>v</i><sub>thuận</sub> = <i>v</i><sub>nghịch</sub> &ne; 0</strong>. Vì thế nồng độ các chất trong bình <strong>giữ nguyên không đổi</strong>.</p>
+            <div class="box-theory">
+              <span class="box-badge">📘 Hiểu Như Máy Chạy Bộ</span>
+              <p>Bạn chạy 10 km/h về phía trước, máy cuốn lùi 10 km/h về sau. Người ngoài nhìn thấy bạn đứng yên, nhưng bạn vẫn đang chạy cật lực toát mồ hôi!</p>
+              <p>👉 <strong>Bản chất:</strong> Phản ứng không hề dừng lại! Tốc độ tạo sản phẩm bằng đúng tốc độ phân hủy lại chất đầu: <strong><i>v</i><sub>thuận</sub> = <i>v</i><sub>nghịch</sub> &ne; 0</strong>. Vì thế nồng độ các chất trong bình <strong>giữ nguyên không đổi</strong>.</p>
+            </div>
           </div>
         </div>
 
         <div class="accordion-item">
           <div class="accordion-header" onclick="toggleAccordion(this)">
-            <span>2. Cách tính Hằng số <i>K</i><sub>C</sub> (Bảng 3 dòng)</span>
+            <span>2. Cách tính Hằng số K<sub>C</sub> & 2 Bẫy Tử Huyệt</span>
             <span class="acc-icon">▼</span>
           </div>
           <div class="accordion-content">
-            <p>Cho phản ứng: <code>aA + bB &#8652; cC + dD</code></p>
-            <div class="eq"><strong><i>K</i><sub>C</sub> = ([C]<sup>c</sup> &middot; [D]<sup>d</sup>) / ([A]<sup>a</sup> &middot; [B]<sup>b</sup>)</strong></div>
-            <p><strong>QUY TẮC SỐNG CÒN:</strong></p>
-            <p>• <strong>Bỏ chất rắn ra!</strong> Chất rắn (kí hiệu là <code>s</code>) KHÔNG viết vào <i>K</i><sub>C</sub>. Ví dụ: <code>CaCO₃(s) &#8652; CaO(s) + CO₂(g) &rArr; <i>K</i><sub>C</sub> = [CO₂]</code>.</p>
-            <p>• <strong><i>K</i><sub>C</sub> chỉ đổi khi nhiệt độ đổi!</strong> Nồng độ, áp suất, chất xúc tác KHÔNG làm thay đổi giá trị <i>K</i><sub>C</sub>.</p>
-            <p>• <strong>Bảng 3 dòng thần thánh:</strong></p>
-            <p>Dòng 1: (BĐ) Ban đầu nạp vào bao nhiêu?</p>
-            <p>Dòng 2: (PƯ) Phản ứng mất đi / sinh ra bao nhiêu theo tỉ lệ phương trình?</p>
-            <p>Dòng 3: (CB) Cân bằng = Ban đầu - Phản ứng (đối với chất đầu) hoặc Ban đầu + Phản ứng (đối với sản phẩm).</p>
+            <div class="box-formula">
+              <span class="box-badge">⚡ Công Thức K<sub>C</sub></span>
+              <div class="formula-display"><i>K</i><sub>C</sub> = ([C]<sup>c</sup> &middot; [D]<sup>d</sup>) / ([A]<sup>a</sup> &middot; [B]<sup>b</sup>)</div>
+            </div>
+            <div class="box-trap">
+              <span class="box-badge">🚨 2 BẪY TỬ HUYỆT ĐỀ THI</span>
+              <p>• <strong>BẪY 1: BỎ CHẤT RẮN (s) RA KHỎI K<sub>C</sub>!</strong> Ví dụ: <code>CaCO₃(s) &#8652; CaO(s) + CO₂(g) &rArr; K<sub>C</sub> = [CO₂]</code>! Đứa nào nhét CaCO₃ hay CaO vào mẫu là ăn điểm 0!</p>
+              <p>• <strong>BẪY 2: K<sub>C</sub> CHỈ ĐỔI KHI NHIỆT ĐỘ ĐỔI!</strong> Thêm nồng độ, nén áp suất, cho xúc tác &rarr; <em>K<sub>C</sub> giữ nguyên không đổi!</em></p>
+            </div>
+            <p>• <strong>Bảng 3 dòng thần thánh:</strong> Dòng 1 (BĐ) Ban đầu &rarr; Dòng 2 (PƯ) Phản ứng theo tỉ lệ phương trình &rarr; Dòng 3 (CB) Cân bằng = Ban đầu trừ phản ứng (chất đầu) hoặc Ban đầu cộng phản ứng (sản phẩm).</p>
           </div>
         </div>
 
         <div class="accordion-item">
           <div class="accordion-header" onclick="toggleAccordion(this)">
-            <span>3. Nguyên lý Le Chatelier (Kẻ Chống Đối)</span>
+            <span>3. Nguyên lý Le Chatelier (Đứa Trẻ Bướng Bỉnh)</span>
             <span class="acc-icon">▼</span>
           </div>
           <div class="accordion-content">
-            <p>Hệ cân bằng như một đứa trẻ bướng bỉnh: Bạn muốn gì, nó làm ngược lại!</p>
-            <p>• <strong>Thêm chất A &rarr;</strong> Hệ tìm cách tiêu bớt A &rarr; Dịch sang phía bên kia.</p>
-            <p>• <strong>TĂNG NHIỆT ĐỘ &rarr;</strong> Hệ muốn làm mát &rarr; Dịch theo chiều <strong>THU NHIỆT (&Delta;H &gt; 0)</strong>.</p>
-            <p>• <strong>GIẢM NHIỆT ĐỘ &rarr;</strong> Hệ muốn sưởi ấm &rarr; Dịch theo chiều <strong>TỎA NHIỆT (&Delta;H &lt; 0)</strong>.</p>
-            <p>• <strong>NÉN ÁP SUẤT (Tăng P) &rarr;</strong> Các phân tử bị chật chội &rarr; Dịch theo chiều <strong>GIẢM SỐ PHÂN TỬ KHÍ</strong>.</p>
-            <p>• <strong>Chất xúc tác:</strong> Chỉ giúp nhanh đạt cân bằng, <strong>KHÔNG LÀM CHUYỂN DỊCH CÂN BẰNG!</strong></p>
+            <div class="box-theory">
+              <span class="box-badge">📘 Tâm Lý Bướng Bỉnh</span>
+              <p>Bạn tác động cái gì, hệ phản ứng sẽ làm ngược lại:</p>
+              <p>• <strong>Tăng nhiệt độ (đốt nóng):</strong> Hệ muốn làm mát &rarr; Dịch theo chiều <strong>THU NHIỆT (&Delta;H &gt; 0)</strong>.</p>
+              <p>• <strong>Giảm nhiệt độ (ướp lạnh):</strong> Hệ muốn sưởi ấm &rarr; Dịch theo chiều <strong>TỎA NHIỆT (&Delta;H &lt; 0)</strong>.</p>
+              <p>• <strong>Tăng áp suất (nén piston):</strong> Chật chội &rarr; Dịch theo chiều <strong>GIẢM SỐ MOL KHÍ</strong>.</p>
+              <p>• <strong>Thêm chất A:</strong> Quá nhiều A &rarr; Dịch sang phía bên kia để tiêu bớt A.</p>
+              <p>• <strong>Chất xúc tác:</strong> Chỉ làm nhanh đạt cân bằng, <strong>KHÔNG LÀM CHUYỂN DỊCH CÂN BẰNG!</strong></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- BÀI TẬP THỰC CHIẾN BÀI 1 -->
+        <div class="practice-card">
+          <div class="practice-header">
+            <div class="practice-title">
+              <span>🎯 BÀI TẬP THỰC CHIẾN (BÀI 1): BẢNG 3 DÒNG TÍNH K<sub>C</sub></span>
+            </div>
+            <span class="practice-badge">Thi Giữa Kì</span>
+          </div>
+          <div class="practice-question">
+            <strong>Đề bài:</strong> Cho 0.4 mol H₂ và 0.4 mol I₂ vào bình kín 2.0 Lít ở 440°C. Khi cân bằng <code>H₂ + I₂ &#8652; 2HI</code>, nồng độ HI đo được là 0.3 M. Tính hằng số K<sub>C</sub>?
+          </div>
+          <button class="btn-reveal-solution" onclick="toggleSolution(this)">
+            👉 Bấm vào để xem đáp án hoặc ăn chửi nếu nghĩ sai 💥
+          </button>
+          <div class="solution-box">
+            <div class="solution-step">
+              <div class="step-heading">📊 LẬP BẢNG 3 DÒNG</div>
+              <p>• Nồng độ đầu: <code>[H₂] = [I₂] = 0.4 / 2 = 0.2 M</code>.</p>
+              <p>• [HI] tạo thành = 0.3 M &rArr; [H₂] và [I₂] phản ứng = <code>0.3 / 2 = 0.15 M</code>.</p>
+              <p>• Lúc cân bằng: <code>[H₂] = [I₂] = 0.2 - 0.15 = 0.05 M</code>.</p>
+              <p>• <code>K<sub>C</sub> = [HI]² / ([H₂]&middot;[I₂]) = (0.3)² / (0.05 &times; 0.05) = 36</code>.</p>
+              <p style="color:#10b981; font-weight:800;">👉 Kết quả: K<sub>C</sub> = 36!</p>
+            </div>
           </div>
         </div>
       </div>
@@ -1163,58 +1817,63 @@
 
         <div class="accordion-item open">
           <div class="accordion-header" onclick="toggleAccordion(this)">
-            <span>1. Chất điện li mạnh vs Yếu</span>
+            <span>1. Chất điện li mạnh vs Yếu & Thuyết Brønsted</span>
             <span class="acc-icon">▼</span>
           </div>
           <div class="accordion-content">
-            <p>• <strong>Điện li mạnh (Mũi tên &rarr;):</strong> Tan bao nhiêu phân li 100% bấy nhiêu. Gồm: Acid mạnh (HCl, HNO₃, H₂SO₄), Base mạnh (NaOH, KOH, Ba(OH)₂), Hầu hết các muối.</p>
-            <p>• <strong>Điện li yếu (Mũi tên &#8652;):</strong> 1000 phân tử chỉ có vài hạt chịu phân li. Gồm: Acid yếu (CH₃COOH, HF, H₂S) và Base yếu (NH₃).</p>
-            <p>• <strong>Không điện li:</strong> Tan nhưng giữ nguyên phân tử trung hòa: Nước đường, Rượu uống (C₂H₅OH) &rarr; Không dẫn điện.</p>
-          </div>
-        </div>
-
-        <div class="accordion-item">
-          <div class="accordion-header" onclick="toggleAccordion(this)">
-            <span>2. Thuyết Acid - Base Brønsted – Lowry</span>
-            <span class="acc-icon">▼</span>
-          </div>
-          <div class="accordion-content">
-            <div class="eq"><strong>ACID = Cho H⁺ &nbsp;|&nbsp; BASE = Nhận H⁺</strong></div>
-            <p>• <code>NH₃ + H₂O &#8652; NH₄⁺ + OH⁻</code>: NH₃ nhận H⁺ từ nước &rarr; <strong>NH₃ là Base</strong>.</p>
-            <p>• <strong>Chất lưỡng tính (vừa cho vừa nhận H⁺):</strong> <code>HCO₃⁻, HSO₃⁻, HS⁻, H₂O</code>.</p>
-            <div class="trap-box">
-              <div class="trap-title">⚠️ BẪY THI CỰC NGUY HIỂM:</div>
-              Ion <strong>HSO₄⁻ KHÔNG PHẢI LƯỠNG TÍNH</strong>! Trong nước nó phân li hoàn toàn: <code>HSO₄⁻ &rarr; H⁺ + SO₄²⁻</code> nên nó là một <strong>ACID MẠNH</strong>!
+            <p>• <strong>Điện li mạnh (&rarr;):</strong> Phân li 100%. Gồm acid mạnh (HCl, HNO₃, H₂SO₄), base mạnh (NaOH, Ba(OH)₂), hầu hết các muối.</p>
+            <p>• <strong>Điện li yếu (&#8652;):</strong> Phân li một phần: acid yếu (CH₃COOH, HF, H₂S) và base yếu (NH₃).</p>
+            <p>• <strong>Thuyết Brønsted:</strong> Acid = Cho H⁺; Base = Nhận H⁺. Chất lưỡng tính: HCO₃⁻, H₂O.</p>
+            <div class="box-trap">
+              <span class="box-badge">🚨 BẪY KINH HOÀNG:</span>
+              Ion <strong>HSO₄⁻ KHÔNG PHẢI LƯỠNG TÍNH</strong>! Trong nước nó phân li hoàn toàn: <code>HSO₄⁻ &rarr; H⁺ + SO₄²⁻</code> &rarr; Nó là một <strong>ACID MẠNH</strong>!
             </div>
           </div>
         </div>
 
         <div class="accordion-item">
           <div class="accordion-header" onclick="toggleAccordion(this)">
-            <span>3. Thang pH & Cách tính siêu nhanh</span>
+            <span>2. Thang pH & Công Thức Mổ Xẻ</span>
             <span class="acc-icon">▼</span>
           </div>
           <div class="accordion-content">
-            <p>• <code>pH = -log[H⁺]</code>. Ví dụ: [H⁺] = 10⁻³ M &rArr; pH = 3.</p>
-            <p>• Ở 25°C: <code>pH + pOH = 14</code>.</p>
-            <p>• <strong>pH &lt; 7:</strong> Môi trường Acid (Quỳ đỏ). Càng nhỏ càng chua mạnh!</p>
-            <p>• <strong>pH = 7:</strong> Môi trường Trung tính (Quỳ tím).</p>
-            <p>• <strong>pH &gt; 7:</strong> Môi trường Base (Quỳ xanh, phenolphthalein hóa hồng khi pH &ge; 8.3).</p>
-            <div class="analogy">
-              💡 <strong>Lưu ý:</strong> Chênh nhau 1 độ pH = Nồng độ chênh nhau gấp <strong>10 LẦN</strong>! Dung dịch pH = 2 đặc hơn pH = 3 tới 10 lần.
+            <div class="box-formula">
+              <span class="box-badge">⚡ Công Thức pH</span>
+              <div class="formula-display">pH = -log[H⁺] &nbsp;|&nbsp; [H⁺]&middot;[OH⁻] = 10⁻¹⁴ &nbsp;|&nbsp; pH + pOH = 14</div>
+            </div>
+            <p>• <strong>LƯU Ý VÀNG:</strong> Chênh nhau 1 độ pH = nồng độ chênh gấp <strong>10 LẦN</strong>!</p>
+            <div class="box-trap">
+              <span class="box-badge">🚨 BẪY TÍNH pH BASE:</span>
+              Gặp dung dịch kiềm Base (NaOH, Ba(OH)₂), <strong>PHẢI TÍNH [OH⁻] TRƯỚC</strong> &rarr; <code>pOH = -log[OH⁻]</code> &rarr; <code>pH = 14 - pOH</code>! Nhớ với Ba(OH)₂ phải nhân 2 nồng độ OH⁻!
             </div>
           </div>
         </div>
 
-        <div class="accordion-item">
-          <div class="accordion-header" onclick="toggleAccordion(this)">
-            <span>4. Thủy phân muối & Chuẩn độ</span>
-            <span class="acc-icon">▼</span>
+        <!-- BÀI TẬP THỰC CHIẾN BÀI 2 -->
+        <div class="practice-card">
+          <div class="practice-header">
+            <div class="practice-title">
+              <span>🎯 BÀI TẬP THỰC CHIẾN (BÀI 2): TRỘN ACID VỚI BASE</span>
+            </div>
+            <span class="practice-badge">Bài Toán Trộn Dung Dịch</span>
           </div>
-          <div class="accordion-content">
-            <p>• <strong>Quy tắc giật ion từ nước:</strong> Muối tạo bởi kim loại yếu + acid mạnh (như AlCl₃, FeCl₃, NH₄Cl) thủy phân tạo môi trường <strong>Acid (pH &lt; 7)</strong> &rarr; Đất chua, phèn nhôm làm trong nước.</p>
-            <p>• Muối của kim loại mạnh + acid yếu (như Na₂CO₃, CH₃COONa) thủy phân tạo môi trường <strong>Base (pH &gt; 7)</strong>.</p>
-            <p>• <strong>Chuẩn độ Acid - Base:</strong> Dùng buret chứa NaOH nhỏ giọt vào bình nón chứa HCl + phenolphthalein đến khi xuất hiện màu <strong>hồng nhạt bền trong 10-20 giây</strong> thì dừng. Công thức: <code><i>C</i><sub>A</sub> &middot; <i>V</i><sub>A</sub> = <i>C</i><sub>B</sub> &middot; <i>V</i><sub>B</sub></code>.</p>
+          <div class="practice-question">
+            <strong>Đề bài:</strong> Trộn 100 mL HCl 0.1 M với 100 mL NaOH 0.2 M. Tính pH của dung dịch thu được?
+          </div>
+          <button class="btn-reveal-solution" onclick="toggleSolution(this)">
+            👉 Bấm vào để xem đáp án hoặc ăn chửi nếu nghĩ sai 💥
+          </button>
+          <div class="solution-box">
+            <div class="solution-step">
+              <div class="step-heading">🔍 BƯỚC 1: TÍNH MOL & XÁC ĐỊNH CHẤT DƯ</div>
+              <p>• <code>n<sub>H⁺</sub> = 0.1 &times; 0.1 = 0.01 mol</code>.</p>
+              <p>• <code>n<sub>OH⁻</sub> = 0.1 &times; 0.2 = 0.02 mol</code>.</p>
+              <p>• H⁺ hết, OH⁻ dư: <code>n<sub>OH⁻ dư</sub> = 0.02 - 0.01 = 0.01 mol</code>.</p>
+              <p>• Thể tích mới: <code>V = 100 + 100 = 200 mL = 0.2 Lít</code>.</p>
+              <p>• <code>[OH⁻]<sub>dư</sub> = 0.01 / 0.2 = 0.05 M</code>.</p>
+              <p>• <code>pOH = -log(0.05) &approx; 1.30 &rArr; pH = 14 - 1.30 = 12.70</code>.</p>
+              <p style="color:#10b981; font-weight:800;">👉 Kết quả: Dung dịch sau trộn có pH = 12.7 (kiềm dư)!</p>
+            </div>
           </div>
         </div>
       </div>
@@ -1228,28 +1887,53 @@
 
         <div class="accordion-item open">
           <div class="accordion-header" onclick="toggleAccordion(this)">
-            <span>1. Vì sao Nitrogen lại rất trơ ở nhiệt độ thường?</span>
+            <span>1. Vì sao Nitrogen trơ lì & Bệnh giảm áp thợ lặn?</span>
             <span class="acc-icon">▼</span>
           </div>
           <div class="accordion-content">
-            <p>Chiếm 78.1% thể tích không khí. Hai nguyên tử N khóa chặt lấy nhau bằng <strong>LIÊN KẾT BA (N&equiv;N)</strong> với năng lượng liên kết khổng lồ <strong>945 kJ/mol</strong>! Ở nhiệt độ thường không ai bẻ gãy nổi nên nó trơ lì.</p>
-            <div class="trap-box">
-              <div class="trap-title">⚠️ NGOẠI LỆ KINH ĐIỂN ĐỀ THI:</div>
-              Kim loại DUY NHẤT phản ứng với N₂ ngay ở nhiệt độ thường là <strong>LITHIUM (Li)</strong>: <code>6Li + N₂ &rarr; 2Li₃N</code>! Còn Magie (Mg) hay Canxi (Ca) bắt buộc phải nung nóng.
+            <p>Chiếm 78.1% thể tích không khí. Hai nguyên tử N khóa chặt nhau bằng <strong>LIÊN KẾT BA (:N&equiv;N:)</strong> với năng lượng khổng lồ <strong>945 kJ/mol</strong> &rarr; Cực kì trơ lì ở nhiệt độ thường!</p>
+            <div class="analogy">
+              💡 <strong>Bệnh giảm áp thợ lặn:</strong> Lặn sâu áp suất cao làm N₂ tan vào máu. Trồi lên quá nhanh như giật nắp chai bia, N₂ sôi bọt trong mạch máu gây tử vong!
+            </div>
+            <div class="box-trap">
+              <span class="box-badge">🚨 NGOẠI LỆ 100% RA THI:</span>
+              Kim loại DUY NHẤT phản ứng với N₂ ở nhiệt độ thường là <strong>LITHIUM (Li)</strong>: <code>6Li + N₂ &rarr; 2Li₃N</code>! Kim loại khác (Mg, Ca...) bắt buộc phải nung nóng!
             </div>
           </div>
         </div>
 
         <div class="accordion-item">
           <div class="accordion-header" onclick="toggleAccordion(this)">
-            <span>2. Sấm sét tạo đạm cho đồng ruộng</span>
+            <span>2. Sấm sét tạo đạm nuôi lúa vụ chiêm</span>
             <span class="acc-icon">▼</span>
           </div>
           <div class="accordion-content">
-            <p>Tia sét nhiệt độ &gt; 3000°C bẻ đứt liên kết N&equiv;N:</p>
-            <div class="eq">N₂ + O₂ &#8652; 2NO (thu nhiệt rất mạnh)</div>
-            <p><code>2NO + O₂ &rarr; 2NO₂</code> (khí nâu đỏ).</p>
-            <p><code>4NO₂ + O₂ + 2H₂O &rarr; 4HNO₃ &rarr; H⁺ + NO₃⁻</code> (ngấm xuống đất làm đạm nitrate nuôi lúa).</p>
+            <p>Tia sét &gt; 3000°C bẻ đứt liên kết N&equiv;N: <code>N₂ &rarr; (+O₂, sét) &rarr; NO &rarr; (+O₂) &rarr; NO₂ &rarr; (+O₂+H₂O) &rarr; HNO₃ &rarr; H⁺ + NO₃⁻</code> rơi xuống đất làm phân đạm tự nhiên nuôi lúa!</p>
+          </div>
+        </div>
+
+        <!-- BÀI TẬP THỰC CHIẾN BÀI 4 -->
+        <div class="practice-card">
+          <div class="practice-header">
+            <div class="practice-title">
+              <span>🎯 BÀI TẬP THỰC CHIẾN (BÀI 4): Mg + N₂ Ở ĐKC</span>
+            </div>
+            <span class="practice-badge">ĐKC 24.79</span>
+          </div>
+          <div class="practice-question">
+            <strong>Đề bài:</strong> Đun nóng 7.2 gam Mg trong khí N₂ dư thu được muối Mg₃N₂. Tính thể tích khí N₂ (đkc 25°C, 1 bar) đã phản ứng?
+          </div>
+          <button class="btn-reveal-solution" onclick="toggleSolution(this)">
+            👉 Bấm vào để xem đáp án hoặc ăn chửi nếu nghĩ sai 💥
+          </button>
+          <div class="solution-box">
+            <div class="solution-step">
+              <div class="step-heading">🚀 LỜI GIẢI NHANH</div>
+              <p>• <code>n<sub>Mg</sub> = 7.2 / 24 = 0.3 mol</code>.</p>
+              <p>• Phương trình: <code>3Mg + N₂ &rarr; Mg₃N₂</code> &rArr; <code>n<sub>N₂</sub> = 0.3 / 3 = 0.1 mol</code>.</p>
+              <p>• <code>V<sub>N₂</sub> = 0.1 &times; 24.79 = 2.479 Lít</code>.</p>
+              <p style="color:#10b981; font-weight:800;">👉 Kết quả: V = 2.479 Lít!</p>
+            </div>
           </div>
         </div>
       </div>
@@ -1267,24 +1951,50 @@
             <span class="acc-icon">▼</span>
           </div>
           <div class="accordion-content">
-            <p>• Phân tử NH₃ có hình chóp tam giác, còn <strong>1 cặp electron tự do trên N</strong>.</p>
-            <p>• Cặp electron này tạo <strong>liên kết hydrogen cực mạnh với nước</strong> &rarr; <em>1 lít nước hòa tan tới 700 lít khí NH₃!</em></p>
-            <p>• <strong>Tính Base yếu:</strong> Nhận H⁺ của nước tạo OH⁻ làm quỳ tím ẩm hóa xanh.</p>
-            <p>• <strong>Tính Khử mạnh (do N có số oxi hóa -3 thấp nhất):</strong> Cháy trong O₂ sinh N₂, có xúc tác Pt ở 850°C sinh NO (sản xuất axit nitric).</p>
+            <p>• Cấu tạo hình chóp tam giác, còn <strong>1 cặp electron tự do trên N</strong> tạo liên kết hydrogen mạnh với nước &rarr; <em>1 Lít nước hòa tan tới 700 Lít khí NH₃!</em></p>
+            <p>• Base yếu: Làm quỳ tím ẩm hóa xanh. Tính khử mạnh: N ở số oxi hóa -3 cực tiểu.</p>
+            <div class="analogy">
+              💡 <strong>Khói trắng kì ảo:</strong> <code>NH₃(g) + HCl(g) &rarr; NH₄Cl(s)</code> tạo hàng triệu tinh thể muối rắn lơ lửng mù mịt!
+            </div>
           </div>
         </div>
 
         <div class="accordion-item">
           <div class="accordion-header" onclick="toggleAccordion(this)">
-            <span>2. Muối Ammonium & Khói trắng kì ảo</span>
+            <span>2. Muối Ammonium (NH₄⁺) & Bẫy Nhiệt Phân</span>
             <span class="acc-icon">▼</span>
           </div>
           <div class="accordion-content">
-            <p>• <strong>Khói trắng:</strong> Cho khí NH₃ gặp khí HCl sinh ra <strong>tinh thể muối NH₄Cl THỂ RẮN</strong> lơ lửng: <code>NH₃(g) + HCl(g) &rarr; NH₄Cl(s)</code>.</p>
-            <p>• <strong>Thuốc thử nhận biết ion NH₄⁺:</strong> Đun với dung dịch kiềm (NaOH), sinh khí NH₃ mùi khai làm xanh quỳ tím ẩm: <code>NH₄⁺ + OH⁻ &rarr; NH₃&uarr; + H₂O</code>.</p>
-            <p>• <strong>Nhiệt phân muối ammonium:</strong></p>
-            <p>- Muối không oxi hóa: <code>NH₄HCO₃ &rarr; NH₃ + CO₂ + H₂O</code> (bột nở làm bánh bao).</p>
-            <p>- Muối có gốc oxi hóa: <code>NH₄NO₃ &rarr; N₂O + 2H₂O</code> (<strong>KHÔNG sinh ra NH₃</strong>, nổ mạnh ở nhiệt độ cao - thảm họa cảng Beirut 2020).</p>
+            <p>• <strong>Nhận biết NH₄⁺:</strong> Đun với kiềm NaOH sinh khí NH₃ mùi khai làm xanh quỳ tím ẩm: <code>NH₄⁺ + OH⁻ &rarr; NH₃&uarr; + H₂O</code>.</p>
+            <div class="box-trap">
+              <span class="box-badge">🚨 BẪY NHIỆT PHÂN:</span>
+              <code>NH₄NO₃ &rarr; N₂O + 2H₂O</code> (<strong>TUYỆT ĐỐI KHÔNG SINH NH₃</strong>, nổ mạnh ở nhiệt độ cao - thảm họa cảng Beirut 2020!). <code>NH₄HCO₃ &rarr; NH₃ + CO₂ + H₂O</code> (bột nở làm bánh bao).
+            </div>
+          </div>
+        </div>
+
+        <!-- BÀI TẬP THỰC CHIẾN BÀI 5 -->
+        <div class="practice-card">
+          <div class="practice-header">
+            <div class="practice-title">
+              <span>🎯 BÀI TẬP THỰC CHIẾN (BÀI 5): NHẬN BIẾT BẰNG Ba(OH)₂</span>
+            </div>
+            <span class="practice-badge">1 Thuốc Thử Duy Nhất</span>
+          </div>
+          <div class="practice-question">
+            <strong>Đề bài:</strong> Chỉ dùng dung dịch Ba(OH)₂, nhận biết 3 dung dịch: NaCl, NH₄Cl, Na₂SO₄?
+          </div>
+          <button class="btn-reveal-solution" onclick="toggleSolution(this)">
+            👉 Bấm vào để xem đáp án hoặc ăn chửi nếu nghĩ sai 💥
+          </button>
+          <div class="solution-box">
+            <div class="solution-step">
+              <div class="step-heading">🧪 HIỆN TƯỢNG RÕ RÀNG</div>
+              <p>• Cho Ba(OH)₂ đun nóng nhẹ:</p>
+              <p>- <strong>NH₄Cl:</strong> Thoát khí NH₃ mùi khai làm xanh quỳ tím ẩm.</p>
+              <p>- <strong>Na₂SO₄:</strong> Xuất hiện kết tủa trắng bền BaSO₄.</p>
+              <p>- <strong>NaCl:</strong> Không có hiện tượng.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -1293,32 +2003,72 @@
       <div class="card" id="bai-6-card">
         <h2>🧪 BÀI 6: HNO₃, MƯA AXIT, PHÚ DƯỠNG</h2>
         <button onclick="openLectureModal('bai-6')" style="width:100%; margin-bottom:14px; padding:12px 14px; border-radius:12px; background:linear-gradient(135deg, #f59e0b, #ef4444, #8b5cf6); color:#fff; border:none; font-weight:850; font-size:0.92rem; box-shadow:0 4px 15px rgba(239,68,68,0.45); cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px;">
-          🔥 🎙️ TRỢ GIẢNG BÁ KHÍ (Thầy Giảng Full Bài 6)
+          🔥 🎙️ TRỢ GIẢNG BÁ KHÍ (Thầy Giảng Full Bài 6 HNO₃ & Phú Dưỡng)
         </button>
 
         <div class="accordion-item open">
           <div class="accordion-header" onclick="toggleAccordion(this)">
-            <span>1. Nitric Acid (HNO₃) - Kẻ cướp sạch electron</span>
+            <span>1. Nitric Acid (HNO₃) - Nghịch lý Hóa Trị IV & Oxi Hóa Mạnh</span>
             <span class="acc-icon">▼</span>
           </div>
           <div class="accordion-content">
-            <p>• Trong HNO₃, số oxi hóa của N là +5, nhưng <strong>HÓA TRỊ CỦA N CHỈ LÀ IV</strong> (vì ở chu kì 2 chỉ có 4 orbital hóa trị!).</p>
-            <p>• <strong>Tính oxi hóa cực mạnh:</strong> Oxi hóa hầu hết kim loại (trừ Au, Pt), <strong>TUYỆT ĐỐI KHÔNG SINH KHÍ H₂!</strong></p>
-            <p>- Với Cu: HNO₃ đặc sinh <strong>NO₂ (nâu đỏ)</strong>; HNO₃ loãng sinh <strong>NO (không màu hóa nâu)</strong>.</p>
-            <p>- <strong>Thụ động hóa:</strong> Nhôm (Al), Sắt (Fe), Crom (Cr) bị <em>thụ động trong HNO₃ ĐẶC NGUỘI</em> (dùng thùng nhôm/thép chở axit được!). Nhưng nếu đun nóng thì phản ứng rất mạnh.</p>
-            <p>- <strong>Nước Cường Toan:</strong> <code>1 thể tích HNO₃ đặc + 3 thể tích HCl đặc</code> hòa tan được cả Vàng (Au).</p>
-            <p>- <strong>Để lâu bị màu vàng:</strong> Do bị phân hủy một phần sinh khí NO₂ tan ngược vào axit: <code>4HNO₃ &rarr; 4NO₂ + O₂ + 2H₂O</code>.</p>
+            <p>• Trong HNO₃, số oxi hóa là +5 nhưng <strong>HÓA TRỊ CỦA N CHỈ LÀ IV</strong> (vì ở chu kì 2 chỉ có 4 orbital hóa trị!).</p>
+            <p>• Tính oxi hóa cực mạnh: Oxi hóa hầu hết kim loại (trừ Au, Pt), <strong>TUYỆT ĐỐI KHÔNG SINH KHÍ H₂!</strong></p>
+            <div class="box-trap">
+              <span class="box-badge">🚨 THỤ ĐỘNG HÓA & NƯỚC CƯỜNG TOAN</span>
+              <p>• <strong>Al, Fe, Cr</strong> bị thụ động trong HNO₃ ĐẶC NGUỘI (dùng thùng xe bồn nhôm/thép chở axit được!).</p>
+              <p>• <strong>Nước cường toan:</strong> 1 thể tích HNO₃ đặc + 3 thể tích HCl đặc hòa tan được cả Vàng (Au).</p>
+            </div>
           </div>
         </div>
 
         <div class="accordion-item">
           <div class="accordion-header" onclick="toggleAccordion(this)">
-            <span>2. Mưa Acid & Phú Dưỡng Ao Hồ</span>
+            <span>2. Bí kíp Bảo Toàn Electron 1 Dòng 10 Giây</span>
             <span class="acc-icon">▼</span>
           </div>
           <div class="accordion-content">
-            <p>• <strong>Mưa Acid:</strong> Nước mưa có <strong>pH &lt; 5.6</strong> do khí SO₂ và NO<sub>x</sub> tạo thành H₂SO₄ và HNO₃. Ăn mòn công trình đá vôi CaCO₃, kim loại, làm chết sinh vật.</p>
-            <p>• <strong>Hiện tượng Phú Dưỡng:</strong> Do ao hồ bị dư thừa chất dinh dưỡng Nitrogen (&ge; 300 &mu;g/L) và Phosphorus (&ge; 20 &mu;g/L) &rarr; Tảo nở hoa bùng phát &rarr; Che ánh sáng làm cây tầng dưới chết &rarr; Vi khuẩn hiếu khí ăn xác tảo tiêu thụ cạn kiệt oxy hòa tan &rarr; Cá tôm chết ngạt hàng loạt &rarr; Bốc mùi thối rữa thành hồ chết.</p>
+            <div class="box-formula">
+              <span class="box-badge">⚡ Công Thức Giải Toán 10 Giây</span>
+              <div class="formula-display">&sum; n<sub>KL</sub> &times; HóaTrị = 1&middot;n<sub>NO₂</sub> + 3&middot;n<sub>NO</sub> + 8&middot;n<sub>N₂O</sub> + 10&middot;n<sub>N₂</sub> + 8&middot;n<sub>NH₄NO₃</sub></div>
+              <p><code>n<sub>HNO₃ pư</sub> = 2&middot;n<sub>NO₂</sub> + 4&middot;n<sub>NO</sub> + 10&middot;n<sub>N₂O</sub> + 12&middot;n<sub>N₂</sub> + 10&middot;n<sub>NH₄NO₃</sub></code></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span>3. Mưa Acid & Hiện Tượng Phú Dưỡng Ao Hồ</span>
+            <span class="acc-icon">▼</span>
+          </div>
+          <div class="accordion-content">
+            <p>• <strong>Mưa Acid:</strong> Nước mưa có pH &lt; 5.6 do SO₂ và NO<sub>x</sub> tạo thành H₂SO₄ và HNO₃.</p>
+            <p>• <strong>Phú Dưỡng (Eutrophication):</strong> Dư thừa Nitrogen (&ge; 300 &mu;g/L) và Phosphorus (&ge; 20 &mu;g/L) từ bột giặt và phân bón &rarr; Tảo nở hoa bùng phát &rarr; Che ánh sáng làm cây cỏ chết &rarr; Vi khuẩn ăn xác tảo nuốt cạn oxy hòa tan &rarr; Cá tôm chết ngạt thối rữa thành hồ chết!</p>
+          </div>
+        </div>
+
+        <!-- BÀI TẬP THỰC CHIẾN BÀI 6 -->
+        <div class="practice-card">
+          <div class="practice-header">
+            <div class="practice-title">
+              <span>🎯 BÀI TẬP THỰC CHIẾN (BÀI 6): Cu + HNO₃ BẢO TOÀN E 1 DÒNG</span>
+            </div>
+            <span class="practice-badge">10 Giây Ra Đáp Án</span>
+          </div>
+          <div class="practice-question">
+            <strong>Đề bài:</strong> Cho 3.84 gam Cu vào dung dịch HNO₃ loãng dư thu được V lít khí NO (sản phẩm khử duy nhất ở 25°C, 1 bar). Tính V?
+          </div>
+          <button class="btn-reveal-solution" onclick="toggleSolution(this)">
+            👉 Bấm vào để xem đáp án hoặc ăn chửi nếu nghĩ sai 💥
+          </button>
+          <div class="solution-box">
+            <div class="solution-step">
+              <div class="step-heading">🚀 GIẢI NHANH 10 GIÂY</div>
+              <p>• <code>n<sub>Cu</sub> = 3.84 / 64 = 0.06 mol</code>.</p>
+              <p>• Bảo toàn electron: <code>2 &times; n<sub>Cu</sub> = 3 &times; n<sub>NO</sub> &rArr; n<sub>NO</sub> = (0.06 &times; 2) / 3 = 0.04 mol</code>.</p>
+              <p>• <code>V<sub>NO</sub> = 0.04 &times; 24.79 = 0.9916 Lít</code>!</p>
+              <p style="color:#10b981; font-weight:800;">👉 Kết quả: V = 0.9916 Lít khí NO!</p>
+            </div>
           </div>
         </div>
       </div>
@@ -1592,6 +2342,19 @@
     </section>
 
     <!-- Nút chuyển sang bản Desktop -->
+          <!-- GÓC TRÙM CUỐI: TÀI LIỆU BỎ TÚI CỨU SINH 1 TRANG A4 -->
+      <div id="footer-cheat-callout" style="text-align: center; margin: 54px 0 24px; padding: 36px 28px; background: var(--bg-card); border-radius: 20px; border: 2.5px dashed #10b981; box-shadow: var(--shadow-md);">
+        <span style="font-size: 2.5rem; display: block; margin-bottom: 8px;">🎒</span>
+        <h3 style="font-size: 1.55rem; font-weight: 850; color: #059669; margin-bottom: 10px;">GÓC "TRÙM CUỐI": PHAO CỨU SINH TRƯỚC GIỜ G</h3>
+        <p style="color: var(--text-muted); max-width: 680px; margin: 0 auto 22px; font-size: 1.02rem; line-height: 1.7;">
+          Toàn bộ công thức cốt lõi, bẫy thi thường gặp và phương pháp giải nhanh của 6 bài học sống còn được nén trọn vẹn trong đúng <strong>1 trang A4 duy nhất</strong>. Dành riêng để 5 phút trước khi cô gọi lên bảng lôi ra tụng!
+        </p>
+        <button class="btn-cheatsheet-trigger" onclick="openCheatSheet()">
+          🎒 TẢI / IN BÍ KÍP TRƯỚC GIỜ G (CHUẨN 1 TRANG A4)
+        </button>
+      </div>
+
+
     <a href="index.html" class="switch-desktop-btn">💻 Mở Phiên Bản Máy Tính (Đầy Đủ Đồ Thị SVG)</a>
   </div>
 
@@ -3180,6 +3943,59 @@ const allLectures = {
 
 
         updateMobilePH(7.0);
-  </script>
+  
+/* Interactive JS for Reveal Solution, Tooltip Touch, and Cheat Sheet Modal */
+
+function toggleSolution(btn) {
+  const container = btn.closest('.practice-card');
+  if (!container) return;
+  const solBox = container.querySelector('.solution-box');
+  if (!solBox) return;
+  
+  if (solBox.classList.contains('open')) {
+    solBox.classList.remove('open');
+    btn.innerHTML = '👉 Bấm vào để xem đáp án hoặc ăn chửi nếu nghĩ sai 💥';
+    btn.style.background = 'linear-gradient(135deg, #f59e0b 0%, #ea580c 100%)';
+  } else {
+    solBox.classList.add('open');
+    btn.innerHTML = '🙈 Giấu đáp án để tự giải lại';
+    btn.style.background = 'linear-gradient(135deg, #475569 0%, #334155 100%)';
+  }
+}
+
+function openCheatSheet() {
+  const modal = document.getElementById('cheatSheetModal');
+  if (modal) modal.classList.add('active');
+}
+
+function closeCheatSheet(e) {
+  if (e && e.target !== document.getElementById('cheatSheetModal') && !e.target.classList.contains('btn-close-cheat')) return;
+  const modal = document.getElementById('cheatSheetModal');
+  if (modal) modal.classList.remove('active');
+}
+
+function printCheatSheet() {
+  window.print();
+}
+
+// Tooltip Touch Handling for Mobile Phones
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.chem-tip').forEach(tip => {
+    tip.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isActive = tip.classList.contains('tip-active');
+      document.querySelectorAll('.chem-tip.tip-active').forEach(t => t.classList.remove('tip-active'));
+      if (!isActive) {
+        tip.classList.add('tip-active');
+      }
+    });
+  });
+  
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.chem-tip.tip-active').forEach(t => t.classList.remove('tip-active'));
+  });
+});
+
+</script>
 </body>
 </html>
