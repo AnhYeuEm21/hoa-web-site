@@ -6,14 +6,46 @@
   <title>Hóa Học 11 - Bản Cứu Mất Gốc Cho Điện Thoại</title>
   <style>
     :root {
-      --primary: #2563eb;
-      --primary-dark: #1d4ed8;
-      --primary-light: #eff6ff;
+      /* GIAO DIỆN TỐI OBSIDIAN & GOLD SANG TRỌNG (CHUẨN 100% THEO ẢNH MẪU) */
+      --bg: #090d16;
+      --bg-surface: #0f1523;
+      --card-bg: #111827;
+      --card-border: rgba(255, 255, 255, 0.08);
+      --card-hover-border: rgba(245, 158, 11, 0.35);
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-sub: #64748b;
+      --gold: #f59e0b;
+      --gold-light: #fbbf24;
+      --gold-dark: #d97706;
+      --primary: #38bdf8;
+      --primary-light: rgba(56, 189, 248, 0.12);
+      --border: rgba(255, 255, 255, 0.08);
+      --warning-bg: rgba(245, 158, 11, 0.08);
+      --warning-border: #f59e0b;
+      --warning-text: #fbbf24;
+      --success-bg: rgba(16, 185, 129, 0.08);
+      --success-border: #10b981;
+      --purple-bg: rgba(139, 92, 246, 0.08);
+      --purple-border: #8b5cf6;
+      --radius: 16px;
+      --radius-sm: 10px;
+      --bottom-nav-h: 70px;
+    }
+
+    [data-theme="light"] {
       --bg: #f8fafc;
+      --bg-surface: #f1f5f9;
       --card-bg: #ffffff;
+      --card-border: #e2e8f0;
+      --card-hover-border: rgba(37, 99, 235, 0.35);
       --text: #0f172a;
       --text-muted: #475569;
       --text-sub: #64748b;
+      --gold: #d97706;
+      --gold-light: #b45309;
+      --primary: #2563eb;
+      --primary-light: #eff6ff;
       --border: #e2e8f0;
       --warning-bg: #fffbeb;
       --warning-border: #f59e0b;
@@ -22,26 +54,6 @@
       --success-border: #10b981;
       --purple-bg: #f5f3ff;
       --purple-border: #8b5cf6;
-      --radius: 14px;
-      --bottom-nav-h: 68px;
-    }
-
-    [data-theme="dark"] {
-      --bg: #090d16;
-      --card-bg: #131b2e;
-      --text: #f8fafc;
-      --text-muted: #cbd5e1;
-      --text-sub: #94a3b8;
-      --border: #232f48;
-      --primary: #38bdf8;
-      --primary-light: #082f49;
-      --warning-bg: #422006;
-      --warning-border: #fbbf24;
-      --warning-text: #fef08a;
-      --success-bg: #064e3b;
-      --success-border: #34d399;
-      --purple-bg: #2e1065;
-      --purple-border: #c084fc;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
@@ -50,94 +62,570 @@
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.65;
-      font-size: 16px;
-      padding-bottom: calc(var(--bottom-nav-h) + 30px);
+      line-height: 1.68;
+      font-size: 15.5px;
+      padding-bottom: calc(var(--bottom-nav-h) + 36px);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      transition: background 0.3s ease, color 0.3s ease;
     }
 
-    /* Top App Bar */
+    /* TOP APP BAR */
     .top-bar {
       position: sticky;
       top: 0;
-      background: rgba(255, 255, 255, 0.88);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background: rgba(9, 13, 22, 0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
-      padding: 12px 16px;
+      padding: 10px 14px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 10px;
       z-index: 100;
     }
 
-    [data-theme="dark"] .top-bar {
-      background: rgba(19, 27, 46, 0.88);
+    [data-theme="light"] .top-bar {
+      background: rgba(255, 255, 255, 0.94);
     }
 
-    .top-bar-title {
+    .top-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .app-icon {
+      font-size: 1.45rem;
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .app-info {
+      min-width: 0;
+    }
+
+    .app-title {
+      font-weight: 850;
+      font-size: 0.96rem;
+      color: #ffffff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      letter-spacing: 0.2px;
+      line-height: 1.25;
+    }
+
+    [data-theme="light"] .app-title { color: #0f172a; }
+
+    .app-subtitle {
+      font-size: 0.72rem;
+      font-weight: 750;
+      color: var(--gold);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      letter-spacing: 0.3px;
+    }
+
+    .top-bar-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .top-pill {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #cbd5e1;
+      padding: 6px 11px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 750;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    [data-theme="light"] .top-pill {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: #334155;
+    }
+
+    .top-pill:active {
+      transform: scale(0.96);
+    }
+
+    .top-pill.btn-voice-top {
+      background: linear-gradient(135deg, #f59e0b, #ef4444);
+      color: #ffffff;
+      border: none;
+      font-weight: 850;
+      box-shadow: 0 2px 10px rgba(245, 158, 11, 0.4);
+    }
+
+    /* SEARCH BAR */
+    .search-wrap {
+      padding: 10px 14px 6px;
+      background: var(--bg);
+    }
+
+    .search-box {
+      position: relative;
+      width: 100%;
+    }
+
+    .search-box input {
+      width: 100%;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 11px 40px 11px 42px;
+      border-radius: 24px;
+      font-size: 0.92rem;
+      font-weight: 550;
+      outline: none;
+      transition: all 0.2s;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+    }
+
+    .search-box input:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+    }
+
+    .search-box input::placeholder {
+      color: var(--text-sub);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1rem;
+      color: var(--text-sub);
+      pointer-events: none;
+    }
+
+    .clear-search-btn {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: var(--text);
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    /* HORIZONTAL SCROLLABLE PILLS STRIP */
+    .pills-scroll-wrap {
+      overflow-x: auto;
+      white-space: nowrap;
+      padding: 6px 14px 12px;
+      background: var(--bg);
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .pills-scroll-wrap::-webkit-scrollbar {
+      display: none;
+    }
+
+    .pills-track {
+      display: inline-flex;
+      gap: 7px;
+    }
+
+    .pill-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 0.83rem;
+      font-weight: 750;
+      cursor: pointer;
+      transition: all 0.2s;
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .pill-btn:active {
+      transform: scale(0.96);
+    }
+
+    .pill-btn.active {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #000000 !important;
+      font-weight: 850;
+      border-color: #f59e0b;
+      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+    }
+
+    /* MAIN CONTAINER */
+    .container {
+      padding: 4px 14px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* HERO BANNER & STATS GRID (CHUẨN ẢNH MẪU 100%) */
+    .hero-banner {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      color: var(--gold-light);
+      padding: 4px 11px;
+      border-radius: 20px;
+      font-size: 0.74rem;
       font-weight: 800;
-      font-size: 1.12rem;
+      margin-bottom: 12px;
+      letter-spacing: 0.2px;
+    }
+
+    .hero-title {
+      font-size: 1.35rem;
+      font-weight: 850;
+      color: #ffffff;
+      line-height: 1.32;
+      margin-bottom: 10px;
+    }
+
+    [data-theme="light"] .hero-title { color: #0f172a; }
+
+    .hero-title .text-gold {
+      color: var(--gold-light);
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-desc {
+      font-size: 0.92rem;
+      line-height: 1.62;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 14px;
+      padding: 13px 10px;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+
+    [data-theme="light"] .stat-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+    }
+
+    .stat-num {
+      font-size: 1.48rem;
+      font-weight: 900;
+      color: var(--gold-light);
+      line-height: 1.2;
+      margin-bottom: 4px;
+      letter-spacing: -0.5px;
+    }
+
+    .stat-lbl {
+      font-size: 0.76rem;
+      font-weight: 650;
+      color: var(--text-muted);
+      line-height: 1.3;
+    }
+
+    .stat-card.stat-wide {
+      grid-column: span 2;
+    }
+
+    /* SECTION HEADINGS BAR */
+    .section-heading-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 22px 0 14px;
+      padding-left: 2px;
+    }
+
+    .section-star {
+      font-size: 1.2rem;
+      filter: drop-shadow(0 2px 6px rgba(245, 158, 11, 0.4));
+    }
+
+    .section-heading-bar h2 {
+      font-size: 1.02rem;
+      font-weight: 850;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      margin: 0;
+    }
+
+    [data-theme="light"] .section-heading-bar h2 { color: #0f172a; }
+
+    /* CARD BOX */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 16px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+
+    .card h2 {
+      font-size: 1.18rem;
+      font-weight: 850;
       color: var(--primary);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: 0.2px;
+    }
+
+    .card h3 {
+      font-size: 1.05rem;
+      font-weight: 750;
+      color: var(--text);
+      margin: 16px 0 8px;
+    }
+
+    /* ACCORDION (BẤM GẬP MỞ) */
+    .accordion-item {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 10px;
+      background: rgba(255, 255, 255, 0.02);
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+
+    .accordion-item.open {
+      border-color: rgba(56, 189, 248, 0.3);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+    }
+
+    .accordion-header {
+      padding: 14px 16px;
+      font-weight: 750;
+      font-size: 0.96rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      cursor: pointer;
+      color: var(--text);
+      min-height: 48px;
+      background: transparent;
+    }
+
+    .accordion-header .acc-icon {
+      transition: transform 0.25s ease;
+      font-size: 0.82rem;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+
+    .accordion-item.open .accordion-header .acc-icon {
+      transform: rotate(180deg);
+    }
+
+    .accordion-content {
+      display: none;
+      padding: 14px 16px 18px;
+      border-top: 1px solid var(--border);
+      font-size: 0.94rem;
+      background: rgba(0, 0, 0, 0.15);
+      line-height: 1.68;
+      color: #cbd5e1;
+    }
+
+    [data-theme="light"] .accordion-content {
+      background: #f8fafc;
+      color: #334155;
+    }
+
+    .accordion-item.open .accordion-content {
+      display: block;
+    }
+
+    /* HỘP BẢN CHẤT ĐỜI THƯỜNG */
+    .analogy {
+      background: rgba(16, 185, 129, 0.08);
+      border-left: 3px solid #10b981;
+      padding: 12px 14px;
+      border-radius: 0 8px 8px 0;
+      margin: 12px 0;
+      font-size: 0.92rem;
+      color: #cbd5e1;
+    }
+
+    [data-theme="light"] .analogy { color: #1e293b; }
+
+    .analogy-title {
+      font-weight: 750;
+      color: #10b981;
+      margin-bottom: 4px;
       display: flex;
       align-items: center;
       gap: 6px;
     }
 
-    .btn-icon {
-      background: var(--primary-light);
-      border: 1px solid var(--border);
-      color: var(--text);
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
+    /* HỘP BẪY THI */
+    .trap-box {
+      background: rgba(245, 158, 11, 0.08);
+      border-left: 3px solid var(--gold);
+      border-radius: 8px;
+      padding: 13px 14px;
+      margin: 13px 0;
+      font-size: 0.92rem;
+      color: #cbd5e1;
+    }
+
+    [data-theme="light"] .trap-box { color: #1e293b; }
+
+    .trap-title {
+      font-weight: 850;
+      color: var(--gold-light);
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      cursor: pointer;
+      gap: 6px;
+      margin-bottom: 6px;
     }
 
-    /* Container */
-    .container {
-      padding: 14px 16px;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    /* Banner chào mừng người mất gốc */
-    .welcome-card {
-      background: linear-gradient(135deg, #1e3a8a 0%, #0d9488 100%);
-      color: #fff;
-      padding: 20px 18px;
-      border-radius: var(--radius);
-      margin-bottom: 18px;
-      box-shadow: 0 8px 20px rgba(30, 58, 138, 0.25);
-    }
-
-    .welcome-card h1 {
-      font-size: 1.35rem;
-      font-weight: 850;
-      margin-bottom: 8px;
-      line-height: 1.3;
-    }
-
-    .welcome-card p {
-      font-size: 0.92rem;
-      opacity: 0.95;
-      line-height: 1.55;
-    }
-
-    .pill-tag {
-      display: inline-block;
-      background: rgba(255, 255, 255, 0.22);
-      padding: 3px 10px;
-      border-radius: 999px;
-      font-size: 0.76rem;
+    /* PHƯƠNG TRÌNH HOÁ HỌC & CÔNG THỨC */
+    .eq {
+      background: rgba(56, 189, 248, 0.08);
+      border-left: 3px solid var(--primary);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-family: 'Consolas', monospace;
       font-weight: 700;
-      margin-bottom: 8px;
+      font-size: 0.95rem;
+      color: #f8fafc;
+      margin: 10px 0;
+      overflow-x: auto;
     }
 
-    /* Tab Contents */
+    [data-theme="light"] .eq { color: #0f172a; }
+
+    code {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-family: 'Consolas', 'Menlo', monospace;
+      font-size: 0.92em;
+      color: #38bdf8;
+    }
+
+    [data-theme="light"] code {
+      background: #e2e8f0;
+      color: #0284c7;
+    }
+
+    /* BOTTOM NAVIGATION DOCK (CHUẨN ẢNH MẪU 100%) */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100vw;
+      height: var(--bottom-nav-h);
+      background: rgba(9, 13, 22, 0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      z-index: 100;
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    [data-theme="light"] .bottom-nav {
+      background: rgba(255, 255, 255, 0.94);
+    }
+
+    .nav-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 8px 10px;
+      border-radius: 10px;
+      transition: all 0.2s;
+      flex: 1;
+    }
+
+    .nav-btn .icon {
+      font-size: 1.25rem;
+      line-height: 1;
+      transition: transform 0.2s;
+    }
+
+    .nav-btn.active {
+      color: var(--gold-light);
+    }
+
+    .nav-btn.active .icon {
+      transform: translateY(-2px);
+      filter: drop-shadow(0 2px 6px rgba(245, 158, 11, 0.5));
+    }
+
+    /* TAB CONTENTS */
     .tab-section {
       display: none;
       animation: fadeIn 0.25s ease;
@@ -152,354 +640,165 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Card Box */
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 18px 16px;
-      margin-bottom: 16px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-    }
-
-    .card h2 {
-      font-size: 1.22rem;
-      font-weight: 800;
-      color: var(--primary);
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .card h3 {
-      font-size: 1.05rem;
-      font-weight: 750;
-      color: var(--text);
-      margin: 16px 0 8px;
-    }
-
-    /* Accordion (Bấm gập mở) */
-    .accordion-item {
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      margin-bottom: 12px;
-      background: var(--card-bg);
-      overflow: hidden;
-    }
-
-    .accordion-header {
-      padding: 14px 16px;
-      font-weight: 750;
-      font-size: 0.98rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: var(--card-bg);
-      cursor: pointer;
-    }
-
-    .accordion-header .acc-icon {
-      transition: transform 0.25s ease;
-      font-size: 0.85rem;
-      color: var(--primary);
-    }
-
-    .accordion-item.open .accordion-header .acc-icon {
-      transform: rotate(180deg);
-    }
-
-    .accordion-content {
-      display: none;
-      padding: 14px 16px 18px;
-      border-top: 1px dashed var(--border);
-      font-size: 0.93rem;
-      background: var(--bg);
-      line-height: 1.68;
-    }
-
-    .accordion-item.open .accordion-content {
-      display: block;
-    }
-
-    /* Hộp bản chất đời thường */
-    .analogy {
-      background: rgba(13, 148, 136, 0.08);
-      border-left: 4px solid #0d9488;
-      padding: 12px 14px;
-      border-radius: 0 8px 8px 0;
-      margin: 12px 0;
-      font-size: 0.92rem;
-    }
-
-    .analogy-title {
-      font-weight: 750;
-      color: #0d9488;
-      margin-bottom: 4px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    /* Hộp Đào Sâu Phân Tử */
-    .deepdive {
-      background: var(--purple-bg);
-      border: 1.5px solid var(--purple-border);
-      border-radius: 10px;
-      padding: 12px 14px;
-      margin: 12px 0;
-      font-size: 0.91rem;
-    }
-
-    .deepdive-title {
-      font-weight: 800;
-      color: #8b5cf6;
-      margin-bottom: 4px;
-    }
-
-    /* Hộp Bẫy Thi */
-    .trap-box {
-      background: var(--warning-bg);
-      border: 1.5px solid var(--warning-border);
-      border-radius: 10px;
-      padding: 14px 14px;
-      margin: 14px 0;
-      font-size: 0.92rem;
-    }
-
-    .trap-title {
-      font-weight: 850;
-      color: var(--warning-text);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 6px;
-    }
-
-    /* Phương trình hoá học */
-    .eq {
-      background: rgba(0, 0, 0, 0.05);
-      padding: 10px 12px;
-      border-radius: 8px;
-      font-family: 'Consolas', monospace;
-      font-weight: 700;
-      font-size: 0.95rem;
-      margin: 10px 0;
-      overflow-x: auto;
-      border-left: 3px solid var(--primary);
-    }
-
-    [data-theme="dark"] .eq {
-      background: rgba(255, 255, 255, 0.07);
-    }
-
-    /* Bảng */
-    .table-scroll {
-      overflow-x: auto;
-      margin: 12px 0;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.88rem;
-    }
-
-    th {
-      background: var(--primary-light);
-      color: var(--primary);
-      padding: 10px 12px;
-      text-align: left;
-      font-weight: 750;
-      border-bottom: 1px solid var(--border);
-    }
-
-    td {
-      padding: 9px 12px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    tr:last-child td { border-bottom: none; }
-
-    /* Bottom Navigation Bar */
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100vw;
-      height: var(--bottom-nav-h);
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-top: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      z-index: 100;
-      padding-bottom: env(safe-area-inset-bottom);
-    }
-
-    [data-theme="dark"] .bottom-nav {
-      background: rgba(19, 27, 46, 0.92);
-    }
-
-    .nav-btn {
-      background: none;
-      border: none;
-      color: var(--text-sub);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 3px;
-      font-size: 0.72rem;
-      font-weight: 600;
-      cursor: pointer;
-      flex: 1;
-      height: 100%;
-      transition: color 0.2s;
-    }
-
-    .nav-btn .icon {
-      font-size: 1.25rem;
-    }
-
-    .nav-btn.active {
-      color: var(--primary);
-      font-weight: 750;
-    }
-
-    /* Quiz Mobile */
+    /* TRẮC NGHIỆM */
     .quiz-card {
-      background: var(--card-bg);
+      background: rgba(255, 255, 255, 0.02);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 16px;
-      margin-bottom: 14px;
+      padding: 14px;
+      margin-bottom: 12px;
     }
 
     .quiz-q {
       font-weight: 750;
-      font-size: 0.98rem;
-      margin-bottom: 12px;
+      font-size: 0.96rem;
+      margin-bottom: 10px;
+      line-height: 1.45;
     }
 
     .quiz-btn {
+      display: block;
       width: 100%;
       text-align: left;
-      padding: 11px 14px;
-      border-radius: 8px;
+      background: var(--card-bg);
       border: 1px solid var(--border);
-      background: var(--bg);
       color: var(--text);
-      font-size: 0.9rem;
+      padding: 11px 14px;
+      border-radius: 10px;
       margin-bottom: 8px;
+      font-size: 0.9rem;
       cursor: pointer;
+      line-height: 1.4;
+      transition: all 0.2s;
+    }
+
+    .quiz-btn:active {
+      transform: scale(0.98);
     }
 
     .quiz-btn.correct {
-      background: var(--success-bg) !important;
-      border-color: var(--success-border) !important;
-      color: #065f46 !important;
-      font-weight: 700;
+      background: rgba(16, 185, 129, 0.2) !important;
+      border-color: #10b981 !important;
+      color: #34d399 !important;
+      font-weight: 800;
     }
 
     .quiz-btn.wrong {
-      background: #fee2e2 !important;
+      background: rgba(239, 68, 68, 0.2) !important;
       border-color: #ef4444 !important;
-      color: #991b1b !important;
+      color: #f87171 !important;
     }
 
     .quiz-exp {
       display: none;
-      margin-top: 10px;
       padding: 12px;
+      background: rgba(14, 165, 233, 0.1);
       border-radius: 8px;
-      background: var(--primary-light);
-      font-size: 0.88rem;
-      line-height: 1.6;
+      margin-top: 10px;
+      font-size: 0.9rem;
+      border-left: 3px solid var(--primary);
     }
 
-    /* Quick Button Switch to Desktop */
+    .pill-tag {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
     .switch-desktop-btn {
       display: block;
       width: 100%;
       text-align: center;
-      padding: 12px;
-      border-radius: 10px;
-      background: var(--primary-light);
+      padding: 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
       color: var(--primary);
       text-decoration: none;
       font-weight: 750;
       font-size: 0.92rem;
-      border: 1px solid var(--border);
-      margin-top: 18px;
+      border-radius: 12px;
+      margin-top: 20px;
+      transition: all 0.2s;
     }
 
-    /* Modal Bục Giảng Bá Khí Mobile */
+    /* MODAL BỤC GIẢNG BÁ KHÍ CHO MOBILE */
     .lecture-modal-overlay {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(4, 7, 20, 0.92);
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.88);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
+      z-index: 9999;
       display: none;
-      align-items: center;
+      align-items: flex-end;
       justify-content: center;
-      z-index: 3000;
-      padding: 10px;
     }
     .lecture-modal-overlay.active { display: flex; }
-
     .lecture-modal-box {
-      width: 100%;
-      max-width: 540px;
+      background: #0b0f19;
+      border: 1px solid #1e293b;
+      border-radius: 24px 24px 0 0;
+      width: 100vw;
       max-height: 90vh;
-      background: #0f172a;
-      border: 1.5px solid #334155;
-      border-radius: 18px;
-      overflow: hidden;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(139, 92, 246, 0.3);
-      color: #f8fafc;
+      overflow: hidden;
+      box-shadow: 0 -10px 40px rgba(0,0,0,0.8);
+      animation: slideUpModal 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
-
+    @keyframes slideUpModal {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
     .lecture-header {
-      padding: 12px 14px;
-      background: #1e293b;
-      border-bottom: 1px solid #334155;
+      padding: 14px 16px;
+      background: #111827;
+      border-bottom: 1px solid #1f293d;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 10px;
     }
-    .teacher-badge { display: flex; align-items: center; gap: 10px; }
+    .teacher-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
     .teacher-avatar {
       font-size: 1.6rem;
       background: linear-gradient(135deg, #f59e0b, #ef4444);
-      width: 40px;
-      height: 40px;
+      width: 38px; height: 38px;
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+      flex-shrink: 0;
     }
-    .teacher-name { font-weight: 850; font-size: 0.98rem; color: #f8fafc; }
-    .teacher-role { font-size: 0.72rem; color: #38bdf8; font-weight: 700; }
-
+    .teacher-name {
+      font-weight: 850;
+      font-size: 0.94rem;
+      color: #f8fafc;
+      line-height: 1.25;
+    }
+    .teacher-role {
+      font-size: 0.74rem;
+      color: #38bdf8;
+      font-weight: 650;
+    }
     .step-track {
-      background: #090d16;
-      border-bottom: 1px solid #1e293b;
-      padding: 8px 12px;
       display: flex;
       gap: 6px;
+      padding: 10px 14px;
+      background: #090d16;
+      border-bottom: 1px solid #1e293b;
       overflow-x: auto;
+      white-space: nowrap;
       scrollbar-width: none;
     }
     .step-track::-webkit-scrollbar { display: none; }
@@ -507,22 +806,22 @@
       background: #1e293b;
       color: #94a3b8;
       border: 1px solid #334155;
-      padding: 5px 10px;
-      border-radius: 8px;
-      font-size: 0.74rem;
-      font-weight: 700;
-      white-space: nowrap;
-      cursor: pointer;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 750;
       flex-shrink: 0;
+      cursor: pointer;
     }
     .step-pill.active {
-      background: #2563eb;
+      background: linear-gradient(135deg, #f59e0b, #ef4444);
       color: #ffffff;
-      border-color: #38bdf8;
+      border-color: #f59e0b;
+      font-weight: 850;
+      box-shadow: 0 2px 10px rgba(245, 158, 11, 0.4);
     }
-
     .lecture-body {
-      padding: 14px;
+      padding: 14px 16px;
       overflow-y: auto;
       flex: 1;
       display: flex;
@@ -530,43 +829,49 @@
       gap: 14px;
     }
     .teacher-box {
-      background: #1e293b;
-      border: 1px solid #334155;
-      border-radius: 12px;
+      background: #111827;
+      border: 1.5px solid #0284c7;
+      border-radius: 14px;
       padding: 14px;
     }
     .teacher-box h4 {
-      color: #f59e0b;
-      font-size: 0.95rem;
+      color: #38bdf8;
+      font-size: 1.02rem;
       font-weight: 850;
-      margin-bottom: 8px;
-    }
-    .teacher-speech { font-size: 0.88rem; line-height: 1.68; color: #e2e8f0; }
-    .teacher-speech p { margin-bottom: 8px; }
-    .highlight-callout {
-      background: rgba(245, 158, 11, 0.15);
-      border-left: 3px solid #f59e0b;
-      padding: 8px 10px;
-      border-radius: 0 6px 6px 0;
-      color: #fef08a;
       margin-bottom: 10px;
-      font-size: 0.86rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
-
+    .teacher-speech {
+      font-size: 0.94rem;
+      line-height: 1.68;
+      color: #e2e8f0;
+    }
+    .teacher-speech p { margin-bottom: 10px; }
+    .highlight-callout {
+      background: rgba(239, 68, 68, 0.15);
+      border-left: 3.5px solid #ef4444;
+      padding: 8px 10px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 10px;
+      color: #fca5a5;
+    }
     .chalk-board {
       background: #022c22;
-      border: 2px solid #047857;
-      border-radius: 12px;
+      border: 2px solid #059669;
+      border-radius: 14px;
       padding: 14px;
-      font-family: 'Consolas', monospace;
+      font-family: 'Consolas', 'Courier New', monospace;
       color: #d1fae5;
-      font-size: 0.84rem;
-      line-height: 1.55;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      box-shadow: inset 0 2px 10px rgba(0,0,0,0.6);
     }
     .chalk-title {
-      color: #fef08a;
-      font-weight: 850;
-      font-size: 0.9rem;
+      color: #34d399;
+      font-weight: 900;
+      font-size: 0.92rem;
       border-bottom: 1px dashed #059669;
       padding-bottom: 6px;
       margin-bottom: 8px;
@@ -583,18 +888,17 @@
       margin-top: 8px;
       color: #a7f3d0;
     }
-
     .lecture-footer {
       padding: 10px 14px;
-      background: #1e293b;
-      border-top: 1px solid #334155;
+      background: #111827;
+      border-top: 1px solid #1e293b;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 8px;
     }
     .btn-lecture-nav {
-      background: #2563eb;
+      background: #0284c7;
       color: #ffffff;
       border: none;
       padding: 8px 14px;
@@ -603,36 +907,108 @@
       font-size: 0.84rem;
       cursor: pointer;
     }
-    .btn-lecture-nav.secondary { background: #334155; color: #cbd5e1; }
+    .btn-lecture-nav.secondary { background: #1e293b; color: #cbd5e1; }
   </style>
+
 </head>
 <body>
 
-  <!-- TOP BAR -->
+  <!-- TOP APP BAR (CHUẨN ẢNH MẪU 100%) -->
   <header class="top-bar">
-    <div class="top-bar-title">
-      <span>⚛️ Hóa 11 Cứu Mất Gốc</span>
+    <div class="top-bar-left">
+      <div class="app-icon">⚛️</div>
+      <div class="app-info">
+        <div class="app-title">HÓA 11 KẾT NỐI TRI THỨC</div>
+        <div class="app-subtitle">CẨM NANG CỨU MẤT GỐC TOÀN TẬP</div>
+      </div>
     </div>
-    <div style="display: flex; gap: 8px;">
-      <button class="btn-icon" onclick="openLectureModal()" title="Trợ Giảng Bá Khí" style="background:linear-gradient(135deg, #f59e0b, #ef4444); color:#fff; border:none;">🎙️</button>
-      <button class="btn-icon" onclick="toggleTheme()" id="themeBtn">🌙</button>
-      <a href="index.html" class="btn-icon" title="Bản máy tính" style="text-decoration:none;">💻</a>
+    <div class="top-bar-actions">
+      <button class="top-pill btn-voice-top" onclick="openLectureModal('bai-0')" title="Bật phòng học Thầy Giảng Bá Khí">
+        🎙️ Giảng
+      </button>
+      <button class="top-pill" onclick="toggleTheme()" id="themeBtn" title="Chế độ giao diện">
+        🌙
+      </button>
+      <a href="index.html" class="top-pill" title="Chuyển sang bản máy tính">
+        💻
+      </a>
     </div>
   </header>
 
+  <!-- SEARCH BAR (TÌM KIẾM NHANH NHƯ ẢNH MẪU) -->
+  <div class="search-wrap">
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="mobileSearchInput" placeholder="Tìm nhanh bài học, công thức, bẫy thi, số mol..." oninput="handleMobileSearch(this.value)" autocomplete="off">
+      <button class="clear-search-btn" id="clearSearchBtn" onclick="clearMobileSearch()">&times;</button>
+    </div>
+  </div>
+
+  <!-- HORIZONTAL SCROLLABLE CATEGORY PILLS (VUỐT NGANG NHƯ ẢNH MẪU) -->
+  <div class="pills-scroll-wrap">
+    <div class="pills-track" id="categoryPills">
+      <button class="pill-btn active" onclick="filterMobileCategory('all', this)">⭐ Tất Cả</button>
+      <button class="pill-btn" onclick="filterMobileCategory('tab-mat-goc', this)">🔰 Tầng 0</button>
+      <button class="pill-btn" onclick="filterMobileCategory('bai-1', this)">⚖️ Bài 1: Cân Bằng</button>
+      <button class="pill-btn" onclick="filterMobileCategory('bai-2', this)">💧 Bài 2: pH & Nước</button>
+      <button class="pill-btn" onclick="filterMobileCategory('bai-4', this)">⚡ Bài 4: Nitrogen</button>
+      <button class="pill-btn" onclick="filterMobileCategory('bai-5', this)">💨 Bài 5: Ammonia</button>
+      <button class="pill-btn" onclick="filterMobileCategory('bai-6', this)">🧪 Bài 6: HNO₃</button>
+      <button class="pill-btn" onclick="filterMobileCategory('tab-bay-thi', this)">⚠️ 10 Bẫy Thi</button>
+      <button class="pill-btn" onclick="filterMobileCategory('tab-cong-cu', this)">🧮 Máy Tính pH</button>
+      <button class="pill-btn" onclick="filterMobileCategory('tab-luyen-de', this)">📝 Thi Thử</button>
+    </div>
+  </div>
+
   <div class="container">
+
+    <!-- HERO OVERVIEW BANNER & STATS GRID (CHUẨN ẢNH MẪU 100%) -->
+    <div class="hero-banner">
+      <div class="hero-badge">
+        <span>🔥</span> TÀI LIỆU CỨU MẤT GỐC CHÍNH THỨC • CẬP NHẬT MỚI NHẤT
+      </div>
+      <h1 class="hero-title">
+        ĐẠI THƯ VIỆN TOÀN TẬP HÓA HỌC 11 <br>
+        <span class="text-gold">& CỨU MẤT GỐC TOÀN DIỆN</span>
+      </h1>
+      <p class="hero-desc">
+        Khám phá toàn bộ 100% cơ chế hóa học từ A đến Z: Bảng hóa trị và 4 công thức mol 3 giây, giải thích bản chất phân tử siêu dễ hiểu, hướng dẫn từng bước tính hằng số K<sub>C</sub>, pH và bảo toàn electron, cùng bí kíp né sạch 10 bẫy phòng thi ẵm trọn 10 điểm giữa kì!
+      </p>
+
+      <!-- STATS GRID 2 COLUMNS (GIỐNG ẢNH MẪU) -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-num">6</div>
+          <div class="stat-lbl">Bài Học Trọng Tâm</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">26</div>
+          <div class="stat-lbl">Chặng Thầy Giảng Audio</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">10</div>
+          <div class="stat-lbl">Bẫy Phòng Thi Cực Hiểm</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">100%</div>
+          <div class="stat-lbl">Chuẩn SGK Mới 2025-2026</div>
+        </div>
+        <div class="stat-card stat-wide">
+          <div class="stat-num">10 ĐIỂM</div>
+          <div class="stat-lbl">Mục Tiêu Kiểm Tra Giữa Kì</div>
+        </div>
+      </div>
+    </div>
 
     <!-- ============================================================== -->
     <!-- TAB 1: NỀN TẢNG TẦNG 0 CHO NGƯỜI MẤT GỐC -->
     <!-- ============================================================== -->
     <section id="tab-mat-goc" class="tab-section active">
-      <div class="welcome-card">
-        <span class="pill-tag">Dành Riêng Cho Bạn</span>
-        <h1>BẠN BỊ MẤT GỐC? ĐỪNG SỢ!</h1>
-        <p>
-          Hóa học lớp 11 thực ra cực kỳ logic và gần gũi. Hãy bắt đầu từ <strong>TẦNG 0</strong> ở dưới đây — chỉ cần đọc 5 phút là bạn sẽ thông suốt toàn bộ các khái niệm cơ bản bị hổng từ lớp 8-10!
-        </p>
+      <div class="section-heading-bar">
+        <span class="section-star">🌟</span>
+        <h2>PHẦN 1: NỀN TẢNG TẦNG 0 CHO NGƯỜI MẤT GỐC</h2>
       </div>
+
 
       <div class="card">
         <h2>🔰 5 Khái Niệm "Tầng 0" Phải Hiểu</h2>
@@ -720,9 +1096,14 @@
     <!-- TAB 2: CHI TIẾT 5 BÀI HỌC (A - Z) -->
     <!-- ============================================================== -->
     <section id="tab-bai-hoc" class="tab-section">
+      <div class="section-heading-bar">
+        <span class="section-star">🌟</span>
+        <h2>PHẦN 2: CHI TIẾT 5 BÀI HỌC SGK TỪ A ĐẾN Z</h2>
+      </div>
+
       
       <!-- BÀI 1 -->
-      <div class="card">
+      <div class="card" id="bai-1-card">
         <h2>⚖ BÀI 1: CÂN BẰNG HÓA HỌC</h2>
         <button onclick="openLectureModal('bai-1')" style="width:100%; margin-bottom:14px; padding:12px 14px; border-radius:12px; background:linear-gradient(135deg, #f59e0b, #ef4444, #8b5cf6); color:#fff; border:none; font-weight:850; font-size:0.92rem; box-shadow:0 4px 15px rgba(239,68,68,0.45); cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px;">
           🔥 🎙️ TRỢ GIẢNG BÁ KHÍ (Thầy Giảng Full Bài 1 Cân Bằng)
@@ -774,7 +1155,7 @@
       </div>
 
       <!-- BÀI 2 -->
-      <div class="card">
+      <div class="card" id="bai-2-card">
         <h2>💧 BÀI 2: DUNG DỊCH & ĐIỆN LI</h2>
         <button onclick="openLectureModal('bai-2')" style="width:100%; margin-bottom:14px; padding:12px 14px; border-radius:12px; background:linear-gradient(135deg, #f59e0b, #ef4444, #8b5cf6); color:#fff; border:none; font-weight:850; font-size:0.92rem; box-shadow:0 4px 15px rgba(239,68,68,0.45); cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px;">
           🔥 🎙️ TRỢ GIẢNG BÁ KHÍ (Thầy Giảng Full Bài 2 Dung Dịch & pH)
@@ -839,7 +1220,7 @@
       </div>
 
       <!-- BÀI 4 -->
-      <div class="card">
+      <div class="card" id="bai-4-card">
         <h2>⚡ BÀI 4: NITROGEN (N₂)</h2>
         <button onclick="openLectureModal('bai-4')" style="width:100%; margin-bottom:14px; padding:12px 14px; border-radius:12px; background:linear-gradient(135deg, #f59e0b, #ef4444, #8b5cf6); color:#fff; border:none; font-weight:850; font-size:0.92rem; box-shadow:0 4px 15px rgba(239,68,68,0.45); cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px;">
           🔥 🎙️ TRỢ GIẢNG BÁ KHÍ (Thầy Giảng Full Bài 4 Nitrogen)
@@ -874,7 +1255,7 @@
       </div>
 
       <!-- BÀI 5 -->
-      <div class="card">
+      <div class="card" id="bai-5-card">
         <h2>💨 BÀI 5: AMMONIA & MUỐI AMMONIUM</h2>
         <button onclick="openLectureModal('bai-5')" style="width:100%; margin-bottom:14px; padding:12px 14px; border-radius:12px; background:linear-gradient(135deg, #f59e0b, #ef4444, #8b5cf6); color:#fff; border:none; font-weight:850; font-size:0.92rem; box-shadow:0 4px 15px rgba(239,68,68,0.45); cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px;">
           🔥 🎙️ TRỢ GIẢNG BÁ KHÍ (Thầy Giảng Full Bài 5 Ammonia & NH₄⁺)
@@ -909,7 +1290,7 @@
       </div>
 
       <!-- BÀI 6 -->
-      <div class="card">
+      <div class="card" id="bai-6-card">
         <h2>🧪 BÀI 6: HNO₃, MƯA AXIT, PHÚ DƯỠNG</h2>
         <button onclick="openLectureModal('bai-6')" style="width:100%; margin-bottom:14px; padding:12px 14px; border-radius:12px; background:linear-gradient(135deg, #f59e0b, #ef4444, #8b5cf6); color:#fff; border:none; font-weight:850; font-size:0.92rem; box-shadow:0 4px 15px rgba(239,68,68,0.45); cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px;">
           🔥 🎙️ TRỢ GIẢNG BÁ KHÍ (Thầy Giảng Full Bài 6)
@@ -948,6 +1329,11 @@
     <!-- TAB 3: BẪY THI GIỮA KÌ (TỶ LỆ RA ĐỀ 100%) -->
     <!-- ============================================================== -->
     <section id="tab-bay-thi" class="tab-section">
+      <div class="section-heading-bar">
+        <span class="section-star">🌟</span>
+        <h2>PHẦN 3: 10 BẪY PHÒNG THI CHẮC CHẮN RA</h2>
+      </div>
+
       <div class="card">
         <h2>⚠️ 10 BẪY PHÒNG THI CHẮC CHẮN RA TRONG ĐỀ GIỮA KÌ</h2>
         <p style="font-size:0.9rem; color:var(--text-sub); margin-bottom:14px;">Giáo viên và đề thi chuẩn mới 2025-2026 cực kỳ thích gài những câu này để trừ điểm học sinh học vẹt:</p>
@@ -1019,6 +1405,11 @@
     <!-- TAB 4: MÁY TÍNH pH & MÔ PHỎNG LE CHATELIER -->
     <!-- ============================================================== -->
     <section id="tab-cong-cu" class="tab-section">
+      <div class="section-heading-bar">
+        <span class="section-star">🌟</span>
+        <h2>PHẦN 4: CÔNG CỤ TÍNH pH & MÔ PHỎNG TRỰC QUAN</h2>
+      </div>
+
       <div class="card">
         <h2>🧮 Máy Tính pH Trực Quan</h2>
         <p style="font-size:0.9rem; margin-bottom:12px;">Kéo thanh trượt để xem pH thay đổi màu sắc quỳ tím và môi trường:</p>
@@ -1069,6 +1460,11 @@
     <!-- TAB 5: ĐỀ THI GIỮA KÌ THỰC CHIẾN (CÓ CHẤM ĐIỂM) -->
     <!-- ============================================================== -->
     <section id="tab-luyen-de" class="tab-section">
+      <div class="section-heading-bar">
+        <span class="section-star">🌟</span>
+        <h2>PHẦN 5: ĐỀ THI THỬ GIỮA KÌ I (10 CÂU CỐT LÕI)</h2>
+      </div>
+
       <div class="card">
         <h2>🎯 ĐỀ THI THỬ GIỮA KÌ I (10 CÂU CỐT LÕI)</h2>
         <p style="font-size:0.9rem; margin-bottom:14px;">Bấm chọn đáp án để tự kiểm tra xem mình đã lấy lại gốc được bao nhiêu % nhé:</p>
@@ -1203,11 +1599,11 @@
   <nav class="bottom-nav">
     <button class="nav-btn active" onclick="switchTab('tab-mat-goc', this)">
       <span class="icon">🔰</span>
-      <span>Mất Gốc</span>
+      <span>Tầng 0</span>
     </button>
     <button class="nav-btn" onclick="switchTab('tab-bai-hoc', this)">
       <span class="icon">📚</span>
-      <span>5 Bài Học</span>
+      <span>Bài Học</span>
     </button>
     <button class="nav-btn" onclick="switchTab('tab-bay-thi', this)">
       <span class="icon">⚠️</span>
@@ -1271,6 +1667,105 @@
 
   <!-- JAVASCRIPT LOGIC CHO BẢN MOBILE -->
   <script>
+    // ==========================================
+    // TÌM KIẾM & LỌC DANH MỤC CHO MOBILE (CHUẨN ẢNH MẪU)
+    // ==========================================
+    function handleMobileSearch(query) {
+      query = (query || '').trim().toLowerCase();
+      const clearBtn = document.getElementById('clearSearchBtn');
+      if (clearBtn) clearBtn.style.display = query ? 'flex' : 'none';
+
+      const items = document.querySelectorAll('.accordion-item, .trap-box, .quiz-card');
+      const cards = document.querySelectorAll('.card');
+
+      if (!query) {
+        items.forEach(el => el.style.display = '');
+        cards.forEach(c => c.style.display = '');
+        // Restore active tab
+        const activeNav = document.querySelector('.bottom-nav .nav-btn.active');
+        if (activeNav) {
+          activeNav.click();
+        } else {
+          document.getElementById('tab-mat-goc').classList.add('active');
+        }
+        return;
+      }
+
+      // Khi gõ tìm kiếm: Mở tất cả các tab để tìm xuyên suốt
+      document.querySelectorAll('.tab-section').forEach(sec => sec.classList.add('active'));
+
+      let matchCount = 0;
+      items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        if (text.includes(query)) {
+          item.style.display = 'block';
+          if (item.classList.contains('accordion-item')) {
+            item.classList.add('open'); // Tự động mở rộng phần nội dung khớp
+          }
+          matchCount++;
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      // Ẩn các card rỗng không có item con hiển thị
+      cards.forEach(c => {
+        const visibleChildren = c.querySelectorAll('.accordion-item:not([style*="display: none"]), .trap-box:not([style*="display: none"]), .quiz-card:not([style*="display: none"])');
+        if (visibleChildren.length > 0 || c.querySelector('h2').textContent.toLowerCase().includes(query)) {
+          c.style.display = 'block';
+        } else {
+          c.style.display = 'none';
+        }
+      });
+    }
+
+    function clearMobileSearch() {
+      const input = document.getElementById('mobileSearchInput');
+      if (input) {
+        input.value = '';
+        handleMobileSearch('');
+      }
+    }
+
+    function filterMobileCategory(targetId, btn) {
+      document.querySelectorAll('.pill-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      clearMobileSearch();
+
+      if (targetId === 'all') {
+        const firstNav = document.querySelectorAll('.bottom-nav .nav-btn')[0];
+        switchTab('tab-mat-goc', firstNav);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+
+      if (targetId.startsWith('bai-')) {
+        const secondNav = document.querySelectorAll('.bottom-nav .nav-btn')[1];
+        switchTab('tab-bai-hoc', secondNav);
+        const card = document.getElementById(targetId + '-card');
+        if (card) {
+          setTimeout(() => {
+            const topBarHeight = document.querySelector('.top-bar').offsetHeight || 50;
+            const y = card.getBoundingClientRect().top + window.pageYOffset - topBarHeight - 10;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+          }, 120);
+        }
+        return;
+      }
+
+      const navBtns = document.querySelectorAll('.bottom-nav .nav-btn');
+      let navTarget = navBtns[0];
+      if (targetId === 'tab-mat-goc') navTarget = navBtns[0];
+      else if (targetId === 'tab-bai-hoc') navTarget = navBtns[1];
+      else if (targetId === 'tab-bay-thi') navTarget = navBtns[2];
+      else if (targetId === 'tab-cong-cu') navTarget = navBtns[3];
+      else if (targetId === 'tab-luyen-de') navTarget = navBtns[4];
+
+      switchTab(targetId, navTarget);
+    }
+
+
     function switchTab(tabId, btn) {
       document.querySelectorAll('.tab-section').forEach(sec => sec.classList.remove('active'));
       document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
@@ -1285,14 +1780,14 @@
     }
 
     function toggleTheme() {
-      const cur = document.documentElement.getAttribute('data-theme');
-      const next = cur === 'dark' ? 'light' : 'dark';
+      const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+      const next = cur === 'light' ? 'dark' : 'light';
       document.documentElement.setAttribute('data-theme', next);
       localStorage.setItem('theme', next);
       document.getElementById('themeBtn').textContent = next === 'dark' ? '☀️' : '🌙';
     }
 
-    const savedTheme = localStorage.getItem('theme') || 'light';
+    const savedTheme = localStorage.getItem('theme') || 'dark';
     document.documentElement.setAttribute('data-theme', savedTheme);
     document.getElementById('themeBtn').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
 
