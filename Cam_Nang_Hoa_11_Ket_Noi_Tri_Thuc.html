@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
@@ -630,6 +630,343 @@
       border-radius: 6px;
     }
 
+    /* NÚT TRỢ GIẢNG BÁ KHÍ & PHÒNG GIẢNG */
+    .btn-tro-giang-ba-khi {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #8b5cf6 100%);
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 850;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(239, 68, 68, 0.45);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      animation: pulseLecture 2.2s infinite;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-tro-giang-ba-khi:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(239, 68, 68, 0.7);
+    }
+
+    @keyframes pulseLecture {
+      0%, 100% { box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4); }
+      50% { box-shadow: 0 4px 25px rgba(139, 92, 246, 0.7), 0 0 12px rgba(245, 158, 11, 0.6); }
+    }
+
+    /* Modal Bục Giảng Bá Khí */
+    .lecture-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(4, 7, 20, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 3000;
+      padding: 16px;
+    }
+
+    .lecture-modal-overlay.active { display: flex; }
+
+    .lecture-modal-box {
+      width: 100%;
+      max-width: 980px;
+      max-height: 92vh;
+      background: #0f172a;
+      border: 1.5px solid #334155;
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(139, 92, 246, 0.25);
+      color: #f8fafc;
+      animation: modalZoomIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes modalZoomIn {
+      from { opacity: 0; transform: scale(0.92) translateY(20px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .lecture-header {
+      padding: 14px 22px;
+      background: #1e293b;
+      border-bottom: 1px solid #334155;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .teacher-badge {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .teacher-avatar {
+      font-size: 2rem;
+      background: linear-gradient(135deg, #f59e0b, #ef4444);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 12px rgba(239, 68, 68, 0.5);
+    }
+
+    .teacher-name {
+      font-weight: 850;
+      font-size: 1.15rem;
+      color: #f8fafc;
+      line-height: 1.2;
+    }
+
+    .teacher-role {
+      font-size: 0.8rem;
+      color: #38bdf8;
+      font-weight: 700;
+    }
+
+    .lecture-controls-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-voice {
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid #38bdf8;
+      color: #38bdf8;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 750;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .btn-voice:hover {
+      background: #38bdf8;
+      color: #0f172a;
+    }
+
+    .btn-close-lecture {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid #ef4444;
+      color: #f87171;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-close-lecture:hover {
+      background: #ef4444;
+      color: #ffffff;
+    }
+
+    /* Thanh chặng học (Step navigator) */
+    .step-track {
+      background: #090d16;
+      border-bottom: 1px solid #1e293b;
+      padding: 10px 16px;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .step-track::-webkit-scrollbar { display: none; }
+
+    .step-pill {
+      background: #1e293b;
+      color: #94a3b8;
+      border: 1px solid #334155;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 750;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+
+    .step-pill.active {
+      background: #2563eb;
+      color: #ffffff;
+      border-color: #38bdf8;
+      box-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
+    }
+
+    /* Thân phòng học */
+    .lecture-body {
+      padding: 22px;
+      overflow-y: auto;
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 820px) {
+      .lecture-body { grid-template-columns: 1fr; }
+    }
+
+    /* Hộp lời thầy giảng */
+    .teacher-box {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 14px;
+      padding: 18px 20px;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .teacher-box h4 {
+      color: #f59e0b;
+      font-size: 1.05rem;
+      font-weight: 850;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .teacher-speech {
+      font-size: 0.96rem;
+      line-height: 1.75;
+      color: #e2e8f0;
+    }
+
+    .teacher-speech p { margin-bottom: 12px; }
+
+    .highlight-callout {
+      background: rgba(245, 158, 11, 0.15);
+      border-left: 4px solid #f59e0b;
+      padding: 10px 14px;
+      border-radius: 0 8px 8px 0;
+      color: #fef08a;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+    }
+
+    /* Bảng phấn thực chiến (Glow Blackboard) */
+    .chalk-board {
+      background: #022c22;
+      border: 3px solid #047857;
+      border-radius: 14px;
+      padding: 18px 20px;
+      box-shadow: inset 0 0 25px rgba(0,0,0,0.6), 0 4px 15px rgba(4, 120, 87, 0.25);
+      font-family: 'Consolas', 'Courier New', monospace;
+      color: #d1fae5;
+      font-size: 0.92rem;
+      line-height: 1.65;
+    }
+
+    .chalk-title {
+      color: #fef08a;
+      font-weight: 850;
+      font-size: 1.02rem;
+      border-bottom: 1.5px dashed #059669;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    .chalk-row {
+      margin-bottom: 8px;
+    }
+
+    .chalk-code {
+      color: #38bdf8;
+      font-weight: 800;
+    }
+
+    .chalk-accent {
+      color: #fbbf24;
+      font-weight: 800;
+    }
+
+    .chalk-divider {
+      border-top: 1px dashed #065f46;
+      margin: 12px 0;
+    }
+
+    .chalk-alert {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid #10b981;
+      padding: 10px 12px;
+      border-radius: 8px;
+      margin-top: 10px;
+      color: #a7f3d0;
+    }
+
+    /* Thanh điều khiển đáy */
+    .lecture-footer {
+      padding: 14px 22px;
+      background: #1e293b;
+      border-top: 1px solid #334155;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .btn-lecture-nav {
+      background: #2563eb;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 0.92rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .btn-lecture-nav:hover:not(:disabled) {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-lecture-nav:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .btn-lecture-nav.secondary {
+      background: #334155;
+      color: #cbd5e1;
+    }
+
+    .btn-lecture-nav.secondary:hover:not(:disabled) {
+      background: #475569;
+    }
+
     /* Diagrams (SVG) */
     .diagram-container {
       background: var(--bg-card);
@@ -1026,7 +1363,7 @@
         <li class="nav-item">
           <a href="#bai-6" class="nav-link">
             <span>🧪 Bài 6: HNO₃ & Phú Dưỡng</span>
-            <span class="badge">Tr.38-41</span>
+            <span class="badge" style="background:linear-gradient(135deg, #ef4444, #8b5cf6); color:#fff; cursor:pointer;" onclick="openLectureModal(event)" title="Bấm để mở Trợ Giảng Bá Khí">🔥 Trợ Giảng</span>
           </a>
         </li>
         <li class="nav-item">
@@ -1121,6 +1458,11 @@
               <h2>PHẦN 0: NỀN TẢNG "TẦNG 0" CHO NGƯỜI MẤT GỐC</h2>
               <div class="lesson-meta">Bổ trợ những viên gạch bị rơi rụng từ cấp 2 và lớp 10</div>
             </div>
+          </div>
+          <div>
+            <button class="btn-tro-giang-ba-khi" onclick="openLectureModal('bai-0')" title="Thầy giáo bá khí giảng Phần 0 Tầng 0 Mất Gốc">
+              🔥 🎙️ TRỢ GIẢNG BÁ KHÍ (Thầy Giảng Tầng 0)
+            </button>
           </div>
         </div>
 
@@ -1234,7 +1576,10 @@
               <div class="lesson-meta">Chi tiết 100% Trang 6 – 15 SGK Kết Nối Tri Thức</div>
             </div>
           </div>
-          <div>
+          <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+            <button class="btn-tro-giang-ba-khi" onclick="openLectureModal('bai-1')" title="Thầy giáo bá khí giảng Bài 1 Cân Bằng Hóa Học">
+              🔥 🎙️ TRỢ GIẢNG BÁ KHÍ (Giảng Full Bài 1 A-Z)
+            </button>
             <button class="btn-sgk" onclick="openModal('sgk_b1_p06_07.png', 'SGK Trang 6 - 7')">📖 Tr.6-7</button>
             <button class="btn-sgk" onclick="openModal('sgk_b1_p08_09.png', 'SGK Trang 8 - 9')">📖 Tr.8-9</button>
             <button class="btn-sgk" onclick="openModal('sgk_b1_p10_11.png', 'SGK Trang 10 - 11')">📖 Tr.10-11</button>
@@ -1455,7 +1800,10 @@
               <div class="lesson-meta">Chi tiết 100% Trang 16 – 26 SGK Kết Nối Tri Thức</div>
             </div>
           </div>
-          <div>
+          <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+            <button class="btn-tro-giang-ba-khi" onclick="openLectureModal('bai-2')" title="Thầy giáo bá khí giảng Bài 2 Cân Bằng Trong Nước & pH">
+              🔥 🎙️ TRỢ GIẢNG BÁ KHÍ (Giảng Full Bài 2 A-Z)
+            </button>
             <button class="btn-sgk" onclick="openModal('sgk_b2_p16_17.png', 'SGK Trang 16 - 17')">📖 Tr.16-17</button>
             <button class="btn-sgk" onclick="openModal('sgk_b2_p18_19.png', 'SGK Trang 18 - 19')">📖 Tr.18-19</button>
             <button class="btn-sgk" onclick="openModal('sgk_b2_p20_21.png', 'SGK Trang 20 - 21')">📖 Tr.20-21</button>
@@ -1690,7 +2038,10 @@
               <div class="lesson-meta">Chi tiết 100% Trang 29 – 32 SGK Kết Nối Tri Thức</div>
             </div>
           </div>
-          <div>
+          <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+            <button class="btn-tro-giang-ba-khi" onclick="openLectureModal('bai-4')" title="Thầy giáo bá khí giảng Bài 4 Nitrogen">
+              🔥 🎙️ TRỢ GIẢNG BÁ KHÍ (Giảng Full Bài 4 A-Z)
+            </button>
             <button class="btn-sgk" onclick="openModal('sgk_b4_p29.png', 'SGK Trang 29')">📖 Tr.29</button>
             <button class="btn-sgk" onclick="openModal('sgk_b4_p30_31.png', 'SGK Trang 30 - 31')">📖 Tr.30-31</button>
             <button class="btn-sgk" onclick="openModal('sgk_b4_5_p32_33.png', 'SGK Trang 32 - 33')">📖 Tr.32-33</button>
@@ -1762,7 +2113,10 @@
               <div class="lesson-meta">Chi tiết 100% Trang 33 – 37 SGK Kết Nối Tri Thức</div>
             </div>
           </div>
-          <div>
+          <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+            <button class="btn-tro-giang-ba-khi" onclick="openLectureModal('bai-5')" title="Thầy giáo bá khí giảng Bài 5 Ammonia & Muối Ammonium">
+              🔥 🎙️ TRỢ GIẢNG BÁ KHÍ (Giảng Full Bài 5 A-Z)
+            </button>
             <button class="btn-sgk" onclick="openModal('sgk_b4_5_p32_33.png', 'SGK Trang 32 - 33')">📖 Tr.32-33</button>
             <button class="btn-sgk" onclick="openModal('sgk_b5_p34_35.png', 'SGK Trang 34 - 35')">📖 Tr.34-35</button>
             <button class="btn-sgk" onclick="openModal('sgk_b5_p36_37.png', 'SGK Trang 36 - 37')">📖 Tr.36-37</button>
@@ -1832,7 +2186,10 @@
               <div class="lesson-meta">Chi tiết 100% Trang 38 – 41 SGK Kết Nối Tri Thức</div>
             </div>
           </div>
-          <div>
+          <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+            <button class="btn-tro-giang-ba-khi" onclick="openLectureModal('bai-6')" title="Thầy giáo bá khí giảng toàn bộ Bài 6 từ A đến Z">
+              🔥 🎙️ TRỢ GIẢNG BÁ KHÍ (Giảng Full Bài 6 A-Z)
+            </button>
             <button class="btn-sgk" onclick="openModal('sgk_b6_p38_39.png', 'SGK Trang 38 - 39')">📖 Tr.38-39</button>
             <button class="btn-sgk" onclick="openModal('sgk_b6_p40_41.png', 'SGK Trang 40 - 41')">📖 Tr.40-41</button>
           </div>
@@ -2551,6 +2908,74 @@
     </div>
   </div>
 
+  <!-- MODAL BỤC GIẢNG BÁ KHÍ (THẦY GIÁO GIẢNG TẤT CẢ CÁC BÀI TỪ A ĐẾN Z) -->
+  <div class="lecture-modal-overlay" id="lectureModal" onclick="closeLectureModal(event)">
+    <div class="lecture-modal-box" onclick="event.stopPropagation()">
+      <!-- Header -->
+      <div class="lecture-header">
+        <div class="teacher-badge">
+          <div class="teacher-avatar">👨‍🏫</div>
+          <div>
+            <div class="teacher-name">Thầy Trợ Giảng Bá Khí ⚡</div>
+            <div class="teacher-role" id="lectureSubtitle">Cứu Mất Gốc & Phá Đảo Mọi Bài Học Hóa 11</div>
+          </div>
+        </div>
+        <div class="lecture-controls-top">
+          <select id="lectureLessonSelect" onchange="switchLectureLesson(this.value)" style="background:#090d16; color:#38bdf8; border:1.5px solid #0284c7; padding:6px 12px; border-radius:10px; font-weight:800; font-size:0.86rem; outline:none; cursor:pointer;">
+            <option value="bai-0">🔰 TẦNG 0: Nền Tảng Mất Gốc</option>
+            <option value="bai-1">⚖️ BÀI 1: Cân Bằng Hóa Học</option>
+            <option value="bai-2">💧 BÀI 2: Dung Dịch Nước & pH</option>
+            <option value="bai-4">⚡ BÀI 4: Đơn Chất Nitrogen (N₂)</option>
+            <option value="bai-5">💨 BÀI 5: Ammonia & Muối NH₄⁺</option>
+            <option value="bai-6" selected>🧪 BÀI 6: HNO₃ & Phú Dưỡng</option>
+          </select>
+          <button class="btn-voice" id="btnVoiceToggle" onclick="toggleVoice()">
+            <span id="voiceIcon">🔊</span> <span id="voiceText">Giọng Thầy: BẬT</span>
+          </button>
+          <button class="btn-close-lecture" onclick="closeLectureModal()" title="Đóng phòng học">&times;</button>
+        </div>
+      </div>
+
+      <!-- Step Navigator Pills (Dynamically generated) -->
+      <div class="step-track" id="lectureStepTrack">
+      </div>
+
+      <!-- Main Stage Body -->
+      <div class="lecture-body">
+        <!-- Khu vực lời thầy giảng -->
+        <div class="teacher-box">
+          <h4 id="lectureTitle">Chặng 1: 4 Anh Em Oxide & Mưa Acid</h4>
+          <div id="lectureSpeechContainer">
+            <!-- Dynamic Teacher Speech Content -->
+          </div>
+        </div>
+
+        <!-- Khu vực bảng phấn thực chiến -->
+        <div id="lectureBoardContainer">
+          <!-- Dynamic Chalkboard Content -->
+        </div>
+      </div>
+
+      <!-- Bottom Navigation Footer -->
+      <div class="lecture-footer">
+        <button class="btn-lecture-nav secondary" id="btnPrevStep" onclick="prevLectureStep()">
+          ⏮ Chặng Trước
+        </button>
+        <div style="font-weight: 750; font-size: 0.9rem; color: #94a3b8;">
+          Tiến độ: <span id="currentStepNumber" style="color: #38bdf8; font-weight: 850;">1</span> / <span id="totalStepNumber">6</span>
+        </div>
+        <div style="display: flex; gap: 8px;">
+          <button class="btn-lecture-nav secondary" onclick="replaySpeech()" title="Nghe lại lời giảng chặng này">
+            🔄 Nghe Lại
+          </button>
+          <button class="btn-lecture-nav" id="btnNextStep" onclick="nextLectureStep()">
+            Chặng Kế Tiếp ⏭
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- JAVASCRIPT LOGIC -->
   <script>
     window.addEventListener('scroll', () => {
@@ -2762,6 +3187,1328 @@
       document.getElementById('quizAnsweredCount').textContent = answeredQuestions.size;
       document.getElementById('quizScore').textContent = currentScore;
     }
+
+    // ==========================================
+    // LOGIC TRỢ GIẢNG BÁ KHÍ (BÀI 6 TỪ A ĐẾN Z)
+
+    // ==========================================
+    // LOGIC TRO GIANG BA KHI (TAT CA 6 BAI TU A DEN Z)
+    // ==========================================
+// ==========================================================================
+// THẦY GIÁO BÁ KHÍ - HỆ THỐNG TRỢ GIẢNG ĐA BÀI HỌC TỪ A ĐẾN Z CHO NGƯỜI MẤT GỐC
+// ==========================================================================
+
+const allLectures = {
+  // ------------------------------------------------------------------------
+  // TẦNG 0: NỀN TẢNG CỨU MẤT GỐC TUYỆT ĐỐI
+  // ------------------------------------------------------------------------
+  "bai-0": {
+    lessonName: "🔰 TẦNG 0: Nền Tảng Mất Gốc",
+    subtitle: "Thần Chú Hóa Trị, 4 Công Thức Mol & Nhẩm Số Oxi Hóa 5s",
+    steps: [
+      {
+        shortTitle: "1. Ghép Hóa Trị",
+        title: "Chặng 1: Thần Chú Bàn Tay Hóa Trị & Quy Tắc Chéo 3 Giây",
+        speech: "Chào các trò! Thầy biết rất nhiều bạn sợ Hóa chỉ vì hồi cấp 2 bị hổng kiến thức, nhìn công thức như nhìn chữ tượng hình. Đừng sợ, có Thầy ở đây thì mất gốc mấy cũng lấy lại được! Đầu tiên: Hóa trị là số cánh tay của nguyên tử. Hydrogen H và Chlorine Cl có 1 tay. Oxygen O có 2 tay. Kim loại: Natri, Kali có 1 tay; Canxi, Bari, Magie có 2 tay; Nhôm Al có 3 tay. Nhóm nguyên tử: nhóm OH và NO3 có 1 tay; nhóm SO4 và CO3 có 2 tay; nhóm PO4 có 3 tay. Khi ghép công thức, dùng quy tắc chéo cánh tay: Al hóa trị 3, nhóm SO4 hóa trị 2, chéo tay cho nhau ra ngay Al2(SO4)3! Nhôm với Oxi: Al hóa trị 3, O hóa trị 2, chéo ra Al2O3! Quá nhanh, quá nguy hiểm! Nhớ kĩ để không bao giờ viết sai công thức nữa nhé!",
+        teacherHtml: `
+          <div class="teacher-speech">
+            <p class="highlight-callout">🔥 <strong>"Chào các trò! Thầy biết nhiều bạn mất gốc sợ môn Hóa, nhưng hôm nay có Thầy ở đây, thầy sẽ kéo các trò lên điểm 9 điểm 10!"</strong></p>
+            <p>Bí quyết số 1 để không bao giờ sợ Hóa: <strong>Hãy coi Hóa trị chính là "SỐ CÁNH TAY" của nguyên tử!</strong></p>
+            <p>• <strong>Hóa trị I (1 tay):</strong> H, Cl, Na, K, Ag và các nhóm <code>-OH</code>, <code>-NO₃</code>.</p>
+            <p>• <strong>Hóa trị II (2 tay):</strong> O, Ca, Ba, Mg, Zn và các nhóm <code>=SO₄</code>, <code>=CO₃</code>.</p>
+            <p>• <strong>Hóa trị III (3 tay):</strong> Al, Fe (khi lên Fe³⁺) và nhóm <code>≡PO₄</code>.</p>
+            <p>⚡ <strong>QUY TẮC BẮT CHÉO CÁNH TAY (3 GIÂY RA CÔNG THỨC):</strong><br>
+            Muốn ghép chất giữa nguyên tố A (hóa trị a) và nguyên tố B (hóa trị b):<br>
+            <code>Aᵃ + Bᵇ &rarr; A_b B_a</code> (Chéo chỉ số của đứa này thành số lượng của đứa kia, tối giản nếu chia hết).<br>
+            • <em>Ví dụ 1:</em> Ghép Nhôm Al (hóa trị III) với nhóm SO₄ (hóa trị II) &rarr; Chéo số 2 cho Al, chéo số 3 cho SO₄ &rarr; <strong>Al₂(SO₄)₃</strong> (Chuẩn 100%!).<br>
+            • <em>Ví dụ 2:</em> Ghép Canxi Ca (hóa trị II) với nhóm OH (hóa trị I) &rarr; Chéo số 1 cho Ca, chéo số 2 cho OH &rarr; <strong>Ca(OH)₂</strong>!</p>
+          </div>
+        `,
+        boardHtml: `
+          <div class="chalk-board">
+            <div class="chalk-title">📌 BẢNG PHẤN: BÀI CA HÓA TRỊ RÚT GỌN & QUY TẮC CHÉO</div>
+            <div class="chalk-row">
+              <span class="chalk-code">1 TAY (I)</span> : H, Cl, Na, K, Ag ── Nhóm: -OH, -NO₃
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">2 TAY (II)</span>: O, Ca, Ba, Mg, Zn, Cu, Fe(II) ── Nhóm: =SO₄, =CO₃
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">3 TAY (III)</span>: Al, Fe(III) ── Nhóm: ≡PO₄
+            </div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-alert">
+              🎯 <strong>CÔNG THỨC BẮT CHÉO TỨC THÌ:</strong><br>
+              • Al(III) + O(II) &rarr; <span class="chalk-accent">Al₂O₃</span><br>
+              • Mg(II) + NO₃(I) &rarr; <span class="chalk-accent">Mg(NO₃)₂</span><br>
+              • Ba(II) + PO₄(III) &rarr; <span class="chalk-accent">Ba₃(PO₄)₂</span> (Chéo 3 qua Ba, chéo 2 qua PO₄)
+            </div>
+          </div>
+        `
+      },
+      {
+        shortTitle: "2. 4 Công Thức Mol",
+        title: "Chặng 2: 4 Công Thức Tính Mol Bất Hủ (Mọi Bài Toán Bắt Đầu Từ Đây)",
+        speech: "Sang chặng 2, bí kíp sống còn của người học Hóa: 4 công thức tính số mol n! Trong đề thi, hễ nhìn thấy số liệu là phải lập tức đổi về số mol. Một: Biết khối lượng m gam, lấy m nhỏ chia M lớn. Hai: Biết thể tích khí V ở điều kiện chuẩn 25 độ C và 1 bar, lấy V chia 24 phẩy 79. Nhớ là 24 phẩy 79 chứ không phải 22 phẩy 4 sách cũ đâu nhé! Ba: Biết nồng độ mol CM và thể tích dung dịch V lít, n bằng CM nhân V. Nhớ đổi mililít ra lít bằng cách chia 1000! Bốn: Biết nồng độ phần trăm C%, tính m chất tan bằng m dung dịch nhân C% chia 100%, rồi chia M lớn. Thuộc 4 công thức này, mọi bài toán hóa học đều mở toang cánh cửa!",
+        teacherHtml: `
+          <div class="teacher-speech">
+            <p class="highlight-callout">💡 <strong>"Mọi bài toán Hóa học đều bắt đầu bằng một hành động duy nhất: TÌM SỐ MOL n!"</strong></p>
+            <p>Học sinh mất gốc hay bị điểm kém vì không biết rút mol từ số liệu đề bài. Nhớ chuẩn <strong>4 công thức bất hủ</strong> sau:</p>
+            <p>1️⃣ <strong>Từ khối lượng (gam):</strong> <code>n = m / M</code> (gam chia khối lượng mol g/mol).<br>
+            • <em>Ví dụ:</em> 5,4 gam Nhôm Al (M = 27) &rarr; <code>n = 5,4 / 27 = 0,2 mol</code>.</p>
+            <p>2️⃣ <strong>Từ thể tích khí ở điều kiện chuẩn (đkc: 25 °C, 1 bar):</strong> <code>n = V / 24,79</code>.<br>
+            ⚠️ <em>Cảnh báo bẫy SGK Mới:</em> Đề thi hiện hành dùng chuẩn IUPAC <strong>24,79</strong> (KHÔNG dùng 22,4 của chương trình cũ nữa!).<br>
+            • <em>Ví dụ:</em> 4,958 Lít khí H₂ ở đkc &rarr; <code>n = 4,958 / 24,79 = 0,2 mol</code>.</p>
+            <p>3️⃣ <strong>Từ nồng độ mol (C_M hoặc M):</strong> <code>n = C_M &times; V</code> (V <strong>bắt buộc tính bằng LÍT</strong>, nếu đề cho mL thì chia 1000).<br>
+            • <em>Ví dụ:</em> 200 mL dung dịch HCl 1M &rarr; V = 0,2 L &rarr; <code>n = 1 &times; 0,2 = 0,2 mol</code>.</p>
+            <p>4️⃣ <strong>Từ nồng độ phần trăm (C%):</strong> <code>m_ct = (m_dd &times; C%) / 100%</code> &rarr; <code>n = m_ct / M</code>.</p>
+          </div>
+        `,
+        boardHtml: `
+          <div class="chalk-board">
+            <div class="chalk-title">📌 BẢNG PHẤN: 4 CÔNG THỨC TÍNH SỐ MOL BẤT TỬ</div>
+            <div class="chalk-row">
+              <span class="chalk-code">1. Cho gam (m)</span> : <span class="chalk-accent">n = m / M</span> (Đơn vị: gam / (g/mol))
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">2. Cho khí đkc (V)</span>: <span class="chalk-accent">n = V / 24,79</span> (Chuẩn mới 25 °C, 1 bar!)
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">3. Cho nồng độ (C_M)</span>: <span class="chalk-accent">n = C_M &times; V(L)</span> (mL &rarr; chia 1000 ra Lít)
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">4. Cho C%</span>: <span class="chalk-accent">m_ct = (m_dd &times; C%) / 100 &rarr; n = m_ct / M</span>
+            </div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-alert">
+              ⚡ <strong>LUÔN ĐỔI ĐƠN VỊ TRƯỚC KHI TÍNH:</strong><br>
+              • 500 mL = 0,5 Lít | 100 mL = 0,1 Lít | 250 mL = 0,25 Lít<br>
+              • 1 kg = 1000 gam | 1 tấn = 1 000 000 gam
+            </div>
+          </div>
+        `
+      },
+      {
+        shortTitle: "3. Nhẩm Số Oxi Hóa",
+        title: "Chặng 3: 4 Quy Tắc Sắt Đá Nhẩm Số Oxi Hóa Trong 5 Giây",
+        speech: "Chặng 3 là chìa khóa vàng mở cánh cửa lớp 11: Số Oxi Hóa! Để nhẩm số oxi hóa nhanh như chớp, hãy nhớ 4 quy tắc sắt đá: Quy tắc 1: Đơn chất đứng một mình luôn bằng 0, ví dụ N2, O2, Cu, Fe đều bằng 0. Quy tắc 2: Trong hợp chất, Hydro luôn là cộng 1, Oxy luôn là trừ 2. Kim loại kiềm luôn cộng 1, kiềm thổ luôn cộng 2, Nhôm luôn cộng 3. Quy tắc 3: Tổng số oxi hóa trong một phân tử trung hòa luôn bằng 0! Ví dụ tìm N trong HNO3: H là cộng 1, 3 Oxy là trừ 6. Để tổng bằng 0 thì N bắt buộc phải là cộng 5! Quy tắc 4: Trong ion, tổng số oxi hóa bằng đúng điện tích của ion! Ví dụ ion amoni NH4+, tổng bằng cộng 1. 4 Hydro là cộng 4, suy ra N phải là trừ 3! Thấy chưa, chỉ cần làm phép cộng trừ lớp 1 là ra ngay!",
+        teacherHtml: `
+          <div class="teacher-speech">
+            <p class="highlight-callout">⚡ <strong>"Đừng sợ Số Oxi Hóa! Thực chất nó chỉ là phép cộng trừ cấp 1 dựa trên 4 quy tắc sắt đá!"</strong></p>
+            <p>Số oxi hóa là điện tích quy ước nếu các liên kết đều là ion. Ghi dấu trước số sau (<code>+1, +2, -3</code>):</p>
+            <p>1️⃣ <strong>Đơn chất luôn bằng 0:</strong> <code>N₂⁰, O₂⁰, Cu⁰, Fe⁰, H₂⁰, Cl₂⁰</code>.</p>
+            <p>2️⃣ <strong>Cố định trong hợp chất:</strong><br>
+            • <code>H</code> luôn là <strong>+1</strong> | <code>O</code> luôn là <strong>-2</strong> (trừ H₂O₂ hay OF₂ rất hiếm gặp).<br>
+            • Kim loại kiềm (Na, K) luôn <strong>+1</strong> | Kiềm thổ (Mg, Ca, Ba) luôn <strong>+2</strong> | Al luôn <strong>+3</strong>.</p>
+            <p>3️⃣ <strong>Tổng số oxi hóa trong phân tử trung hòa = 0:</strong><br>
+            • <em>Ví dụ tìm N trong HNO₃:</em> <code>(+1)&times;1 + x&times;1 + (-2)&times;3 = 0 &rArr; 1 + x - 6 = 0 &rArr; x = +5</code>.<br>
+            • <em>Ví dụ tìm S trong H₂SO₄:</em> <code>(+1)&times;2 + x&times;1 + (-2)&times;4 = 0 &rArr; 2 + x - 8 = 0 &rArr; x = +6</code>.</p>
+            <p>4️⃣ <strong>Trong ion đa nguyên tử, Tổng = Điện tích ion:</strong><br>
+            • <em>Ví dụ tìm N trong ion NH₄⁺:</em> <code>x + (+1)&times;4 = +1 &rArr; x + 4 = 1 &rArr; x = -3</code>.<br>
+            • <em>Ví dụ tìm N trong ion NO₃⁻:</em> <code>x + (-2)&times;3 = -1 &rArr; x - 6 = -1 &rArr; x = +5</code>.</p>
+          </div>
+        `,
+        boardHtml: `
+          <div class="chalk-board">
+            <div class="chalk-title">📌 BẢNG PHẤN: BẢNG NHẨM SỐ OXI HÓA SIÊU TỐC 5 GIÂY</div>
+            <div class="chalk-row">
+              <span class="chalk-code">ĐƠN CHẤT</span> : Luôn bằng 0 (N₂⁰, O₂⁰, Cu⁰, Fe⁰)
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">HỢP CHẤT</span> : H⁺¹, O⁻², Na⁺¹, K⁺¹, Mg⁺², Ca⁺², Ba⁺², Al⁺³
+            </div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-alert">
+              🎯 <strong>CÁC CHẤT HAY GẶP NHẤT TRONG ĐỀ THI:</strong><br>
+              • <strong>H N⁺⁵ O₃</strong> : N có số oxi hóa +5<br>
+              • <strong>N⁻³ H₃</strong> và <strong>[N⁻³ H₄]⁺</strong> : N có số oxi hóa -3<br>
+              • <strong>N⁺² O</strong> : N có số oxi hóa +2<br>
+              • <strong>N⁺⁴ O₂</strong> : N có số oxi hóa +4<br>
+              • <strong>K Mn⁺⁷ O₄</strong> : Mn có số oxi hóa +7 (1 + x - 8 = 0)
+            </div>
+          </div>
+        `
+      },
+      {
+        shortTitle: "4. Khử Cho - O Nhận",
+        title: "Chặng 4: Phản Ứng Oxi Hóa Khử: Thần Chú Bất Hủ 'Khử Cho - O Nhận'",
+        speech: "Chặng cuối của Tầng 0: Phản ứng Oxi Hóa Khử! Đề thi rất hay hỏi: Chất nào là chất khử, chất nào là chất oxi hóa? Hãy khắc cốt ghi tâm câu thần chú 4 chữ vàng: KHỬ CHO - O NHẬN! Hoặc câu: KHỬ TĂNG - O GIẢM! Chất khử là chất cho electron, làm số oxi hóa của nó tăng lên sau phản ứng. Còn chất oxi hóa là chất nhận electron, làm số oxi hóa của nó giảm xuống. Quá trình chất khử cho e gọi là quá trình oxi hóa. Quá trình chất oxi hóa nhận e gọi là quá trình khử. Cứ nhớ: Tên chất và tên quá trình luôn ngược chữ nhau! Nắm chắc điều này là các trò đã xây xong móng nhà vững như bàn thạch, sẵn sàng bước vào Bài 1 rồi đấy!",
+        teacherHtml: `
+          <div class="teacher-speech">
+            <p class="highlight-callout">👑 <strong>"CÂU THẦN CHÚ BẤT HỦ CỦA DÂN HÓA HỌC: KHỬ CHO - O NHẬN!"</strong></p>
+            <p>Học sinh mất gốc hay bị lú lẫn giữa chất và quá trình. Hãy nhớ bảng phân biệt đối lập tuyệt đối này:</p>
+            <p>• <strong>CHẤT KHỬ (Bị oxi hóa):</strong> Là chất <strong>CHO electron</strong> &rarr; Số oxi hóa <strong>TĂNG</strong> lên sau phản ứng.<br>
+            <em>(Khẩu quyết: "Khử Cho E - Khử Tăng Số")</em>.</p>
+            <p>• <strong>CHẤT OXI HÓA (Bị khử):</strong> Là chất <strong>NHẬN electron</strong> &rarr; Số oxi hóa <strong>GIẢM</strong> xuống sau phản ứng.<br>
+            <em>(Khẩu quyết: "O Nhận E - O Giảm Số")</em>.</p>
+            <p>⚠️ <strong>BẪY LỪA CHẤT VS QUÁ TRÌNH (NGƯỢC CHỮ NHAU):</strong><br>
+            • Chất khử nhường e &rarr; Sinh ra <strong>Quá trình oxi hóa</strong> (hoặc sự oxi hóa).<br>
+            • Chất oxi hóa nhận e &rarr; Sinh ra <strong>Quá trình khử</strong> (hoặc sự khử).<br>
+            <em>Đi thi đề hỏi: "Phản ứng trên là quá trình khử chất nào?", nhớ chọn chất oxi hóa nhận e!</em></p>
+          </div>
+        `,
+        boardHtml: `
+          <div class="chalk-board">
+            <div class="chalk-title">📌 BẢNG PHẤN: THẦN CHÚ KHỬ CHO - O NHẬN & CÂN BẰNG E</div>
+            <div class="chalk-row">
+              <span class="chalk-code">CHẤT KHỬ</span> : Cho electron ── Số OXH TĂNG ── Bị oxi hóa
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">CHẤT OXI HÓA</span>: Nhận electron ── Số OXH GIẢM ── Bị khử
+            </div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-alert">
+              🎯 <strong>VÍ DỤ KINH ĐIỂN: Cu + 2AgNO₃ &rarr; Cu(NO₃)₂ + 2Ag&darr;</strong><br>
+              • Cu⁰ &rarr; Cu⁺² + 2e : Cu nhường 2e &rarr; Cu là <strong>Chất Khử</strong> (Quá trình oxi hóa Cu).<br>
+              • Ag⁺¹ + 1e &rarr; Ag⁰ : Ag⁺ nhận 1e &rarr; AgNO₃ là <strong>Chất Oxi Hóa</strong> (Quá trình khử Ag⁺).<br>
+              👉 <em>Tổng e cho (2e) = Tổng e nhận (2 &times; 1e = 2e) &rarr; Luôn bảo toàn!</em>
+            </div>
+          </div>
+        `
+      }
+    ]
+  },
+
+  // ------------------------------------------------------------------------
+  // BÀI 1: KHÁI NIỆM VỀ CÂN BẰNG HÓA HỌC
+  // ------------------------------------------------------------------------
+  "bai-1": {
+    lessonName: "⚖️ BÀI 1: Cân Bằng Hóa Học",
+    subtitle: "Cân Bằng Động, Bảng 3 Dòng KC & Le Chatelier 3 Giây",
+    steps: [
+      {
+        shortTitle: "1. Cân Bằng Động",
+        title: "Chặng 1: Bản Chất Cân Bằng Động & Cú Lừa 'Phản Ứng Dừng Lại'",
+        speech: "Chào các trò! Bước vào Bài 1, bài học mở đầu của Hóa 11. Đầu tiên hãy phân biệt: Phản ứng một chiều là mũi tên một chiều, chất phản ứng biến hết thành sản phẩm là dừng lại hoàn toàn. Nhưng Phản ứng thuận nghịch là mũi tên hai chiều: Các chất tham gia tác dụng tạo ra sản phẩm, đồng thời các chất sản phẩm lại tác dụng ngược lại để tái tạo chất ban đầu! Khi tốc độ phản ứng thuận v t bằng đúng tốc độ phản ứng nghịch v n, hệ đạt TRẠNG THÁI CÂN BẰNG. Nghe thầy dặn kĩ bẫy này: Tại thời điểm cân bằng, phản ứng KHÔNG HỀ DỪNG LẠI! Cả phản ứng thuận và nghịch vẫn diễn ra liên tục với tốc độ bằng nhau chằn chặn, làm cho nồng độ các chất trong bình không đổi nữa. Vì thế người ta gọi đây là CÂN BẰNG ĐỘNG! Đề thi bảo phản ứng dừng lại là đánh dấu SAI ngay nhé!",
+        teacherHtml: `
+          <div class="teacher-speech">
+            <p class="highlight-callout">⚠️ <strong>"Cảnh báo bẫy phòng thi trắc nghiệm kinh điển: 99% học sinh học vẹt khoanh sai câu này!"</strong></p>
+            <p>• <strong>Phản ứng một chiều (&rarr;):</strong> Chỉ diễn ra theo 1 chiều từ chất đầu sang sản phẩm. Chất phản ứng hết là dừng hẳn (ví dụ: đốt cháy cồn C₂H₅OH + O₂ &rarr; CO₂ + H₂O).</p>
+            <p>• <strong>Phản ứng thuận nghịch (&#8652;):</strong> Trong cùng điều kiện, phản ứng diễn ra đồng thời theo cả 2 chiều ngược nhau: chiều thuận (tạo sản phẩm) và chiều nghịch (tái tạo chất ban đầu).</p>
+            <p>• <strong>Định nghĩa Cân Bằng Hóa Học:</strong> Là trạng thái của phản ứng thuận nghịch khi <strong>Tốc độ phản ứng thuận bằng Tốc độ phản ứng nghịch (v_t = v_n)</strong>.</p>
+            <p>❌ <strong>BẪY LỪA:</strong> <em>"Tại thời điểm cân bằng, phản ứng dừng lại hoàn toàn."</em> &rarr; <strong>SAI BÉT!</strong><br>
+            ✅ <strong>BẢN CHẤT:</strong> Phản ứng <strong>VẪN TIẾP TỤC DIỄN RA</strong> với tốc độ <code>v_t = v_n &gt; 0</code>. Vì số phân tử sinh ra bằng đúng số phân tử mất đi nên nồng độ các chất giữ nguyên không đổi. Do đó nó được gọi là <strong>CÂN BẰNG ĐỘNG</strong>!</p>
+          </div>
+        `,
+        boardHtml: `
+          <div class="chalk-board">
+            <div class="chalk-title">📌 BẢNG PHẤN: ĐẶC ĐIỂM CỦA CÂN BẰNG ĐỘNG HÓA HỌC</div>
+            <div class="chalk-row">
+              <span class="chalk-code">ĐIỀU KIỆN ĐẠT CB</span>: <span class="chalk-accent">v_thuận = v_nghịch &gt; 0</span> (Tốc độ 2 chiều bằng nhau)
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">NỒNG ĐỘ [X]</span> : <span class="chalk-accent">KHÔNG ĐỔI THEO THỜI GIAN</span> (Nhưng nồng độ các chất chưa chắc bằng nhau!)
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">TÍNH CHẤT ĐỘNG</span>: Phản ứng <strong>KHÔNG DỪNG LẠI</strong>, vẫn chuyển động liên tục ở cấp độ phân tử.
+            </div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-alert">
+              📈 <strong>ĐỒ THỊ TỐC ĐỘ:</strong> Ban đầu v_t giảm dần, v_n tăng dần từ 0 &rarr; Đến thời điểm t_cb, hai đường nhập làm một thành đường nằm ngang song song trục thời gian!
+            </div>
+          </div>
+        `
+      },
+      {
+        shortTitle: "2. Bảng 3 Dòng KC",
+        title: "Chặng 2: Biểu Thức KC & Tuyệt Kỹ Bảng 3 Dòng (BĐ - PƯ - CB)",
+        speech: "Bây giờ đến phần tính toán ăn điểm: Hằng số cân bằng KC! Xét phản ứng aA cộng bB thuận nghịch cC cộng dD. Biểu thức KC bằng nồng độ C mũ c nhân nồng độ D mũ d chia cho nồng độ A mũ a nhân nồng độ B mũ b. Bẫy chí mạng số 1: Chỉ tính nồng độ của chất KHÍ và chất TAN TRONG DUNG DỊCH! Chất RẮN như than C, đá vôi CaCO3, kim loại Fe TUYỆT ĐỐI KHÔNG ghi vào biểu thức KC, nồng độ chất rắn coi là bằng 1! Khi gặp bài toán cho nồng độ ban đầu đòi tính nồng độ lúc cân bằng, hãy dùng TUYỆT KỸ BẢNG 3 DÒNG THẦN THÁNH: Dòng 1 là Ban Đầu (BĐ), dòng 2 là Phản Ứng (PƯ) đặt là x hoặc theo đúng tỉ lệ hệ số phương trình, dòng 3 là Cân Bằng (CB). Chất tham gia thì lấy Ban đầu trừ Phản ứng, chất sản phẩm thì lấy Ban đầu cộng Phản ứng. Sau đó thế dòng Cân Bằng vào biểu thức KC là bấm máy tính giải phương trình ra x trong 10 giây!",
+        teacherHtml: `
+          <div class="teacher-speech">
+            <p class="highlight-callout">🧮 <strong>"HƯỚNG DẪN TÍNH TOÁN K_C BẰNG BẢNG 3 DÒNG THẦN THÁNH: AI CŨNG LÀM ĐƯỢC!"</strong></p>
+            <p>Cho phản ứng tổng quát: <code>aA + bB &#8652; cC + dD</code>.<br>
+            Biểu thức hằng số cân bằng nồng độ: <code>K_C = ([C]^c &times; [D]^d) / ([A]^a &times; [B]^b)</code> (Trong đó [A], [B], [C], [D] là nồng độ mol tại trạng thái cân bằng).</p>
+            <p>⚠️ <strong>QUY TẮC VÀNG VỀ CHẤT RẮN:</strong> Không đưa chất rắn vào biểu thức K_C!<br>
+            <em>Ví dụ:</em> Với phản ứng nung vôi <code>CaCO₃(r) &#8652; CaO(r) + CO₂(k)</code> &rarr; Biểu thức chỉ là: <code>K_C = [CO₂]</code>! (Bỏ hết CaCO₃ và CaO vì là chất rắn).</p>
+            <p>⚡ <strong>CÁCH LẬP BẢNG 3 DÒNG TÍNH TOÁN:</strong><br>
+            • <strong>Dòng 1 - Ban Đầu (BĐ):</strong> Điền nồng độ mol ban đầu đề bài cho vào các chất.<br>
+            • <strong>Dòng 2 - Phản Ứng (PƯ):</strong> Đặt lượng phản ứng là <code>x</code> mol/L. Nhân theo đúng hệ số tỉ lệ phương trình.<br>
+            • <strong>Dòng 3 - Cân Bằng (CB):</strong><br>
+            &nbsp;&nbsp;+ Chất tham gia (bên trái mũi tên): <code>[CB] = [BĐ] - [PƯ]</code> (vì bị tiêu hao đi).<br>
+            &nbsp;&nbsp;+ Chất sản phẩm (bên phải mũi tên): <code>[CB] = [BĐ] + [PƯ]</code> (vì được tạo thêm).<br>
+            Sau đó lắp toàn bộ dòng Cân Bằng vào công thức K_C, bấm phím <code>SOLVE</code> trên máy tính Casio để tìm ra <code>x</code>!</p>
+          </div>
+        `,
+        boardHtml: `
+          <div class="chalk-board">
+            <div class="chalk-title">📌 BẢNG PHẤN: VÍ DỤ BẢNG 3 DÒNG CHO H₂ + I₂ &#8652; 2HI (K_C = 64)</div>
+            <div class="chalk-row">
+              <strong>Phương trình:</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; H₂(k) &nbsp;&nbsp;+&nbsp;&nbsp; I₂(k) &nbsp;&nbsp;&#8652;&nbsp;&nbsp; 2HI(k)
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">Ban đầu (BĐ)</span>: &nbsp;&nbsp;&nbsp;&nbsp; 1,0 M &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1,0 M &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 M
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">Phản ứng (PƯ)</span>: &nbsp;&nbsp; x &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2x
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">Cân bằng (CB)</span>: &nbsp;&nbsp; (1 - x) &nbsp;&nbsp;&nbsp;&nbsp; (1 - x) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2x
+            </div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-alert">
+              📝 <strong>LẮP VÀO CÔNG THỨC K_C:</strong><br>
+              <code>K_C = [HI]² / ([H₂].[I₂]) = (2x)² / (1 - x)² = 64</code><br>
+              Lấy căn bậc 2 hai vế: <code>2x / (1 - x) = 8 &rArr; 2x = 8 - 8x &rArr; 10x = 8 &rArr; x = 0,8 M</code>!<br>
+              👉 <strong>Nồng độ lúc cân bằng:</strong> [H₂] = [I₂] = 0,2 M; [HI] = 1,6 M. Quá nhanh!
+            </div>
+          </div>
+        `
+      },
+      {
+        shortTitle: "3. Le Chatelier 3s",
+        title: "Chặng 3: Nguyên Lý Le Chatelier: Chống Lại Kẻ Phá Rối Trong 3 Giây",
+        speech: "Bây giờ sang phần hay nhất của Bài 1: Nguyên lý Le Chatelier! Quy tắc này nói: Cân bằng giống như một đứa trẻ bướng bỉnh, bên ngoài tác động cái gì thì nó sẽ tự dịch chuyển để CHỐNG LẠI tác động đó! Có 3 yếu tố làm chuyển dịch cân bằng: Nồng độ, Áp suất và Nhiệt độ. Một: Về nồng độ, thêm chất nào vào thì cân bằng dịch sang chiều làm giảm chất đó. Bớt chất nào ra thì cân bằng dịch sang chiều sinh thêm chất đó. Hai: Về áp suất, chỉ áp dụng cho phản ứng CÓ CHẤT KHÍ. Tăng áp suất thì cân bằng dịch theo chiều làm giảm số mol khí, tức là bên ít mol khí hơn. Nếu hai vế số mol khí bằng nhau thì áp suất không ảnh hưởng! Ba: Về nhiệt độ, nhớ câu thần chú: TĂNG THU - GIẢM TỎA! Tăng nhiệt độ cân bằng dịch theo chiều thu nhiệt delta H dương. Hạ nhiệt độ dịch theo chiều tỏa nhiệt delta H âm! Nhẩm 3 giây là ra ngay đáp án!",
+        teacherHtml: `
+          <div class="teacher-speech">
+            <p class="highlight-callout">⚡ <strong>"NGUYÊN LÝ LE CHATELIER: HỆ CÂN BẰNG LUÔN CHỐNG LẠI SỰ THAY ĐỔI CỦA BÊN NGOÀI!"</strong></p>
+            <p>Gặp câu hỏi trắc nghiệm Le Chatelier, áp dụng ngay <strong>bộ 3 quy tắc phản xạ 3 giây</strong>:</p>
+            <p>1️⃣ <strong>YẾU TỐ NỒNG ĐỘ:</strong><br>
+            • Thêm chất nào vào &rarr; Cân bằng dịch theo chiều <em>tiêu hao</em> chất đó (chiều làm giảm).<br>
+            • Lấy bớt chất nào ra &rarr; Cân bằng dịch theo chiều <em>tạo thêm</em> chất đó (chiều bù đắp).</p>
+            <p>2️⃣ <strong>YẾU TỐ ÁP SUẤT (Chỉ tính chất KHÍ):</strong><br>
+            • Đếm tổng hệ số chất khí ở 2 vế của phương trình:<br>
+            &nbsp;&nbsp;+ <strong>Tăng áp suất (nén bình):</strong> Cân bằng dịch sang phía có <strong>ÍT MOL KHÍ HƠN</strong> (để làm giảm áp suất).<br>
+            &nbsp;&nbsp;+ <strong>Giảm áp suất (dãn bình):</strong> Cân bằng dịch sang phía có <strong>NHIỀU MOL KHÍ HƠN</strong>.<br>
+            &nbsp;&nbsp;+ <em>Đặc biệt:</em> Nếu tổng số mol khí 2 vế bằng nhau (ví dụ: H₂ + I₂ &#8652; 2HI có 1+1=2 bằng 2) &rarr; Áp suất <strong>KHÔNG LÀM CHUYỂN DỊCH CÂN BẰNG</strong>!</p>
+            <p>3️⃣ <strong>YẾU TỐ NHIỆT ĐỘ (Thần chú: "TĂNG THU - GIẢM TỎA"):</strong><br>
+            • Nhìn vào dấu của &Delta;_r H&deg;₂₉₈: Âm (&lt; 0) là <strong>Tỏa nhiệt</strong>; Dương (&gt; 0) là <strong>Thu nhiệt</strong>.<br>
+            • <strong>Tăng nhiệt độ:</strong> Cân bằng dịch sang chiều <strong>THU NHIỆT</strong> (&Delta;H &gt; 0).<br>
+            • <strong>Hạ nhiệt độ:</strong> Cân bằng dịch sang chiều <strong>TỎA NHIỆT</strong> (&Delta;H &lt; 0).</p>
+          </div>
+        `,
+        boardHtml: `
+          <div class="chalk-board">
+            <div class="chalk-title">📌 BẢNG PHẤN: THỰC HÀNH 3 GIÂY VỚI THÍ NGHIỆM 2NO₂ &#8652; N₂O₄</div>
+            <div class="chalk-row">
+              <strong>Phản ứng:</strong> &nbsp;&nbsp; 2NO₂(k) (Nâu đỏ) &nbsp;&#8652;&nbsp; N₂O₄(k) (Không màu) &nbsp;&nbsp; (&Delta;_r H&deg;₂₉₈ = -58 kJ &lt; 0: Chiều thuận TỎA NHIỆT)
+            </div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-row">
+              <span class="chalk-code">1. Ngâm vào nước đá (Hạ T)</span>: Cần tỏa nhiệt chống lạnh &rarr; Chiều thuận &rarr; <span class="chalk-accent">Màu nâu NHẠT DẦN (Hóa không màu)</span>
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">2. Ngâm vào nước nóng (Tăng T)</span>: Cần thu nhiệt giải nhiệt &rarr; Chiều nghịch &rarr; <span class="chalk-accent">Màu nâu ĐẬM LÊN</span>
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">3. Nén pittông (Tăng Áp Suất)</span>: Vế trái 2 mol khí, vế phải 1 mol khí &rarr; Chiều thuận (ít mol khí hơn) &rarr; <span class="chalk-accent">Khí nhạt màu</span>
+            </div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-alert">
+              💡 <strong>GHI NHỚ THẦN CHÚ:</strong> "TĂNG THU - GIẢM TỎA" (Tăng T đi về hướng &Delta;H dương, Giảm T đi về hướng &Delta;H âm).
+            </div>
+          </div>
+        `
+      },
+      {
+        shortTitle: "4. Bẫy Xúc Tác & Áp Suất",
+        title: "Chặng 4: Các Bẫy Phòng Thi Kinh Điển Về Cân Bằng Hóa Học",
+        speech: "Chặng cuối Bài 1, thầy tổng kết các bẫy đề thi cực kì hay gài để trừ điểm học sinh: Bẫy 1: Chất xúc tác có làm chuyển dịch cân bằng không? Câu trả lời là HOÀN TOÀN KHÔNG! Chất xúc tác chỉ làm tăng tốc độ phản ứng thuận và tốc độ phản ứng nghịch như nhau, giúp hệ ĐẠT TRẠNG THÁI CÂN BẰNG NHANH HƠN chứ không làm thay đổi nồng độ các chất tại cân bằng, và KHÔNG làm đổi giá trị KC! Bẫy 2: Yếu tố DUY NHẤT làm thay đổi giá trị hằng số cân bằng KC là gì? Đó CHỈ LÀ NHIỆT ĐỘ! Nồng độ và áp suất làm chuyển dịch vị trí cân bằng nhưng giá trị KC vẫn giữ nguyên! Bẫy 3: Bơm thêm khí trơ như Argon hay Heli vào bình kín có thể tích không đổi thì cân bằng có chuyển dịch không? Không hề, vì nồng độ các chất khí phản ứng không bị thay đổi! Nhớ chắc 3 bẫy này thì trắc nghiệm Bài 1 các trò nắm chắc điểm 10 trong tay!",
+        teacherHtml: `
+          <div class="teacher-speech">
+            <p class="highlight-callout">🛑 <strong>"TỔNG HỢP CÁC BẪY PHÒNG THI KHIẾN HỌC SINH MẤT ĐIỂM OAN NHẤT BÀI 1!"</strong></p>
+            <p>1️⃣ <strong>BẪY SỐ 1: VAI TRÒ CỦA CHẤT XÚC TÁC</strong><br>
+            • Chất xúc tác <strong>KHÔNG LÀM CHUYỂN DỊCH CÂN BẰNG</strong>!<br>
+            • Chất xúc tác <strong>KHÔNG LÀM THAY ĐỔI HẰNG SỐ CÂN BẰNG K_C</strong>!<br>
+            • Tác dụng duy nhất: Làm giảm năng lượng hoạt hóa, giúp cả phản ứng thuận và nghịch xảy ra nhanh hơn &rarr; Hệ <strong>nhanh đạt tới trạng thái cân bằng hơn</strong> mà thôi.</p>
+            <p>2️⃣ <strong>BẪY SỐ 2: ĐIỀU GÌ LÀM THAY ĐỔI GIÁ TRỊ K_C?</strong><br>
+            • Giá trị của hằng số cân bằng K_C <strong>CHỈ PHỤ THUỘC VÀO BẢN CHẤT PHẢN ỨNG VÀ NHIỆT ĐỘ</strong>.<br>
+            • Thay đổi nồng độ các chất &rarr; K_C không đổi.<br>
+            • Thay đổi áp suất của hệ &rarr; K_C không đổi.<br>
+            • Thêm chất xúc tác &rarr; K_C không đổi.</p>
+            <p>3️⃣ <strong>BẪY SỐ 3: BƠM THÊM KHÍ TRƠ (He, Ne, Ar) VÀO BÌNH</strong><br>
+            • Nếu bơm khí trơ vào bình kín ở <strong>thể tích không đổi</strong> &rarr; Nồng độ các chất phản ứng không đổi &rarr; Cân bằng <strong>không chuyển dịch</strong>.<br>
+            • Nếu bơm khí trơ ở điều kiện <strong>áp suất không đổi</strong> (thể tích bình tăng lên) &rarr; Nồng độ các chất bị loãng &rarr; Tương đương với việc giảm áp suất hệ.</p>
+          </div>
+        `,
+        boardHtml: `
+          <div class="chalk-board">
+            <div class="chalk-title">📌 BẢNG PHẤN: MA TRẬN PHÂN LOẠI CÁC YẾU TỐ ẢNH HƯỞNG</div>
+            <div class="chalk-row">
+              <span class="chalk-code">YẾU TỐ</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | <span class="chalk-accent">CHUYỂN DỊCH CÂN BẰNG?</span> | <span class="chalk-accent">LÀM ĐỔI K_C?</span>
+            </div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-row">
+              • Nồng độ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | <strong>CÓ</strong> (Chống lại sự đổi) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | <strong>KHÔNG</strong>
+            </div>
+            <div class="chalk-row">
+              • Áp suất (khí) &nbsp;&nbsp;&nbsp; | <strong>CÓ</strong> (Khi &Delta;n_khí &ne; 0) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | <strong>KHÔNG</strong>
+            </div>
+            <div class="chalk-row">
+              • Nhiệt độ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | <strong>CÓ</strong> (Tăng thu, giảm tỏa) &nbsp;&nbsp; | <span class="chalk-accent">CÓ (DUY NHẤT LÀM ĐỔI K_C!)</span>
+            </div>
+            <div class="chalk-row">
+              • Chất xúc tác &nbsp;&nbsp;&nbsp;&nbsp; | <strong>KHÔNG</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | <strong>KHÔNG</strong>
+            </div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-alert">
+              🏆 <strong>KẾT LUẬN VÀNG:</strong> Chỉ có <strong>NHIỆT ĐỘ</strong> mới thay đổi được giá trị con số K_C!
+            </div>
+          </div>
+        `
+      }
+    ]
+  },
+
+  // ------------------------------------------------------------------------
+  // BÀI 2: CÂN BẰNG TRONG DUNG DỊCH NƯỚC & pH
+  // ------------------------------------------------------------------------
+  "bai-2": {
+    lessonName: "💧 BÀI 2: Dung Dịch Nước & pH",
+    subtitle: "Sự Điện Ly, Thuyết Brønsted-Lowry & Tuyệt Kỹ Tính pH 3 Bước",
+    steps: [
+      {
+        shortTitle: "1. Bản Chất Điện Ly",
+        title: "Chặng 1: Sự Điện Ly: Mạnh, Yếu & Không Điện Ly (Vì Sao Dẫn Được Điện?)",
+        speech: "Chào các trò! Bài 2 là bài toán pH mà nhiều bạn mất gốc sợ toát mồ hôi. Bình tĩnh nghe thầy giảng, bản chất cực kì dễ hiểu! Đầu tiên: Tại sao cắm phích điện vào cốc nước muối thì bóng đèn sáng bừng, còn cắm vào cốc nước cất hay cốc nước đường thì đèn tối om? Vì dung dịch dẫn điện được là nhờ CÁC ION MANG ĐIỆN TÍCH chuyển động tự do! Quá trình các chất tan trong nước phân ly thành ion gọi là SỰ ĐIỆN LY. Chia làm 3 loại rõ ràng: Một: Chất điện ly mạnh, tan bao nhiêu phân ly hết 100% bấy nhiêu thành ion, viết mũi tên một chiều. Gồm: Axit mạnh như HCl, HNO3, H2SO4; Bazo mạnh như NaOH, KOH, Ba(OH)2; và hầu hết các muối tan. Hai: Chất điện ly yếu, chỉ phân ly một phần nhỏ, tồn tại cân bằng thuận nghịch mũi tên hai chiều. Gồm axit yếu như CH3COOH, HF, H2S và bazo yếu như NH3. Ba: Chất không điện ly, tan vào nước vẫn ở dạng phân tử trung hòa như đường glucozo, rượu cồn C2H5OH, không có ion nên không dẫn điện! Rõ ràng như ban ngày đúng không nào!",
+        teacherHtml: `
+          <div class="teacher-speech">
+            <p class="highlight-callout">⚡ <strong>"VÌ SAO DUNG DỊCH DẪN ĐƯỢC ĐIỆN? HÃY NHỚ TỪ KHÓA: ION CHUYỂN ĐỘNG TỰ DO!"</strong></p>
+            <p>Dòng điện trong dung dịch là dòng chuyển dời có hướng của các cation (ion dương) và anion (ion âm):</p>
+            <p>1️⃣ <strong>CHẤT ĐIỆN LY MẠNH (Phân ly hoàn toàn 100% &rarr; Dùng mũi tên 1 chiều &rarr;):</strong><br>
+            • Khi tan vào nước, toàn bộ các phân tử đều phân ly thành ion.<br>
+            • <em>Axit mạnh:</em> <code>HCl &rarr; H⁺ + Cl⁻</code> | <code>HNO₃ &rarr; H⁺ + NO₃⁻</code> | <code>H₂SO₄ &rarr; 2H⁺ + SO₄²⁻</code>.<br>
+            • <em>Base mạnh (tan tốt):</em> <code>NaOH &rarr; Na⁺ + OH⁻</code> | <code>Ba(OH)₂ &rarr; Ba²⁺ + 2OH⁻</code>.<br>
+            • <em>Hầu hết các muối tan:</em> <code>NaCl &rarr; Na⁺ + Cl⁻</code> | <code>KNO₃ &rarr; K⁺ + NO₃⁻</code> | <code>CuSO₄ &rarr; Cu²⁺ + SO₄²⁻</code>.</p>
+            <p>2️⃣ <strong>CHẤT ĐIỆN LY YẾU (Phân ly một phần &rarr; Dùng mũi tên thuận nghịch &#8652;):</strong><br>
+            • Chỉ một phần nhỏ phân tử phân ly thành ion, phần lớn còn lại vẫn ở dạng phân tử trung hòa.<br>
+            • <em>Axit yếu:</em> <code>CH₃COOH &#8652; CH₃COO⁻ + H⁺</code> | <code>HF &#8652; H⁺ + F⁻</code> | <code>H₂S &#8652; H⁺ + HS⁻</code>.<br>
+            • <em>Base yếu:</em> <code>NH₃ + H₂O &#8652; NH₄⁺ + OH⁻</code> | <code>Cu(OH)₂</code>, <code>Fe(OH)₃</code>.</p>
+            <p>3️⃣ <strong>CHẤT KHÔNG ĐIỆN LY:</strong><br>
+            • Khi tan trong nước <strong>hoàn toàn không phân ly ra ion</strong>: Nước cất (H₂O nguyên chất dẫn điện cực kém), đường saccarozơ (C₁₂H₂₂O₁₁), rượu etanol (C₂H₅OH), glucozơ (C₆H₁₂O₆).</p>
+          </div>
+        `,
+        boardHtml: `
+          <div class="chalk-board">
+            <div class="chalk-title">📌 BẢNG PHẤN: PHÂN LOẠI CHẤT ĐIỆN LY TRONG ĐỀ THI</div>
+            <div class="chalk-row">
+              <span class="chalk-code">ĐIỆN LY MẠNH (&rarr;)</span> : Axit mạnh (HCl, HNO₃, H₂SO₄), Base mạnh (Li, Na, K, Ca, Ba), Muối tan.
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">ĐIỆN LY YẾU (&#8652;)</span>: Axit yếu (CH₃COOH, HF, H₂CO₃, H₂S), Base yếu (NH₃, kết tủa hidroxit).
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">KHÔNG ĐIỆN LY</span> : Rượu cồn (C₂H₅OH), Đường (C₁₂H₂₂O₁₁, C₆H₁₂O₆), Nước cất.
+            </div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-alert">
+              ⚠️ <strong>CÂU HỎI BẪY:</strong> Độ dẫn điện phụ thuộc vào <strong>NỒNG ĐỘ ION</strong> trong dung dịch. Cùng nồng độ 0,1 M, dung dịch HCl dẫn điện tốt hơn nhiều so với CH₃COOH vì HCl phân ly hoàn toàn!
+            </div>
+          </div>
+        `
+      },
+      {
+        shortTitle: "2. Axit-Base Hiện Đại",
+        title: "Chặng 2: Thuyết Brønsted - Lowry & Các Ion Lưỡng Tính Hay Thi",
+        speech: "Sang chặng 2, quên định nghĩa Axit Bazo cũ của cấp 2 đi, lớp 11 ta dùng thuyết Brønsted - Lowry hiện đại: Axit là chất CHO proton H+, còn Bazo là chất NHẬN proton H+! Cứ nhớ thần chú: Axit Cho - Base Nhận! Ví dụ: Khi sục khí NH3 vào nước, NH3 nhận một H+ từ nước tạo ra ion amoni NH4+ và giải phóng ion OH-, làm dung dịch có tính base. Còn các chất vừa có thể cho H+, vừa có thể nhận H+ thì gọi là LƯỠNG TÍNH! Đề thi cực kì thích hỏi ion nào là lưỡng tính: Nhớ ngay ion HCO3- trong bột nở baking soda, ion HSO3-, ion HS-, phân tử nước H2O, và các kết tủa Al(OH)3, Zn(OH)2. Còn các ion trơ như Na+, K+, Cl-, NO3-, SO4 2- thì trung tính không làm đổi màu quỳ tím. Phân biệt chuẩn như thế thì vào phòng thi trắc nghiệm khoanh đâu trúng đó!",
+        teacherHtml: `
+          <div class="teacher-speech">
+            <p class="highlight-callout">📖 <strong>"THUYẾT BRØNSTED - LOWRY (1923): ĐỊNH NGHĨA AXIT - BASE DỰA TRÊN PROTON H⁺!"</strong></p>
+            <p>• <strong>ACID:</strong> Là chất có khả năng <strong>CHO (nhường) proton H⁺</strong>.<br>
+            <em>Ví dụ:</em> <code>CH₃COOH + H₂O &#8652; CH₃COO⁻ + H₃O⁺</code> (CH₃COOH nhường H⁺ cho nước &rarr; CH₃COOH là Acid).</p>
+            <p>• <strong>BASE:</strong> Là chất có khả năng <strong>NHẬN proton H⁺</strong>.<br>
+            <em>Ví dụ:</em> <code>NH₃ + H₂O &#8652; NH₄⁺ + OH⁻</code> (NH₃ nhận H⁺ từ nước &rarr; NH₃ là Base; nước đóng vai trò Acid!).</p>
+            <p>• <strong>CHẤT / ION LƯỠNG TÍNH:</strong> Vừa có thể cho H⁺, vừa có thể nhận H⁺ tùy môi trường.<br>
+            👉 <em>Các đại diện vàng trong đề thi:</em> <strong>H₂O</strong>, các anion còn H của axit yếu như <strong>HCO₃⁻, HSO₃⁻, HS⁻, H₂PO₄⁻, HPO₄²⁻</strong>, và các hydroxide như <strong>Al(OH)₃, Zn(OH)₂</strong>.<br>
+            • <em>Phản ứng chứng minh HCO₃⁻ lưỡng tính:</em><br>
+            &nbsp;&nbsp;+ Tác dụng acid: <code>HCO₃⁻ + H⁺ &rarr; CO₂&uarr; + H₂O</code> (Nhận H⁺ &rarr; Đóng vai trò Base).<br>
+            &nbsp;&nbsp;+ Tác dụng base: <code>HCO₃⁻ + OH⁻ &rarr; CO₃²⁻ + H₂O</code> (Cho H⁺ &rarr; Đóng vai trò Acid).</p>
+            <p>• <strong>ION TRUNG TÍNH (Không cho, không nhận H⁺):</strong> Gốc axit mạnh (<code>Cl⁻, NO₃⁻, SO₄²⁻, Br⁻, I⁻</code>) và cation base mạnh (<code>Na⁺, K⁺, Ca²⁺, Ba²⁺</code>).</p>
+          </div>
+        `,
+        boardHtml: `
+          <div class="chalk-board">
+            <div class="chalk-title">📌 BẢNG PHẤN: DANH SÁCH PHÂN LOẠI CÁC ION TRONG ĐỀ THI</div>
+            <div class="chalk-row">
+              <span class="chalk-code">ION CÓ TÍNH ACID</span> : Cation kim loại yếu/trung bình (Al³⁺, Fe³⁺, Cu²⁺, Zn²⁺) và ion NH₄⁺ (cho H⁺ làm quỳ hóa đỏ nhẹ).
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">ION CÓ TÍNH BASE</span> : Anion gốc axit yếu (CO₃²⁻, S²⁻, SO₃²⁻, CH₃COO⁻) (nhận H⁺ làm quỳ hóa xanh nhẹ).
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">ION LƯỠNG TÍNH</span> &nbsp;: <span class="chalk-accent">HCO₃⁻, HSO₃⁻, HS⁻, H₂PO₄⁻, HPO₄²⁻</span>
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">ION TRUNG TÍNH</span> &nbsp;&nbsp;&nbsp;: Na⁺, K⁺, Ca²⁺, Ba²⁺ ── Cl⁻, NO₃⁻, SO₄²⁻
+            </div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-alert">
+              ⚠️ <strong>BẪY CỰC NGUY HIỂM:</strong> Ion <code>HSO₄⁻</code> (gốc axit của H₂SO₄) là <strong>ACID MẠNH</strong>, KHÔNG PHẢI LƯỠNG TÍNH! Vì H₂SO₄ phân ly nấc 1 hoàn toàn nên HSO₄⁻ chỉ phân ly cho H⁺ chứ không nhận H⁺!
+            </div>
+          </div>
+        `
+      },
+      {
+        shortTitle: "3. Thước Đo pH",
+        title: "Chặng 3: Thước Đo pH & Tích Số Ion Nước Kw = 10⁻¹⁴",
+        speech: "Chặng 3 là thước đo pH! Nước nguyên chất tự phân ly rất yếu ra ion H+ và OH-. Ở 25 độ C, tích số nồng độ H+ nhân nồng độ OH- luôn là một hằng số bất biến bằng 10 mũ trừ 14! Để biểu thị độ chua axit hay kiềm mà không cần viết số mũ âm lằng nhằng, nhà bác học Sorensen đã đặt ra thang pH: pH bằng trừ log cơ số 10 của nồng độ H+! Bấm máy tính nút trừ log đó. Ngược lại, nồng độ H+ bằng 10 mũ trừ pH. Thước đo pH chạy từ 0 đến 14: Tại pH bằng 7 là môi trường trung tính, nồng độ H+ bằng nồng độ OH- bằng 10 mũ trừ 7. pH nhỏ hơn 7 là môi trường axit, pH càng nhỏ axit càng mạnh, quỳ tím hóa đỏ. pH lớn hơn 7 là môi trường bazo, pH càng lớn kiềm càng mạnh, quỳ tím hóa xanh, phenolphthalein hóa hồng khi pH vượt qua 8 phẩy 3. Quá đơn giản và trực quan!",
+        teacherHtml: `
+          <div class="teacher-speech">
+            <p class="highlight-callout">📏 <strong>"BẢN CHẤT CỦA THANG ĐO pH VÀ CÔNG THỨC BẤM MÁY TÍNH CASIO:"</strong></p>
+            <p>• <strong>Tích số ion của nước (ở 25 &deg;C):</strong> <code>K_w = [H⁺] &times; [OH⁻] = 1,0 &times; 10⁻¹⁴</code>.<br>
+            👉 Cho dù trong dung dịch axit hay kiềm thì tích số này <em>luôn không đổi</em>! Nếu biết [H⁺] thì suy ngay ra <code>[OH⁻] = 10⁻¹⁴ / [H⁺]</code>.</p>
+            <p>• <strong>Công thức tính pH và pOH:</strong><br>
+            • <code>pH = -log[H⁺]</code> &hArr; <code>[H⁺] = 10^(-pH)</code>.<br>
+            • <code>pOH = -log[OH⁻]</code> &hArr; <code>[OH⁻] = 10^(-pOH)</code>.<br>
+            • <strong>Mối quan hệ vàng:</strong> <code>pH + pOH = 14</code> &rArr; <code>pH = 14 - pOH</code>.</p>
+            <p>• <strong>Thang đo môi trường (ở 25 &deg;C):</strong><br>
+            • <strong>pH &lt; 7:</strong> Môi trường Acid ([H⁺] &gt; 10⁻⁷ M). Quỳ tím &rarr; <strong>ĐỎ</strong>.<br>
+            • <strong>pH = 7:</strong> Môi trường Trung tính ([H⁺] = [OH⁻] = 10⁻⁷ M). Quỳ tím &rarr; <strong>TÍM</strong> (không đổi màu).<br>
+            • <strong>pH &gt; 7:</strong> Môi trường Base ([H⁺] &lt; 10⁻⁷ M, [OH⁻] &gt; 10⁻⁷ M). Quỳ tím &rarr; <strong>XANH</strong>.<br>
+            • <em>Chất chỉ thị Phenolphthalein:</em> Không màu trong môi trường axit và trung tính, chỉ chuyển sang màu <strong>HỒNG</strong> khi môi trường có tính base mạnh (<strong>pH &ge; 8,3</strong>).</p>
+          </div>
+        `,
+        boardHtml: `
+          <div class="chalk-board">
+            <div class="chalk-title">📌 BẢNG PHẤN: CÁCH BẤM MÁY TÍNH CASIO TÍNH NHANH pH</div>
+            <div class="chalk-row">
+              <span class="chalk-code">1. Biết [H⁺] = 0,01 M</span> &nbsp;&nbsp;&nbsp;&nbsp;&rarr; Bấm: <code>-log(0.01)</code> &rarr; <span class="chalk-accent">pH = 2</span> (Môi trường Acid)
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">2. Biết [OH⁻] = 0,001 M</span> &nbsp;&nbsp;&rarr; Bấm: <code>pOH = -log(0.001) = 3 &rArr; pH = 14 - 3 = 11</code> (Base)
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">3. Biết pH = 3</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&rarr; Suy ra: <span class="chalk-accent">[H⁺] = 10⁻³ = 0,001 M</span>
+            </div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-alert">
+              🎯 <strong>ĐỔI MÀU CHẤT CHỈ THỊ:</strong><br>
+              • <strong>Quỳ tím:</strong> Đỏ (pH &lt; 6) ── Tím (6 &le; pH &le; 8) ── Xanh (pH &gt; 8)<br>
+              • <strong>Phenolphthalein:</strong> Không màu (pH &lt; 8,3) ── Hồng đỏ (pH &ge; 8,3)
+            </div>
+          </div>
+        `
+      },
+      {
+        shortTitle: "4. Tính pH Pha Trộn",
+        title: "Chặng 4: Tuyệt Kỹ 3 Bước Tính pH Trộn Acid - Base & Chuẩn Độ 1 Dòng",
+        speech: "Bây giờ đến phần ăn trọn điểm thi giữa kì: CẦN TÍNH pH TRỘN DUNG DỊCH NHƯ THẾ NÀO? Hãy làm đúng 3 bước chuẩn của thầy: Bước 1: Tính số mol H+ ban đầu bằng nồng độ axit nhân thể tích lít. Tính số mol OH- ban đầu bằng nồng độ base nhân thể tích lít. Bước 2: Phản ứng trung hòa xảy ra là ion H+ kết hợp OH- tạo thành nước H2O. So sánh số mol xem thằng nào lớn hơn thì thằng đó DƯ! Nếu H+ lớn hơn OH- thì H+ dư, lấy mol H+ trừ mol OH- ra mol H+ dư. Nếu OH- lớn hơn thì OH- dư, lấy mol OH- trừ mol H+ ra mol OH- dư. Bước 3: Tính tổng thể tích dung dịch sau khi trộn bằng V axit cộng V base. Tính nồng độ chất dư bằng số mol dư chia tổng thể tích. Nếu H+ dư, bấm máy pH bằng trừ log nồng độ H+. Nếu OH- dư, bấm pOH bằng trừ log nồng độ OH-, rồi lấy 14 trừ pOH ra pH! Còn bài toán Chuẩn độ axit base tại điểm tương đương, chỉ cần áp dụng đúng 1 dòng: nồng độ axit nhân thể tích axit bằng nồng độ bazo nhân thể tích bazo! Có quy trình rồi thì bài toán pH chỉ là chuyện nhỏ!",
+        teacherHtml: `
+          <div class="teacher-speech">
+            <p class="highlight-callout">🧮 <strong>"QUY TRÌNH 3 BƯỚC BẤM MÁY TÍNH GIẢI BÀI TOÁN TRỘN DUNG DỊCH TÍNH pH:"</strong></p>
+            <p><strong>BƯỚC 1: TÍNH SỐ MOL H⁺ VÀ OH⁻ BAN ĐẦU</strong><br>
+            • <code>n_H⁺ = C_A &times; V_A &times; (số H trong axit)</code> (Axit đơn như HCl thì nhân 1, axit H₂SO₄ thì nhân 2!).<br>
+            • <code>n_OH⁻ = C_B &times; V_B &times; (số OH trong base)</code> (NaOH nhân 1, Ba(OH)₂ nhân 2!).</p>
+            <p><strong>BƯỚC 2: CHO PHẢN ỨNG TRUNG HÒA <code>H⁺ + OH⁻ &rarr; H₂O</code> & TÌM CHẤT DƯ</strong><br>
+            • <strong>Trường hợp 1 (n_H⁺ &gt; n_OH⁻):</strong> H⁺ dư &rarr; <code>n_H⁺ dư = n_H⁺ - n_OH⁻</code>.<br>
+            • <strong>Trường hợp 2 (n_OH⁻ &gt; n_H⁺):</strong> OH⁻ dư &rarr; <code>n_OH⁻ dư = n_OH⁻ - n_H⁺</code>.<br>
+            • <strong>Trường hợp 3 (n_H⁺ = n_OH⁻):</strong> Vừa đủ &rarr; Trung hòa hoàn toàn &rarr; <code>pH = 7,0</code>!</p>
+            <p><strong>BƯỚC 3: TÍNH NỒNG ĐỘ DƯ & BẤM pH</strong><br>
+            • Tổng thể tích sau trộn: <code>V_sau = V_A + V_B</code> (đổi ra Lít).<br>
+            • Nếu H⁺ dư: <code>[H⁺] dư = n_H⁺ dư / V_sau</code> &rarr; Bấm <code>pH = -log[H⁺] dư</code>.<br>
+            • Nếu OH⁻ dư: <code>[OH⁻] dư = n_OH⁻ dư / V_sau</code> &rarr; Bấm <code>pOH = -log[OH⁻] dư</code> &rarr; <code>pH = 14 - pOH</code>.</p>
+            <p>🎯 <strong>CHUẨN ĐỘ ACID - BASE TẠI ĐIỂM TƯƠNG ĐƯƠNG (1 DÒNG):</strong><br>
+            Khi dùng buret chuẩn độ dung dịch HCl bằng NaOH (với chỉ thị phenolphthalein):<br>
+            Tại thời điểm tương đương (vừa hết, dung dịch chớm đổi sang màu hồng nhạt bền trong 30 giây):<br>
+            <code>C_acid &times; V_acid = C_base &times; V_base</code> &rArr; Rút ra nồng độ cần tìm ngay lập tức!</p>
+          </div>
+        `,
+        boardHtml: `
+          <div class="chalk-board">
+            <div class="chalk-title">📌 BẢNG PHẤN: GIẢI MẪU CHI TIẾT BÀI TOÁN TRỘN DUNG DỊCH TÍNH pH</div>
+            <div class="chalk-row">
+              <strong>ĐỀ BÀI:</strong> Trộn 100 mL dung dịch HCl 0,1 M với 100 mL dung dịch NaOH 0,05 M. Tính pH dung dịch thu được?
+            </div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-row">
+              <span class="chalk-code">Bước 1</span>: n_H⁺ = 0,1 &times; 0,1 = 0,01 mol | n_OH⁻ = 0,1 &times; 0,05 = 0,005 mol
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">Bước 2</span>: n_H⁺ (0,01) &gt; n_OH⁻ (0,005) &rArr; <span class="chalk-accent">H⁺ DƯ!</span><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <code>n_H⁺ dư = 0,01 - 0,005 = 0,005 mol</code>
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">Bước 3</span>: V_sau = 100 + 100 = 200 mL = 0,2 Lít.<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <code>[H⁺] dư = 0,005 / 0,2 = 0,025 M</code><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Bấm máy: <code>pH = -log(0.025) &asymp; 1,60</code>!
+            </div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-alert">
+              🏆 <strong>KẾT QUẢ:</strong> pH = 1,60 (Môi trường axit mạnh, quỳ tím hóa đỏ đậm!).
+            </div>
+          </div>
+        `
+      }
+    ]
+  },
+
+  // ------------------------------------------------------------------------
+  // BÀI 4: ĐƠN CHẤT NITROGEN (N₂)
+  // ------------------------------------------------------------------------
+  "bai-4": {
+    lessonName: "⚡ BÀI 4: Đơn Chất Nitrogen",
+    subtitle: "Liên Kết Ba N≡N, Tính Oxi Hóa - Khử & Sấm Chớp Ra Phân Đạm",
+    steps: [
+      {
+        shortTitle: "1. Liên Kết Ba N≡N",
+        title: "Chặng 1: Cấu Trúc Phân Tử N₂ & Bí Ẩn Vì Sao N₂ Cực Kỳ Trơ",
+        speech: "Chào các trò! Hôm nay thầy trò mình mổ xẻ Bài 4: Đơn chất Nitrogen N2! Hãy tưởng tượng xem: Bạn đang hít thở bầu không khí chứa tới gần 78% thể tích là khí Nitrogen. Tại sao nó đi vào phổi rồi thở ra mà không hề phản ứng với máu, không gây hại gì cho cơ thể? Bí mật nằm ở CẤU TẠO PHÂN TỬ: Hai nguyên tử Nitrogen liên kết với nhau bằng một LIÊN KẾT BA N ba gạch N! Năng lượng để bẻ gãy liên kết ba này cực kì khủng khiếp: 945 kilôjun trên mol! Chính vì liên kết ba siêu bền vững này, ở nhiệt độ thường Nitrogen cực kì trơ về mặt hóa học, nó như một khối đá bất động. Nhưng ở nhiệt độ rất cao trên 3000 độ C hoặc có tia lửa điện sấm sét xé toạc bầu trời, liên kết ba này mới bị bẻ gãy và Nitrogen mới bắt đầu phản ứng!",
+        teacherHtml: `
+          <div class="teacher-speech">
+            <p class="highlight-callout">🔬 <strong>"VÌ SAO KHÍ NITROGEN CHIẾM GẦN 78% KHÔNG KHÍ MÀ KHÔNG GÂY ĐỘC VÀ KHÔNG PHẢN ỨNG?"</strong></p>
+            <p>• <strong>Vị trí của Nitrogen (N):</strong> Ô số 7, chu kì 2, nhóm VA. Cấu hình e: <code>1s² 2s² 2p³</code> (có 5 electron lớp ngoài cùng).</p>
+            <p>• <strong>Cấu tạo phân tử N₂:</strong> Để đạt cơ cấu 8 electron bền vững của khí hiếm, 2 nguyên tử N góp chung 3 cặp electron, hình thành <strong>1 LIÊN KẾT BA (N&equiv;N)</strong> (gồm 1 liên kết &sigma; bền và 2 liên kết &pi;).</p>
+            <p>• <strong>Năng lượng liên kết cực lớn:</strong> <code>E_b = 945 kJ/mol</code> (Một trong những liên kết cộng hóa trị bền vững nhất trong hóa học!).</p>
+            <p>👉 <strong>HỆ QUẢ HÓA HỌC QUAN TRỌNG:</strong><br>
+            • Ở <strong>nhiệt độ thường</strong>: N₂ cực kì <strong>trơ về mặt hóa học</strong>, không duy trì sự cháy, không duy trì sự hô hấp.<br>
+            • Ở <strong>nhiệt độ cao (&gt; 3000 &deg;C) hoặc có tia lửa điện</strong>: N₂ mới bị hoạt hóa để tham gia phản ứng với các chất khác.</p>
+          </div>
+        `,
+        boardHtml: `
+          <div class="chalk-board">
+            <div class="chalk-title">📌 BẢNG PHẤN: CẤU TẠO PHÂN TỬ ĐƠN CHẤT NITROGEN (N₂)</div>
+            <div class="chalk-row">
+              <span class="chalk-code">CÔNG THỨC ELECTRON</span> : :N &vellip;&vellip;&vellip; N: (Mỗi N còn 1 cặp e chưa liên kết)
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">CÔNG THỨC CẤU TẠO</span> &nbsp;: <span class="chalk-accent">N &equiv; N (LIÊN KẾT BA)</span>
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">NĂNG LƯỢNG LIÊN KẾT</span>: <span class="chalk-accent">E_b = 945 kJ/mol</span> (Cực bền vững!)
+            </div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-alert">
+              💡 <strong>CÂU HỎI TRẮC NGHIỆM ĐỀ THI:</strong> "Vì sao ở nhiệt độ thường N₂ trơ về mặt hóa học?" &rarr; <strong>Đáp án đúng:</strong> "Do phân tử N₂ có liên kết ba với năng lượng liên kết rất lớn (945 kJ/mol)."
+            </div>
+          </div>
+        `
+      },
+      {
+        shortTitle: "2. Oxi Hóa & Khử",
+        title: "Chặng 2: Hai Mặt Tính Chất: Vừa Oxi Hóa Vừa Khử (Bẫy Lithium)",
+        speech: "Sang chặng 2: Tính chất hóa học của Nitrogen! Số oxi hóa của N trong đơn chất N2 là 0. Nó đứng ở giữa thang số oxi hóa, có thể giảm xuống âm 3 nên thể hiện TÍNH OXI HÓA, hoặc tăng lên cộng 1, cộng 2, cộng 4, cộng 5 nên thể hiện TÍNH KHỬ. Một: Tính oxi hóa thể hiện khi tác dụng với Hydro và Kim loại mạnh. Tác dụng với H2 ở nhiệt độ cao có xúc tác tạo khí amoniac NH3. Tác dụng với kim loại Magie nung nóng tạo Mg3N2. Nghe kĩ bẫy phòng thi này: Chỉ duy nhất kim loại Lithium Li là phản ứng được với khí Nitrogen NGAY Ở NHIỆT ĐỘ THƯỜNG tạo Li3N! Đề thi rất hay gài câu này! Hai: Tính khử thể hiện khi tác dụng với Oxy ở nhiệt độ sấm sét trên 3000 độ C tạo khí nitrogen monoxide NO không màu. Nhớ kĩ: Vừa oxi hóa vừa khử, nhưng tính oxi hóa vẫn là đặc trưng chủ đạo!",
+        teacherHtml: `
+          <div class="teacher-speech">
+            <p class="highlight-callout">⚖️ <strong>"TÍNH CHẤT HÓA HỌC: VỪA CÓ TÍNH OXI HÓA, VỪA CÓ TÍNH KHỬ (TÍNH OXI HÓA LÀ CHỦ ĐẠO)!"</strong></p>
+            <p>Trục số oxi hóa của Nitrogen: <code>-3 &larr; 0 &rarr; +1, +2, +3, +4, +5</code>. Từ số 0, N có thể nhận e hoặc nhường e:</p>
+            <p>1️⃣ <strong>TÍNH OXI HÓA (Số OXH giảm từ 0 xuống -3):</strong><br>
+            • <em>Tác dụng với Hydrogen (H₂):</em> <code>N₂(k) + 3H₂(k) &#8652; 2NH₃(k)</code> (Điều kiện: 400 - 450 &deg;C, 150 - 200 bar, xúc tác Fe).<br>
+            • <em>Tác dụng với kim loại hoạt động (ở nhiệt độ cao):</em><br>
+            &nbsp;&nbsp;<code>3Mg + N₂ &rarr; Mg₃N₂</code> (Magnesium nitride).<br>
+            ⚠️ <strong>BẪY PHÒNG THI ĐẶC BIỆT:</strong> Riêng kim loại <strong>Lithium (Li)</strong> tác dụng với N₂ <strong>NGAY Ở NHIỆT ĐỘ THƯỜNG</strong>: <code>6Li + N₂ &rarr; 2Li₃N</code> (Lithium nitride). <em>(Đề hỏi kim loại nào phản ứng với N₂ không cần đun nóng &rarr; Khoanh ngay Li!).</em></p>
+            <p>2️⃣ <strong>TÍNH KHỬ (Số OXH tăng từ 0 lên +2):</strong><br>
+            • <em>Tác dụng với Oxygen (ở &gt; 3000 &deg;C hoặc tia lửa điện sấm sét):</em><br>
+            <code>N₂ + O₂ &#8652; 2NO</code> (&Delta;_r H&deg;₂₉₈ = +180 kJ &gt; 0: Phản ứng thu nhiệt!).<br>
+            Khí NO không màu sinh ra gặp O₂ không khí lập tức hóa nâu: <code>2NO + O₂ &rarr; 2NO₂</code> (màu nâu đỏ).</p>
+          </div>
+        `,
+        boardHtml: `
+          <div class="chalk-board">
+            <div class="chalk-title">📌 BẢNG PHẤN: TRỤC SỐ OXI HÓA & PHẢN ỨNG CỦA N₂</div>
+            <div class="chalk-row">
+              <span class="chalk-code">TÍNH OXI HÓA (0 &rarr; -3)</span> : N₂⁰ + 3H₂ &rarr; 2N⁻³H₃ | 3Mg + N₂⁰ &rarr; Mg₃N₂⁻³
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">BẪY LITHIUM (Li)</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="chalk-accent">6Li + N₂ &rarr; 2Li₃N (XẢY RA Ở NHIỆT ĐỘ THƯỜNG!)</span>
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">TÍNH KHỬ (0 &rarr; +2)</span> &nbsp;&nbsp;&nbsp;: N₂⁰ + O₂ ──[&gt;3000 &deg;C/Sấm sét]──&gt; <span class="chalk-accent">2N⁺²O (Thu nhiệt)</span>
+            </div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-alert">
+              ⚡ <strong>KẾT LUẬN:</strong> N₂ vừa có tính oxi hóa vừa có tính khử, trong đó <strong>tính oxi hóa là tính chất chủ đạo</strong>.
+            </div>
+          </div>
+        `
+      },
+      {
+        shortTitle: "3. Sấm Chớp Ra Đạm",
+        title: "Chặng 3: Cơ Chế Sấm Chớp Ra Phân Đạm & Chu Trình Sinh Địa Hóa",
+        speech: "Chặng 3 là câu ca dao dân gian nổi tiếng mà đề thi cực kì chuộng: 'Lúa chiêm lấp ló đầu bờ / Hễ nghe tiếng sấm phất cờ mà lên!' Các cụ nông dân ngày xưa chưa học hóa học nhưng đã quan sát hiện tượng cực kì chuẩn xác! Cơ chế hóa học diễn ra như sau: Khi trời mưa giông có sấm sét, tia lửa điện tạo nhiệt độ trên 3000 độ C làm N2 kết hợp O2 tạo thành khí NO không màu. Khí NO vừa sinh ra gặp oxy không khí lập tức hóa nâu đỏ thành NO2. Khí NO2 hòa tan vào nước mưa cùng với oxy tạo thành dung dịch axit nitric loãng HNO3. Axit này rơi xuống đất tác dụng với khoáng chất kiềm trong đất tạo ra muối nitrat chứa ion NO3-. Ion nitrat này chính là PHÂN ĐẠM TỰ NHIÊN, rễ cây lúa hút vào để tổng hợp protein lớn nhanh như thổi! Một chu trình tuyệt đẹp của tạo hóa!",
+        teacherHtml: `
+          <div class="teacher-speech">
+            <p class="highlight-callout">⚡ <strong>"GIẢI MÃ BÍ MẬT CÂU CA DAO: LÚA CHIÊM LẤP LÓ ĐẦU BỜ - HỄ NGHE TIẾNG SẤM PHẤT CỜ MÀ LÊN!"</strong></p>
+            <p>Hiện tượng sấm sét tạo ra phân đạm tự nhiên là một chuỗi 4 phản ứng liên hoàn trong khí quyển:</p>
+            <p>1️⃣ <strong>Tia lửa điện sấm sét (&gt; 3000 &deg;C):</strong> Bẻ gãy liên kết ba N&equiv;N để phản ứng với O₂:<br>
+            <code>N₂ + O₂ &#8652; 2NO</code> (Khí Nitrogen monoxide, không màu).</p>
+            <p>2️⃣ <strong>Oxi hóa tức thì trong không khí:</strong><br>
+            <code>2NO + O₂ &rarr; 2NO₂</code> (Khí Nitrogen dioxide, màu nâu đỏ).</p>
+            <p>3️⃣ <strong>Nước mưa hòa tan cùng dưỡng khí O₂:</strong><br>
+            <code>4NO₂ + O₂ + 2H₂O &rarr; 4HNO₃</code> (Tạo thành dung dịch axit nitric rất loãng trong nước mưa).</p>
+            <p>4️⃣ <strong>Ngấm vào đất trung hòa tạo phân đạm:</strong><br>
+            <code>HNO₃ &rarr; H⁺ + NO₃⁻</code>. Cây lúa hấp thụ trực tiếp ion <strong>nitrate (NO₃⁻)</strong> qua rễ để tổng hợp axit amin và diệp lục, giúp lúa đâm chồi nhảy vọt sau cơn mưa giông!</p>
+          </div>
+        `,
+        boardHtml: `
+          <div class="chalk-board">
+            <div class="chalk-title">📌 BẢNG PHẤN: CHUỖI PHẢN ỨNG SẤM SÉT TẠO PHÂN ĐẠM TỰ NHIÊN</div>
+            <div class="chalk-row">
+              <span class="chalk-code">Giai đoạn 1</span>: N₂ + O₂ ──[Tia sấm sét]──&gt; 2NO (Không màu)
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">Giai đoạn 2</span>: 2NO + O₂ &rarr; 2NO₂ (Hóa nâu đỏ)
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">Giai đoạn 3</span>: 4NO₂ + O₂ + 2H₂O &rarr; 4HNO₃ (Trong nước mưa)
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">Giai đoạn 4</span>: HNO₃ &rarr; H⁺ + <span class="chalk-accent">NO₃⁻ (PHÂN ĐẠM CHO CÂY HẤP THỤ!)</span>
+            </div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-alert">
+              🌾 <strong>Ý NGHĨA KINH TẾ:</strong> Mỗi năm sấm sét cung cấp hàng triệu tấn phân đạm tự nhiên cho Trái Đất mà không tốn một đồng chi phí sản xuất công nghiệp nào!
+            </div>
+          </div>
+        `
+      },
+      {
+        shortTitle: "4. Ứng Dụng Đời Sống",
+        title: "Chặng 4: Khí Trơ Đóng Gói Thực Phẩm & Nitrogen Lỏng Siêu Lạnh",
+        speech: "Chặng cuối Bài 4: Ứng dụng thực tế của Nitrogen! Tại sao gói bim bim snack các trò ăn lại phồng to và khoai tây bên trong giòn tan dù để cả mấy tháng? Vì nhà sản xuất đã hút hết không khí ra và BƠM KHÍ NITROGEN NGUYÊN CHẤT vào! Vì Nitrogen trơ nên dầu mỡ không bị oxy hóa ôi thiu, thực phẩm giữ được độ giòn. Trong công nghiệp, Nitrogen dùng làm môi trường trơ để sản xuất vi mạch bán dẫn, chống cháy nổ bồn chứa xăng dầu. Còn Nitrogen lỏng sôi ở âm 196 độ C: Được dùng làm môi trường đông lạnh siêu tốc để bảo quản tinh trùng, noãn trứng, phôi thai trong y học, mẫu bệnh phẩm sinh học, và tạo làn khói mờ ảo trong các sự kiện sân khấu ẩm thực. Đi thi phần ứng dụng các trò cứ tự tin nhớ các ví dụ này nhé!",
+        teacherHtml: `
+          <div class="teacher-speech">
+            <p class="highlight-callout">📦 <strong>"BỐN ỨNG DỤNG THỰC TẾ ĐẮT GIÁ CỦA NITROGEN TRONG ĐỜI SỐNG VÀ CÔNG NGHIỆP:"</strong></p>
+            <p>1️⃣ <strong>Bảo quản thực phẩm (Đóng gói bim bim, bánh snack):</strong><br>
+            • Khí N₂ trơ, không mùi, không độc, không tác dụng với dầu mỡ &rarr; Đuổi sạch O₂ ra ngoài, ngăn chặn quá trình ôi thiu oxy hóa chất béo, giữ bánh luôn giòn rụm và túi phồng chống vỡ vụn khi vận chuyển.</p>
+            <p>2️⃣ <strong>Tạo môi trường trơ công nghiệp:</strong><br>
+            • Trong luyện kim, sản xuất linh kiện điện tử bán dẫn và vi mạch máy tính (tránh oxi hóa bề mặt kim loại ở nhiệt độ cao).<br>
+            • Bơm vào các bồn chứa xăng dầu, hầm tàu chở dầu để phòng chống cháy nổ.</p>
+            <p>3️⃣ <strong>Nitrogen lỏng (Nhiệt độ sôi cực thấp: -196 &deg;C):</strong><br>
+            • Đông lạnh siêu nhanh thực phẩm cao cấp giữ nguyên cấu trúc tế bào.<br>
+            • Y học sinh sản: Bảo quản mẫu tinh trùng, trứng, phôi thai, tế bào gốc, tạng hiến tặng.<br>
+            • Hiệu ứng khói sân khấu và ẩm thực kem khói phân tử.</p>
+            <p>4️⃣ <strong>Nguyên liệu sản xuất hóa chất:</strong> Là nguyên liệu sống còn để tổng hợp khí ammonia NH₃ (từ đó sản xuất phân đạm và axit nitric).</p>
+          </div>
+        `,
+        boardHtml: `
+          <div class="chalk-board">
+            <div class="chalk-title">📌 BẢNG PHẤN: TỔNG KẾT ỨNG DỤNG CỦA NITROGEN TRONG ĐỀ THI</div>
+            <div class="chalk-row">
+              <span class="chalk-code">ĐÓNG GÓI SNACK</span> : Bơm khí N₂ trơ chống oxy hóa dầu mỡ, giữ giòn bánh.
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">CHỐNG CHÁY NỔ</span> &nbsp;&nbsp;: Bơm vào bồn xăng dầu, hầm chứa khí hóa lỏng.
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">N₂ LỎNG (-196 &deg;C)</span>: Bảo quản tinh trùng, trứng, phôi thai, mẫu bệnh phẩm tế bào.
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">HÓA CHẤT</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Tổng hợp NH₃ &rarr; Sản xuất phân bón Ure, đạm Nitrate.
+            </div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-alert">
+              🎯 <strong>CÂU HỎI THỰC TẾ:</strong> "Khí nào thường được bơm vào các túi đóng gói khoai tây chiên để bảo quản?" &rarr; <strong>Đáp án:</strong> Khí Nitrogen (N₂).
+            </div>
+          </div>
+        `
+      }
+    ]
+  },
+
+  // ------------------------------------------------------------------------
+  // BÀI 5: AMMONIA (NH₃) & MUỐI AMMONIUM (NH₄⁺)
+  // ------------------------------------------------------------------------
+  "bai-5": {
+    lessonName: "💨 BÀI 5: Ammonia & Muối NH₄⁺",
+    subtitle: "Cấu Trúc Chóp, Khói Trắng NH₄Cl, Haber-Bosch & Nhận Biết Khí Khai",
+    steps: [
+      {
+        shortTitle: "1. Cấu Trúc & Độ Tan",
+        title: "Chặng 1: Cấu Trúc Chóp Tam Giác & Thí Nghiệm Đài Phun Nước Hồng",
+        speech: "Chào các trò! Hôm nay thầy trò mình chinh phục Bài 5: Ammonia NH3 và Muối Amoni NH4+! Đầu tiên, nhìn vào cấu trúc phân tử NH3: Nguyên tử Nitrogen ở đỉnh chóp, liên kết với 3 Hydro tạo thành HÌNH CHÓP TAM GIÁC. Trên đỉnh đầu nguyên tử N vẫn còn MỘT CẶP ELECTRON TỰ DO chưa liên kết! Chính cặp e này quyết định toàn bộ tính chất kì diệu của NH3. Về tính tan: NH3 tan vô địch thiên hạ trong nước, 1 lít nước ở 20 độ C hòa tan được tới khoảng 700 lít khí NH3! Người ta làm thí nghiệm đài phun nước: Cắm ống hút từ chậu nước pha phenolphthalein vào bình chứa đầy khí NH3. NH3 tan quá nhanh làm áp suất trong bình tụt giảm đột ngột, hút nước từ dưới chậu phun ngược lên thành tia nước màu HỒNG rực rỡ! Thí nghiệm này chứng minh 2 điều: NH3 tan cực nhiều trong nước và dung dịch có tính base!",
+        teacherHtml: `
+          <div class="teacher-speech">
+            <p class="highlight-callout">🔺 <strong>"CẤU TRÚC PHÂN TỬ NH₃ VÀ ĐỘ TAN VÔ ĐỊCH TRONG NƯỚC (1 L NƯỚC TAN 700 L KHÍ!):"</strong></p>
+            <p>• <strong>Cấu trúc hình học:</strong> Dạng <strong>HÌNH CHÓP TAM GIÁC</strong> (nguyên tử N ở đỉnh chóp, 3 nguyên tử H ở đáy tam giác, góc liên kết H-N-H xấp xỉ <code>107&deg;</code>).</p>
+            <p>• <strong>Đặc điểm quyết định tính chất:</strong> Trên nguyên tử N còn lại <strong>1 CẶP ELECTRON TỰ DO</strong> chưa tham gia liên kết, phân tử phân cực mạnh &rarr; Dễ dàng tạo liên kết hydrogen với nước và sẵn sàng nhận proton H⁺!</p>
+            <p>• <strong>Độ tan phi thường:</strong> Ở 20 &deg;C, 1 Lít nước có thể hòa tan tới <strong>khoảng 700 Lít khí NH₃</strong>!</p>
+            <p>⛲ <strong>THÍ NGHIỆM ĐÀI PHUN NƯỚC KINH ĐIỂN:</strong><br>
+            • Cho khí NH₃ vào bình thủy tinh khô đậy kín có ống vuốt nối xuống chậu nước pha phenolphtalein.<br>
+            • Khi mở khóa, một ít nước vào bình hòa tan ngay một lượng lớn khí NH₃ &rarr; <strong>Áp suất trong bình tụt giảm mạnh</strong> so với áp suất khí quyển.<br>
+            • Nước từ chậu bị hút vọt lên phun thành tia nước như đài phun nước, đồng thời hóa sang <strong>MÀU HỒNG RỰC RỠ</strong>!<br>
+            👉 <em>Kết luận thí nghiệm:</em> Chứng minh NH₃ <strong>tan rất nhiều trong nước</strong> và dung dịch NH₃ <strong>có tính base</strong>.</p>
+          </div>
+        `,
+        boardHtml: `
+          <div class="chalk-board">
+            <div class="chalk-title">📌 BẢNG PHẤN: CẤU TRÚC NH₃ & THÍ NGHIỆM ĐÀI PHUN NƯỚC</div>
+            <div class="chalk-row">
+              <span class="chalk-code">DẠNG HÌNH HỌC</span> &nbsp;&nbsp;&nbsp;&nbsp;: Hình CHÓP TAM GIÁC (Góc liên kết 107&deg;)
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">TRÊN ĐỈNH N</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="chalk-accent">1 CẶP ELECTRON TỰ DO</span> (Nhận H⁺ &rarr; Tính Base!)
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">ĐỘ TAN Ở 20 &deg;C</span> &nbsp;&nbsp;: <span class="chalk-accent">1 Lít H₂O hòa tan ~700 Lít NH₃(k)</span>
+            </div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-alert">
+              ⛲ <strong>Ý NGHĨA HIỆN TƯỢNG PHUN NƯỚC MÀU HỒNG:</strong><br>
+              1. Nước phun lên &rarr; Do áp suất trong bình giảm mạnh (tan cực nhiều).<br>
+              2. Đổi sang màu hồng &rarr; Do dung dịch NH₃ tạo môi trường base: <code>NH₃ + H₂O &#8652; NH₄⁺ + OH⁻</code>.
+            </div>
+          </div>
+        `
+      },
+      {
+        shortTitle: "2. Base Yếu & Khử Mạnh",
+        title: "Chặng 2: Hai Tính Chất Hóa Học: Base Yếu & Khử Mạnh (Khói Trắng NH₄Cl)",
+        speech: "Sang chặng 2: Hai tính chất hóa học then chốt của Ammonia. Một: TÍNH BASE YẾU. Do cặp electron tự do trên nguyên tử N sẵn sàng nhận một proton H+. Dung dịch NH3 làm quỳ tím hóa xanh, phenolphthalein hóa hồng. Tác dụng với axit tạo muối amoni, kinh điển nhất là thí nghiệm lấy 2 đũa thủy tinh nhúng vào dung dịch NH3 đặc và HCl đặc rồi để gần nhau: KHÓI TRẮNG mù mịt bốc lên ngay giữa không trung! Khói trắng đó chính là các hạt tinh thể muối amoni clorua NH4Cl li ti! Tác dụng với dung dịch muối tạo hidroxit kết tủa, ví dụ nhỏ NH3 vào AlCl3 tạo kết tủa keo trắng Al(OH)3, và kết tủa này không tan trong NH3 dư. Hai: TÍNH KHỬ MẠNH. Vì số oxi hóa của N trong NH3 là âm 3 thấp nhất, chỉ có thể tăng lên. Cháy trong oxy tỏa nhiệt sinh ra khí N2; còn nếu có xúc tác Platin ở 800 độ C thì tạo ra khí NO để sản xuất axit nitric. NH3 cũng khử được CuO màu đen thành đồng Cu kim loại màu đỏ rực!",
+        teacherHtml: `
+          <div class="teacher-speech">
+            <p class="highlight-callout">🧪 <strong>"HAI MẶT TÍNH CHẤT HÓA HỌC CỐT LÕI: TÍNH BASE YẾU VÀ TÍNH KHỬ MẠNH!"</strong></p>
+            <p>1️⃣ <strong>TÍNH BASE YẾU:</strong><br>
+            • Làm đổi màu chất chỉ thị: Quỳ tím &rarr; <strong>XANH</strong>; Phenolphthalein &rarr; <strong>HỒNG</strong>.<br>
+            • Tác dụng với acid tạo muối ammonium:<br>
+            <code>NH₃ + HCl &rarr; NH₄Cl</code> (Hiện tượng: <strong>KHÓI TRẮNG</strong> bốc lên khi để 2 đầu đũa thủy tinh nhúng NH₃ đặc và HCl đặc gần nhau!).<br>
+            • Tác dụng với dung dịch muối tạo hydroxide kết tủa:<br>
+            <code>AlCl₃ + 3NH₃ + 3H₂O &rarr; Al(OH)₃&darr; (keo trắng) + 3NH₄Cl</code>.<br>
+            ⚠️ <em>Lưu ý:</em> Kết tủa <code>Al(OH)₃</code> và <code>Fe(OH)₃</code> <strong>KHÔNG TAN</strong> trong NH₃ dư (khác với NaOH dư làm tan Al(OH)₃!).</p>
+            <p>2️⃣ <strong>TÍNH KHỬ MẠNH (Do N⁻³ có số oxi hóa thấp nhất, chỉ có thể nhường e để tăng số OXH):</strong><br>
+            • <em>Cháy trong không khí (không xúc tác):</em> <code>4NH₃ + 3O₂ &rarr; 2N₂ + 6H₂O</code> (Ngọn lửa màu vàng nhạt).<br>
+            • <em>Oxi hóa có xúc tác Platin (Pt) ở 800 - 900 &deg;C:</em> <code>4NH₃ + 5O₂ ──[Pt, t&deg;]──&gt; 4NO + 6H₂O</code> (Phản ứng then chốt giai đoạn 1 để sản xuất axit HNO₃!).<br>
+            • <em>Khử oxide kim loại (CuO đen &rarr; Cu đỏ):</em> <code>2NH₃ + 3CuO (đen) ──[t&deg;]──&gt; 3Cu (đỏ) + N₂&uarr; + 3H₂O</code>.</p>
+          </div>
+        `,
+        boardHtml: `
+          <div class="chalk-board">
+            <div class="chalk-title">📌 BẢNG PHẤN: 2 TÍNH CHẤT HÓA HỌC CỦA NH₃ TRONG ĐỀ THI</div>
+            <div class="chalk-row">
+              <span class="chalk-code">TÍNH BASE YẾU</span> : Nhận H⁺ &rarr; Quỳ xanh, Phenol hồng, tạo kết tủa hydroxide.
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">HIỆN TƯỢNG KHÓI TRẮNG</span>: <span class="chalk-accent">NH₃(k) + HCl(k) &rarr; NH₄Cl(r) (Khói trắng tinh thể bay lơ lửng)</span>
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">TÍNH KHỬ MẠNH</span> : N⁻³ &rarr; N₂⁰ hoặc N⁺²O
+            </div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-alert">
+              🎯 <strong>PHÂN BIỆT ĐỐI CHỨNG VỚI O₂:</strong><br>
+              • Không xúc tác: <code>4NH₃ + 3O₂ &rarr; 2N₂ + 6H₂O</code> (Tạo N₂)<br>
+              • Có xúc tác Pt (850 &deg;C): <code>4NH₃ + 5O₂ &rarr; 4NO + 6H₂O</code> (Tạo NO sản xuất HNO₃!)
+            </div>
+          </div>
+        `
+      },
+      {
+        shortTitle: "3. Haber-Bosch Tối Ưu",
+        title: "Chặng 3: Quy Trình Haber - Bosch & Nghệ Thuật Thỏa Hiệp Nhiệt Độ - Áp Suất",
+        speech: "Chặng 3 này đề thi cực kì thích hỏi phần vận dụng: Tổng hợp NH3 trong công nghiệp theo quy trình Haber - Bosch! Phản ứng là: N2 khí cộng 3 H2 khí thuận nghịch tạo 2 NH3 khí, phản ứng tỏa nhiệt delta H bằng trừ 92 kilôjun. Để thu được nhiều NH3 nhất, nhà máy phải áp dụng Le Chatelier: Một: Về áp suất, bên trái có 4 mol khí, bên phải có 2 mol khí. Để cân bằng dịch sang phải cần TĂNG ÁP SUẤT. Thực tế người ta dùng áp suất cao khoảng 150 đến 200 bar. Tại sao không tăng lên 1000 bar? Vì áp suất quá cao thì máy móc, đường ống thép phải siêu dày, chi phí đắt đỏ và nguy cơ nổ bình cực lớn! Hai: Về nhiệt độ, phản ứng tỏa nhiệt nên theo lý thuyết hạ nhiệt độ sẽ tăng hiệu suất. Nhưng nếu hạ nhiệt độ quá thấp thì tốc độ phản ứng lại chậm như rùa bò, đợi cả năm mới xong! Vì thế người ta phải THỎA HIỆP ở nhiệt độ 400 đến 450 độ C và thêm chất xúc tác Bột Sắt Fe để phản ứng đạt cân bằng nhanh chóng! Đỉnh cao của khoa học là ở chỗ thỏa hiệp tối ưu này!",
+        teacherHtml: `
+          <div class="teacher-speech">
+            <p class="highlight-callout">🏭 <strong>"QUY TRÌNH HABER - BOSCH (1909): ĐỈNH CAO NGHỆ THUẬT THỎA HIỆP CÔNG NGHIỆP!"</strong></p>
+            <p>Phương trình nhiệt hóa học: <code>N₂(k) + 3H₂(k) &#8652; 2NH₃(k)</code> (&Delta;_r H&deg;₂₉₈ = -92 kJ &lt; 0: Phản ứng tỏa nhiệt, giảm thể tích khí).</p>
+            <p>1️⃣ <strong>VỀ ÁP SUẤT (Chọn 150 - 200 bar):</strong><br>
+            • Vế trái có 1+3=4 mol khí, vế phải có 2 mol khí &rarr; <em>Tăng áp suất</em> giúp cân bằng dịch sang phải (tăng tạo NH₃).<br>
+            • <em>Vì sao không dùng áp suất cao hơn (ví dụ 1000 bar)?</em> Vì chi phí chế tạo vỏ thép chịu áp lực siêu cao quá đắt đỏ và nguy cơ rò rỉ nổ bình cực kì nguy hiểm!</p>
+            <p>2️⃣ <strong>VỀ NHIỆT ĐỘ (Thỏa hiệp ở 400 - 450 &deg;C):</strong><br>
+            • Chiều thuận là tỏa nhiệt (&Delta;H &lt; 0) &rarr; Theo Le Chatelier, <em>hạ nhiệt độ</em> sẽ làm cân bằng dịch sang phải (tăng hiệu suất).<br>
+            • <em>Nhưng nghịch lý là:</em> Ở nhiệt độ thấp, tốc độ phản ứng lại diễn ra quá chậm chạp, không có giá trị kinh tế!<br>
+            • Do đó người ta phải <strong>thỏa hiệp ở khoảng 400 - 450 &deg;C</strong> để vừa có tốc độ phản ứng đủ nhanh, vừa đạt hiệu suất hợp lý.</p>
+            <p>3️⃣ <strong>CHẤT XÚC TÁC (Sắt Fe biến tính Al₂O₃, K₂O):</strong><br>
+            • Giúp phản ứng đạt tới trạng thái cân bằng nhanh hơn mà không làm thay đổi vị trí cân bằng.</p>
+          </div>
+        `,
+        boardHtml: `
+          <div class="chalk-board">
+            <div class="chalk-title">📌 BẢNG PHẤN: BỘ 3 ĐIỀU KIỆN TỐI ƯU CỦA QUY TRÌNH HABER - BOSCH</div>
+            <div class="chalk-row">
+              <span class="chalk-code">ÁP SUẤT</span> : <span class="chalk-accent">150 - 200 bar</span> (Tăng hiệu suất tạo NH₃, vừa sức máy móc)
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">NHIỆT ĐỘ</span>: <span class="chalk-accent">400 - 450 &deg;C</span> (Thỏa hiệp giữa Tốc độ và Hiệu suất)
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">XÚC TÁC</span> : <span class="chalk-accent">Bột Sắt (Fe)</span> pha thêm Al₂O₃ và K₂O
+            </div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-alert">
+              💡 <strong>HIỆU SUẤT MỖI CHU KÌ:</strong> Đạt khoảng 15 - 20%. Khí chưa phản ứng được tách hóa lỏng NH₃ rồi dẫn quay trở lại buồng phản ứng tuần hoàn!
+            </div>
+          </div>
+        `
+      },
+      {
+        shortTitle: "4. Muối Ammonium",
+        title: "Chặng 4: Muối NH₄⁺: Phản Ứng Khí Khai & Bột Nở Làm Bánh Bao",
+        speech: "Chặng cuối Bài 5: Muối Amoni NH4+! Muối amoni như NH4Cl, NH4NO3, amoni sunfat đều tan rất tốt trong nước và điện ly hoàn toàn ra ion amoni. Muốn NHẬN BIẾT muối amoni trong phòng thí nghiệm làm thế nào? Cực kì đơn giản: Cho dung dịch kiềm mạnh như NaOH vào rồi đun nóng nhẹ. Ion NH4+ tác dụng ion OH- sinh ra khí amoniac NH3 có MÙI KHAI bốc lên, đưa mẩu quỳ tím ẩm vào miệng ống nghiệm sẽ thấy hóa XANH ngay lập tức! Thứ hai là tính chất KÉM BỀN NHIỆT: Khi đun nóng, muối amoni bị phân hủy nhiệt. Muối amoni hidrocacbonat NH4HCO3 bị nhiệt phân sinh ra khí NH3, CO2 và hơi nước, khí thoát ra làm nở xốp khối bột bánh, chính là BỘT NỞ làm bánh bao thơm ngon xốp mềm mà các trò ăn mỗi sáng! Còn muối amoni nitrat NH4NO3 khi nung nhẹ tạo khí cười N2O, nhưng nếu đun nhanh ở nhiệt độ cao hoặc có va đập mạnh thì có thể gây nổ nguy hiểm!",
+        teacherHtml: `
+          <div class="teacher-speech">
+            <p class="highlight-callout">👃 <strong>"NHẬN BIẾT MUỐI AMMONIUM VÀ ỨNG DỤNG BỘT NỞ LÀM BÁNH BAO:"</strong></p>
+            <p>• <strong>Tính tan:</strong> Tất cả các muối ammonium (<code>NH₄Cl, NH₄NO₃, (NH₄)₂SO₄, NH₄HCO₃...</code>) đều <strong>tan rất tốt trong nước</strong> và là chất điện ly mạnh.</p>
+            <p>1️⃣ <strong>PHẢN ỨNG NHẬN BIẾT ION NH₄⁺ (DẤU HIỆU ĐỘC QUYỀN):</strong><br>
+            • Nhỏ dung dịch kiềm (NaOH hoặc KOH) vào mẫu thử rồi <strong>đun nóng nhẹ</strong>:<br>
+            <code>NH₄⁺ + OH⁻ ──[t&deg;]──&gt; NH₃&uarr; (mùi khai đặc trưng) + H₂O</code>.<br>
+            • <em>Dấu hiệu nhận biết:</em> Khí sinh ra có mùi khai, làm <strong>mẩu giấy quỳ tím ẩm hóa XANH</strong>.</p>
+            <p>2️⃣ <strong>TÍNH KÉM BỀN NHIỆT (DỄ BỊ NHIỆT PHÂN KHI NUNG):</strong><br>
+            • <em>Muối chứa anion không có tính oxi hóa:</em><br>
+            &nbsp;&nbsp;<code>NH₄Cl(r) ──[t&deg;]──&gt; NH₃(k) + HCl(k)</code> (Bay lên rồi nguội lại ngưng tụ thành vòng trắng NH₄Cl ở miệng ống).<br>
+            &nbsp;&nbsp;<code>NH₄HCO₃(r) ──[t&deg;]──&gt; NH₃&uarr; + CO₂&uarr; + H₂O</code> &rarr; Dùng làm <strong>BỘT NỞ</strong> làm bánh bao xốp mềm vì toàn bộ sản phẩm đều là chất khí không để lại cặn!<br>
+            • <em>Muối chứa anion có tính oxi hóa (nhiệt phân oxi hóa - khử):</em><br>
+            &nbsp;&nbsp;<code>NH₄NO₂ ──[t&deg;]──&gt; N₂ + 2H₂O</code>.<br>
+            &nbsp;&nbsp;<code>NH₄NO₃ ──[200 &deg;C]──&gt; N₂O (khí cười) + 2H₂O</code> (Nếu nung nhanh trên 300 &deg;C có thể gây nổ phân bón cực kì nguy hiểm!).</p>
+          </div>
+        `,
+        boardHtml: `
+          <div class="chalk-board">
+            <div class="chalk-title">📌 BẢNG PHẤN: NHẬN BIẾT & NHIỆT PHÂN MUỐI AMMONIUM</div>
+            <div class="chalk-row">
+              <span class="chalk-code">THUỐC THỬ NHẬN BIẾT</span>: Dung dịch kiềm (OH⁻) + Đun nhẹ &rarr; Khí NH₃ mùi khai làm xanh quỳ ẩm.
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">BỘT NỞ BÁNH BAO</span> &nbsp;&nbsp;&nbsp;: <span class="chalk-accent">NH₄HCO₃ ──[t&deg;]──&gt; NH₃&uarr; + CO₂&uarr; + H₂O&uarr;</span> (Tạo độ xốp hoàn hảo)
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">ĐIỀU CHẾ KHÍ CƯỜI</span> &nbsp;: NH₄NO₃ ──[200 &deg;C]──&gt; N₂O&uarr; + 2H₂O
+            </div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-alert">
+              ⚠️ <strong>CÂU HỎI BẪY:</strong> Không bón phân đạm amoni (như NH₄NO₃, (NH₄)₂SO₄) chung với vôi sống (CaO) vì sẽ làm bay hơi mất khí NH₃, làm mất tác dụng của phân đạm: <code>2NH₄⁺ + Ca(OH)₂ &rarr; Ca²⁺ + 2NH₃&uarr; + 2H₂O</code>!
+            </div>
+          </div>
+        `
+      }
+    ]
+  },
+
+  // ------------------------------------------------------------------------
+  // BÀI 6: HỢP CHẤT CỦA NITROGEN VỚI OXYGEN & PHÚ DƯỠNG
+  // ------------------------------------------------------------------------
+  "bai-6": {
+    lessonName: "🧪 BÀI 6: HNO₃ & Phú Dưỡng",
+    subtitle: "4 Oxide, Mưa Acid, Hóa Trị IV, Bảo Toàn e & Phú Dưỡng",
+    steps: [
+      {
+        shortTitle: "1. 4 Oxide",
+        title: "Chặng 1: 4 Anh Em Nhà Oxide & Thảm Họa Mưa Acid",
+        speech: "Chào các trò! Hôm nay thầy trò mình xử đẹp Bài 6: Hợp chất của Nitrogen với Oxygen! Đừng có sợ, bài này bản chất cực kì thú vị. Đầu tiên, nhìn vào 4 anh em nhà oxide: N2O, NO, NO2, N2O4. Thằng N2O là khí cười trong bóng cười, hít vào gây tê kích thích thần kinh rất nguy hiểm. Thằng NO thì không màu, nhưng vừa chui ra khỏi ống nghiệm gặp oxy không khí là hóa nâu đỏ thành NO2 ngay! Nhớ dấu hiệu hóa nâu này để làm đề thi. Thằng NO2 màu nâu đỏ độc hại niêm mạc phổi. Còn Mưa Acid là nước mưa có pH dưới 5.6 do SO2 và NOx tạo thành axit. Mưa rơi xuống tượng đá vôi CaCO3 là sủi bọt ăn mòn rỗ mặt, rơi xuống hồ là cá tôm ngửa bụng!",
+        teacherHtml: `
+          <div class="teacher-speech">
+            <p class="highlight-callout">🔥 <strong>"Chào các trò! Thầy trò mình cùng xử đẹp Bài 6 nhé! Không học vẹt, học là phải hiểu bản chất và làm chủ phòng thi!"</strong></p>
+            <p>Đầu tiên, nhận diện <strong>4 anh em nhà Oxide của Nitrogen</strong>:</p>
+            <p>• <strong>N₂O (Khí Cười):</strong> Chất khí không màu, có vị ngọt nhẹ. Dùng gây mê trong y tế nhưng bị lạm dụng làm "bóng cười" gây tổn thương tủy sống và thần kinh cực kì nguy hiểm!</p>
+            <p>• <strong>NO (Nitrogen monoxide):</strong> Khí <strong>không màu</strong>. Nhưng vừa gặp O₂ trong không khí là lập tức phản ứng biến thành khí <strong>màu nâu đỏ</strong> (<code>2NO + O₂ &rarr; 2NO₂</code>). Đây là <em>dấu hiệu nhận biết kinh điển</em> trong mọi đề thi!</p>
+            <p>• <strong>NO₂ (Nitrogen dioxide):</strong> Khí màu <strong>nâu đỏ</strong>, mùi xốc hắc, độc hại, gây phá hủy niêm mạc phổi và phế quản.</p>
+            <p>• <strong>N₂O₄ (Dinitrogen tetroxide):</strong> Khí <strong>không màu</strong>, luôn nằm trong cân bằng thuận nghịch với NO₂: <code>2NO₂ (nâu đỏ) &#8652; N₂O₄ (không màu)</code>.</p>
+            <p>• <strong>Hiện tượng Mưa Acid:</strong> Nước mưa có <strong>pH &lt; 5,6</strong> (nhớ con số 5,6 này!). Khí NO₂ và SO₂ trong khói xe, nhà máy kết hợp nước mưa và oxy tạo ra HNO₃ và H₂SO₄, ăn mòn tượng đá vôi CaCO₃ và kim loại, làm chua đất và chết thủy sinh!</p>
+          </div>
+        `,
+        boardHtml: `
+          <div class="chalk-board">
+            <div class="chalk-title">📌 BẢNG PHẤN: 4 OXIDE & MƯA ACID</div>
+            <div class="chalk-row">
+              <span class="chalk-code">N₂O</span> : Khí cười (số oxh +1) &rarr; Gây tê, phá hủy thần kinh nếu lạm dụng
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">NO</span> : Không màu (số oxh +2) ──[+ O₂]──&gt; <span class="chalk-accent">NO₂ (Hóa nâu đỏ ngay lập tức!)</span>
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">NO₂</span> : Màu NÂU ĐỎ (số oxh +4) &rarr; Độc đường hô hấp, gây mưa acid
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">N₂O₄</span>: Không màu (số oxh +4) &rarr; 2NO₂ (nâu đỏ) &#8652; N₂O₄ (không màu)
+            </div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-alert">
+              ⛈️ <strong>CƠ CHẾ MƯA ACID (pH &lt; 5,6):</strong><br>
+              <code>4NO₂ + O₂ + 2H₂O &rarr; 4HNO₃</code><br>
+              <code>CaCO₃ (tượng đá) + 2H⁺ &rarr; Ca²⁺ + CO₂&uarr; + H₂O</code> (Ăn mòn sủi bọt rỗ đá!)
+            </div>
+          </div>
+        `
+      },
+      {
+        shortTitle: "2. Hóa Trị IV",
+        title: "Chặng 2: Cú Lừa Thế Kỉ Về HNO₃ — Hóa Trị IV Chứ Không Phải V!",
+        speech: "Bây giờ sang phần đắt giá nhất của Bài 6: Axit Nitric HNO3! Chỗ này đề thi cực kì thích gài bẫy lừa người mất gốc, nghe cho rõ này. Trong phân tử HNO3, số oxi hóa của Nitrogen là cộng 5. Thế nếu đề trắc nghiệm hỏi 'Hóa trị của Nitrogen trong HNO3 là bao nhiêu?', 10 đứa thì 9 đứa khoanh đáp án năm La Mã! Sai bét hết! Đáp án chuẩn phải là HÓA TRỊ BỐN! Vì sao? Vì nguyên tử Nitrogen ở chu kì 2, chỉ có 4 orbital hóa trị, làm gì có phân lớp d mà tạo 5 liên kết! Do đó N chỉ dùng được tối đa 4 obitan để liên kết, trong đó có một liên kết cho nhận. Nhớ khắc cốt ghi tâm: Số oxi hóa là cộng 5, nhưng HÓA TRỊ CHỈ LÀ BỐN! Đi thi câu này là ăn trọn điểm rồi đấy!",
+        teacherHtml: `
+          <div class="teacher-speech">
+            <p class="highlight-callout">⚠️ <strong>"Cảnh báo bẫy phòng thi 90% học sinh mất gốc bị lừa mất điểm oan uổng ở câu này!"</strong></p>
+            <p>Rất nhiều bạn nhìn vào công thức <strong>HNO₃</strong>, tính nhẩm số oxi hóa của H là +1, O là -2 &rarr; suy ra số oxi hóa của N là <strong>+5</strong>.</p>
+            <p>Thế là khi vào phòng thi, đề hỏi: <em>"Hóa trị của Nitrogen trong phân tử HNO₃ là bao nhiêu?"</em> &rarr; Bạn liền tự tin khoanh ngay <strong>Hóa trị V</strong>.</p>
+            <p>❌ <strong>KẾT QUẢ: SAI HOÀN TOÀN!</strong></p>
+            <p>✅ <strong>HÓA TRỊ CHUẨN CỦA N LÀ: IV (BỐN)</strong></p>
+            <p><strong>Bản chất vật lý - hóa học vì sao?</strong><br>
+            Nguyên tử Nitrogen (Z = 7) có cấu hình e: <code>1s² 2s² 2p³</code>. Lớp ngoài cùng (chu kì 2) <strong>chỉ có đúng 4 orbital hóa trị</strong> (1 orbital 2s và 3 orbital 2p). Ở chu kì 2 không hề có phân lớp d!<br>
+            Vì chỉ có 4 orbital nên Nitrogen chỉ có thể tạo tối đa <strong>4 LIÊN KẾT CỘNG HÓA TRỊ</strong>, bao gồm:<br>
+            • 1 liên kết đơn với nhóm -OH.<br>
+            • 1 liên kết đôi (=) với 1 nguyên tử O.<br>
+            • 1 liên kết cho - nhận (&rarr;) với nguyên tử O còn lại.<br>
+            👉 <strong>Tổng cộng: 1 + 2 + 1 = 4 liên kết &rArr; HÓA TRỊ IV!</strong></p>
+          </div>
+        `,
+        boardHtml: `
+          <div class="chalk-board">
+            <div class="chalk-title">📌 BẢNG PHẤN: PHÂN BIỆT SỐ OXI HÓA VS HÓA TRỊ TRONG HNO₃</div>
+            <div class="chalk-row">
+              <span class="chalk-code">SỐ OXI HÓA</span>: <span class="chalk-accent">+5</span> (Dấu cộng trước, số 5 sau)
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">HÓA TRỊ</span> &nbsp;&nbsp;&nbsp;: <span class="chalk-accent">IV (BỐN)</span> (Số La Mã, tuyệt đối KHÔNG phải V!)
+            </div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-alert">
+              🔑 <strong>CÔNG THỨC CẤU TẠO:</strong><br>
+              <code>H - O - N(=O) &rarr; O</code><br>
+              • 1 liên kết đơn (với O của OH)<br>
+              • 1 liên kết đôi (với O thứ hai)<br>
+              • 1 liên kết cho nhận (với O thứ ba)<br>
+              &rArr; <strong>Đủ 4 liên kết quanh nguyên tử N!</strong>
+            </div>
+          </div>
+        `
+      },
+      {
+        shortTitle: "3. Oxi Hóa",
+        title: "Chặng 3: Tính Oxi Hóa Bá Đạo Của HNO₃ — Tuyệt Đối Không Sinh Khí H₂!",
+        speech: "Chặng 3 này cực kì quan trọng: Tính chất hóa học của HNO3! HNO3 vừa là một axit mạnh, vừa là một CHẤT OXI HÓA SIÊU MẠNH! Nghe thầy dặn kĩ điều này: Bình thường kim loại tác dụng HCl hay H2SO4 loãng thì sinh ra khí H2 sủi bọt, đúng không? Nhưng khi cho kim loại tác dụng với HNO3 thì TUYỆT ĐỐI KHÔNG BAO GIỜ SINH RA KHÍ H2! Bởi vì ion nitrat NO3- có tính oxi hóa mạnh hơn ion H+ rất nhiều lần! Nó sẽ đẩy kim loại lên số oxi hóa CAO NHẤT (như Fe lên Fe cộng 3 chứ không dừng ở cộng 2). Đồng thời bản thân N cộng 5 bị khử xuống các sản phẩm khử như NO2 nâu đỏ, NO không màu hóa nâu, N2O khí cười, N2, hoặc muối amoni nitrat NH4NO3! Thêm nữa, nhôm Al, sắt Fe và crom Cr bị THỤ ĐỘNG HÓA trơ lì trong HNO3 đặc nguội! Nhớ lấy để không bị đề thi cho ăn quả lừa!",
+        teacherHtml: `
+          <div class="teacher-speech">
+            <p class="highlight-callout">⚡ <strong>"QUY TẮC SẮT ĐÁ: KIM LOẠI TÁC DỤNG HNO₃ TUYỆT ĐỐI KHÔNG SINH RA KHÍ H₂!"</strong></p>
+            <p>1️⃣ <strong>Oxi hóa hầu hết kim loại (trừ Au và Pt):</strong><br>
+            • Đưa kim loại lên <strong>hóa trị / số oxi hóa cao nhất</strong>.<br>
+            <em>Ví dụ:</em> Sắt Fe tác dụng HCl chỉ ra Fe²⁺ (<code>FeCl₂</code>), nhưng gặp HNO₃ là bị kéo thẳng lên <strong>Fe³⁺</strong>: <code>Fe(NO₃)₃</code>!</p>
+            <p>2️⃣ <strong>Sản phẩm khử của Nitrogen (+5):</strong> Tùy vào độ mạnh của kim loại và nồng độ axit:<br>
+            • Kim loại trung bình/yếu (Cu, Ag, Fe) + HNO₃ đặc &rarr; Khí <strong>NO₂ (nâu đỏ)</strong>.<br>
+            • Kim loại trung bình + HNO₃ loãng &rarr; Khí <strong>NO (không màu hóa nâu)</strong>.<br>
+            • Kim loại mạnh (Mg, Al, Zn) + HNO₃ rất loãng &rarr; Có thể khử sâu xuống <strong>N₂O, N₂</strong> hoặc <strong>NH₄NO₃</strong> (muối amoni không màu, không sủi bọt khí!).</p>
+            <p>3️⃣ <strong>Hiện tượng Thụ Động Hóa (Trơ lỳ hóa học):</strong><br>
+            • <strong>Al, Fe, Cr</strong> bị thụ động trong <strong>HNO₃ ĐẶC, NGUỘI</strong> (và cả H₂SO₄ đặc nguội)!<br>
+            • Bề mặt kim loại sinh ra một lớp màng oxit siêu mỏng, siêu mịn và bền vững ngăn chặn hoàn toàn phản ứng tiếp diễn &rarr; Người ta có thể dùng thùng bằng nhôm hoặc sắt để chứa và vận chuyển HNO₃ đặc nguội!</p>
+          </div>
+        `,
+        boardHtml: `
+          <div class="chalk-board">
+            <div class="chalk-title">📌 BẢNG PHẤN: CÁC SẢN PHẨM KHỬ CỦA N⁺⁵ TRONG ĐỀ THI</div>
+            <div class="chalk-row">
+              <span class="chalk-code">NO₂</span> : Khí màu NÂU ĐỎ (HNO₃ đặc hay gặp)
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">NO</span> &nbsp;: Khí KHÔNG MÀU, hóa nâu trong không khí (HNO₃ loãng hay gặp)
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">N₂O</span>: Khí cười (không màu, vị ngọt)
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">N₂</span> &nbsp;: Khí trơ không màu
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">NH₄NO₃</span>: Dung dịch muối amoni (không thấy sủi bọt khí, hay gài bẫy tính khối lượng muối!)
+            </div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-alert">
+              🚫 <strong>THỤ ĐỘNG HÓA:</strong> <code>Al, Fe, Cr + HNO₃ (đặc, nguội) &rarr; KHÔNG PHẢN ỨNG!</code>
+            </div>
+          </div>
+        `
+      },
+      {
+        shortTitle: "4. Tính Bảo Toàn e",
+        title: "Chặng 4: Tuyệt Kỹ Giải Nhanh: Định Luật Bảo Toàn Electron 1 Dòng",
+        speech: "Bây giờ đến phần bá đạo nhất: CẦN TÍNH TOÁN BÀI TOÁN HNO3 NHƯ THẾ NÀO? Các bạn mất gốc hay cặm cụi ngồi viết phương trình rồi cân bằng oxi hóa khử toát mồ hôi, mất 10 phút mới xong một câu trắc nghiệm! Hãy vứt ngay cách đó đi! Dùng TUYỆT KỸ BẢO TOÀN ELECTRON của thầy: Tổng số mol electron kim loại cho BẰNG Tổng số mol electron Nitrogen nhận! Nghĩa là: Số mol kim loại nhân hóa trị kim loại bằng Số mol khí nhân số electron trao đổi! Ví dụ: Kim loại Magie hóa trị 2 tác dụng HNO3 sinh ra khí NO. Magie nhường 2e, N cộng 5 nhận 3e về NO. Ta có ngay phương trình: 2 lần số mol Magie bằng 3 lần số mol NO! Đề cho mol Magie, bấm máy tính 1 giây ra ngay mol NO! Không cần viết bất kì một phương trình phản ứng nào! Đây chính là vũ khí hủy diệt phòng thi trắc nghiệm!",
+        teacherHtml: `
+          <div class="teacher-speech">
+            <p class="highlight-callout">🧮 <strong>"HƯỚNG DẪN TÍNH TOÁN: BẢO TOÀN ELECTRON 1 DÒNG — KHÔNG CẦN CÂN BẰNG PHƯƠNG TRÌNH!"</strong></p>
+            <p>Học sinh giỏi làm trắc nghiệm câu này chỉ mất 15 giây nhờ định luật: <strong>TỔNG MOL e CHO = TỔNG MOL e NHẬN</strong>.</p>
+            <p>• <strong>Bên cho e (Kim loại M):</strong> <code>n_e cho = n_KimLoại &times; HóaTrị</code><br>
+            • Mg (hóa trị 2) nhường 2e &rarr; <code>2 &times; n_Mg</code>.<br>
+            • Al (hóa trị 3) nhường 3e &rarr; <code>3 &times; n_Al</code>.<br>
+            • Fe (lên Fe³⁺) nhường 3e &rarr; <code>3 &times; n_Fe</code>.<br>
+            • Cu (hóa trị 2) nhường 2e &rarr; <code>2 &times; n_Cu</code>.</p>
+            <p>• <strong>Bên nhận e (Khí sinh ra từ N⁺⁵):</strong><br>
+            • Lên NO₂ (+4): nhận 1e &rarr; <code>1 &times; n_NO₂</code>.<br>
+            • Lên NO (+2): nhận 3e &rarr; <code>3 &times; n_NO</code>.<br>
+            • Lên N₂O (+1): nhận 8e &rarr; <code>8 &times; n_N₂O</code>.<br>
+            • Lên N₂ (0): nhận 10e &rarr; <code>10 &times; n_N₂</code>.<br>
+            • Xuống muối NH₄NO₃ (-3): nhận 8e &rarr; <code>8 &times; n_NH₄NO₃</code>.</p>
+            <p>👉 <strong>CÔNG THỨC 1 DÒNG TỔNG QUÁT:</strong><br>
+            <code>HóaTrị &times; n_KL = 1.n_NO₂ + 3.n_NO + 8.n_N₂O + 10.n_N₂ + 8.n_NH₄NO₃</code></p>
+          </div>
+        `,
+        boardHtml: `
+          <div class="chalk-board">
+            <div class="chalk-title">📌 BẢNG PHẤN: VÍ DỤ BẤM MÁY TÍNH 1 DÒNG ĂN TRỌN ĐIỂM</div>
+            <div class="chalk-row">
+              <strong>ĐỀ BÀI:</strong> Cho 4,8 gam Magie (Mg) tan hết trong dung dịch HNO₃ loãng dư, thu được V Lít khí NO duy nhất (ở đkc). Tính V?
+            </div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-row">
+              <span class="chalk-code">Bước 1</span>: n_Mg = 4,8 / 24 = 0,2 mol
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">Bước 2</span>: Bảo toàn electron 1 dòng:<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <code>2 &times; n_Mg = 3 &times; n_NO</code><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &hArr; <code>2 &times; 0,2 = 3 &times; n_NO &rArr; n_NO = 0,4 / 3 mol</code>
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">Bước 3</span>: V = (0,4 / 3) &times; 24,79 &asymp; <strong>3,305 Lít</strong>!
+            </div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-alert">
+              ⏱️ <strong>BẤM MÁY TÍNH:</strong> <code>(4.8 / 24) * 2 / 3 * 24.79 = 3.305 L</code>. Mất đúng 10 giây, không tốn 1 giọt mực viết phương trình!
+            </div>
+          </div>
+        `
+      },
+      {
+        shortTitle: "5. Phú Dưỡng",
+        title: "Chặng 5: 3 Giai Đoạn Sản Xuất HNO₃ Công Nghiệp (Phương Pháp Ostwald)",
+        speech: "Sang chặng 5: Quy trình sản xuất HNO3 trong công nghiệp bằng phương pháp Ostwald! Nhớ chuẩn 3 giai đoạn liên hoàn này: Giai đoạn 1: Lấy khí amoniac NH3 đốt cháy trong oxy có xúc tác Platin ở 850 đến 900 độ C để tạo ra khí NO. Giai đoạn 2: Lấy khí NO sinh ra cho tác dụng tiếp với oxy không khí ở nhiệt độ thường để biến thành khí NO2 màu nâu đỏ. Giai đoạn 3: Lấy khí NO2 sục vào nước có sục thêm khí oxy để hấp thụ hoàn toàn tạo thành dung dịch axit nitric HNO3 nồng độ khoảng 60 đến 68%. Ba phương trình này đề kiểm tra giữa kì cực kì hay hỏi chuỗi phản ứng biến hóa, học thuộc lòng nhé!",
+        teacherHtml: `
+          <div class="teacher-speech">
+            <p class="highlight-callout">🏭 <strong>"QUY TRÌNH OSTWALD (1902): 3 GIAI ĐOẠN ĐIỀU CHẾ HNO₃ TỪ AMMONIA NH₃:"</strong></p>
+            <p>1️⃣ <strong>Giai đoạn 1 (Oxi hóa NH₃ thành NO):</strong><br>
+            • Cho hỗn hợp khí NH₃ và không khí (O₂) đi qua lưới xúc tác <strong>Platin (Pt)</strong> ở nhiệt độ cao <strong>850 - 900 &deg;C</strong>:<br>
+            <code>4NH₃ + 5O₂ ──[Pt, 850&deg;C]──&gt; 4NO + 6H₂O</code> (&Delta;_r H &lt; 0, tỏa nhiệt mạnh).<br>
+            <em>(Nếu không có xúc tác Pt thì NH₃ cháy chỉ ra N₂ chứ không ra NO!).</em></p>
+            <p>2️⃣ <strong>Giai đoạn 2 (Oxi hóa NO thành NO₂):</strong><br>
+            • Làm nguội hỗn hợp khí rồi cho tác dụng tiếp với không khí:<br>
+            <code>2NO + O₂ &rarr; 2NO₂</code> (Khí hóa màu nâu đỏ).</p>
+            <p>3️⃣ <strong>Giai đoạn 3 (Hấp thụ NO₂ vào nước có oxy):</strong><br>
+            • Cho khí NO₂ và O₂ đi ngược chiều với dòng nước tưới từ đỉnh tháp hấp thụ xuống:<br>
+            <code>4NO₂ + O₂ + 2H₂O &rarr; 4HNO₃</code>.<br>
+            • Thu được dung dịch HNO₃ có nồng độ thông dụng khoảng <strong>68%</strong>.</p>
+          </div>
+        `,
+        boardHtml: `
+          <div class="chalk-board">
+            <div class="chalk-title">📌 BẢNG PHẤN: SƠ ĐỒ CHUỖI SẢN XUẤT HNO₃ (OSTWALD)</div>
+            <div class="chalk-row">
+              <span class="chalk-code">SƠ ĐỒ TẮT</span> : NH₃ ──[+O₂, Pt, 850&deg;C]──&gt; NO ──[+O₂]──&gt; NO₂ ──[+O₂, H₂O]──&gt; HNO₃
+            </div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-row">
+              <span class="chalk-code">PT 1</span>: 4NH₃ + 5O₂ &rarr; 4NO + 6H₂O (Xúc tác Pt, 850 &deg;C)
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">PT 2</span>: 2NO + O₂ &rarr; 2NO₂ (Tự diễn ra khi làm nguội)
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">PT 3</span>: 4NO₂ + O₂ + 2H₂O &rarr; 4HNO₃ (Tháp hấp thụ)
+            </div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-alert">
+              🎯 <strong>BẢO TOÀN NGUYÊN TỐ N:</strong> 1 mol NH₃ ban đầu (hiệu suất 100%) sẽ tạo ra đúng 1 mol HNO₃!
+            </div>
+          </div>
+        `
+      },
+      {
+        shortTitle: "6. Thần Chú",
+        title: "Chặng 6: Hiện Tượng Phú Dưỡng (Eutrophication) & Thần Chú Về Đích",
+        speech: "Chặng cuối cùng của Bài 6: Hiện tượng Phú Dưỡng! Phú dưỡng nghĩa là giàu chất dinh dưỡng quá mức, cụ thể là dư thừa Nitrogen và Phosphorus trong ao hồ. Do nước thải sinh hoạt, phân bón dư thừa từ đồng ruộng rửa trôi vào. Tảo và rong rêu gặp nhiều thức ăn sẽ bùng phát nở hoa rực rỡ gọi là thủy triều đỏ hoặc tảo nở hoa. Sau đó chúng chết đi hàng loạt, vi kị khí phân hủy hút cạn kiệt oxy hòa tan trong nước, làm cá tôm nghẹt thở chết trắng bụng và bốc mùi tanh hôi thối! Thầy trò mình đã đi hết Bài 6 từ A đến Z rồi đấy. Bây giờ các trò đã nắm trọn vẹn bản chất và các mẹo giải nhanh, tự tin bước vào phòng thi ẵm trọn điểm 10 chưa nào!",
+        teacherHtml: `
+          <div class="teacher-speech">
+            <p class="highlight-callout">🌊 <strong>"HIỆN TƯỢNG PHÚ DƯỠNG (EUTROPHICATION) — THẢM HỌA SINH THÁI NƯỚC NÔNG:"</strong></p>
+            <p>1️⃣ <strong>Nguyên nhân gốc rễ:</strong><br>
+            • Ao, hồ tiếp nhận quá nhiều nguồn thải chứa hàm lượng cao các nguyên tố dinh dưỡng: <strong>Nitrate (NO₃⁻)</strong> và <strong>Phosphate (PO₄³⁻)</strong> (từ nước phân bón nông nghiệp bị rửa trôi, nước thải sinh hoạt chứa bột giặt, nước thải chăn nuôi chưa qua xử lý).</p>
+            <p>2️⃣ <strong>Diễn biến 4 bước của hiện tượng phú dưỡng:</strong><br>
+            • <em>Bước 1:</em> Nguồn dinh dưỡng dồi dào kích thích <strong>tảo và vi khuẩn lam bùng phát dữ dội</strong> (hiện tượng "tảo nở hoa" phủ xanh kín mặt nước hoặc thủy triều đỏ).<br>
+            • <em>Bước 2:</em> Tảo nổi kín bề mặt ngăn cản ánh sáng mặt trời chiếu xuống tầng nước sâu, làm các thực vật thủy sinh dưới đáy ngừng quang hợp và chết.<br>
+            • <em>Bước 3:</em> Tảo nở hoa đến lúc tàn lụi và chết hàng loạt. Các vi khuẩn hiếu khí phân hủy xác tảo đã <strong>tiêu thụ cạn kiệt lượng oxygen hòa tan (DO)</strong> trong nước.<br>
+            • <em>Bước 4:</em> Nước rơi vào trạng thái thiếu oxy (thiếu khí, kị khí) &rarr; Cá, tôm và các sinh vật thủy sinh <strong>ngạt thở chết hàng loạt</strong>, bốc mùi hôi thối do sinh ra các khí độc H₂S, NH₃, CH₄!</p>
+            <p>3️⃣ <strong>Biện pháp khắc phục:</strong> Xử lý nước thải trước khi xả ra môi trường, sử dụng phân bón đúng liều lượng, nạo vét bùn đáy hồ và sục khí tạo oxy.</p>
+          </div>
+        `,
+        boardHtml: `
+          <div class="chalk-board">
+            <div class="chalk-title">📌 BẢNG PHẤN: TỔNG KẾT VỀ ĐÍCH BÀI 6 & TOÀN BỘ CHƯƠNG TRÌNH</div>
+            <div class="chalk-row">
+              <span class="chalk-code">PHÚ DƯỠNG</span> : Dư thừa N (NO₃⁻) và P (PO₄³⁻) &rarr; Tảo nở hoa &rarr; Cạn oxy &rarr; Thủy sinh chết.
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">MƯA ACID</span> &nbsp;&nbsp;: Nước mưa pH &lt; 5,6 do khí SO₂ và NO_x tạo HNO₃ và H₂SO₄.
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">HNO₃</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Số oxi hóa +5, Hóa trị IV, tác dụng kim loại KHÔNG sinh H₂!
+            </div>
+            <div class="chalk-row">
+              <span class="chalk-code">BẢO TOÀN E</span> : <code>n_KL &times; HóaTrị = n_e nhận</code> (Giải toán 1 dòng 10 giây).
+            </div>
+            <div class="chalk-divider"></div>
+            <div class="chalk-alert">
+              🚀 <strong>CHÚC MỪNG BẠN ĐÃ LÀM CHỦ TOÀN BỘ HÓA HỌC 11 VỚI ĐIỂM 10 TUYỆT ĐỐI!</strong>
+            </div>
+          </div>
+        `
+      }
+    ]
+  }
+};
+
+
+
+    let currentLessonId = 'bai-6';
+    let currentLectureStep = 0;
+    let isVoiceActive = true;
+
+    function renderStepTrack() {
+      const track = document.getElementById('lectureStepTrack');
+      const lecture = allLectures[currentLessonId];
+      if (!track || !lecture) return;
+      track.innerHTML = '';
+      lecture.steps.forEach((step, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'step-pill' + (idx === currentLectureStep ? ' active' : '');
+        btn.textContent = step.shortTitle || ((idx + 1) + '. Chặng ' + (idx + 1));
+        btn.onclick = () => jumpToLectureStep(idx);
+        track.appendChild(btn);
+      });
+    }
+
+    function switchLectureLesson(lessonId) {
+      if (!allLectures[lessonId]) return;
+      currentLessonId = lessonId;
+      currentLectureStep = 0;
+      const selectEl = document.getElementById('lectureLessonSelect');
+      if (selectEl && selectEl.value !== lessonId) {
+        selectEl.value = lessonId;
+      }
+      renderStepTrack();
+      renderLectureStep();
+    }
+
+    function openLectureModal(param) {
+      let targetLesson = currentLessonId || 'bai-6';
+      if (typeof param === 'string' && allLectures[param]) {
+        targetLesson = param;
+      } else if (param && param.stopPropagation) {
+        param.stopPropagation();
+      }
+      currentLessonId = targetLesson;
+      currentLectureStep = 0;
+      const selectEl = document.getElementById('lectureLessonSelect');
+      if (selectEl) selectEl.value = targetLesson;
+      renderStepTrack();
+      renderLectureStep();
+      document.getElementById('lectureModal').classList.add('active');
+    }
+
+    function closeLectureModal(e) {
+      if (e && e.target !== document.getElementById('lectureModal') && !e.target.classList.contains('btn-close-lecture')) return;
+      document.getElementById('lectureModal').classList.remove('active');
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+    }
+
+    function renderLectureStep() {
+      const lecture = allLectures[currentLessonId];
+      if (!lecture) return;
+      const step = lecture.steps[currentLectureStep];
+      if (!step) return;
+
+      document.getElementById('lectureTitle').textContent = step.title;
+      document.getElementById('lectureSpeechContainer').innerHTML = step.teacherHtml;
+      document.getElementById('lectureBoardContainer').innerHTML = step.boardHtml;
+      document.getElementById('currentStepNumber').textContent = currentLectureStep + 1;
+      const totalStepEl = document.getElementById('totalStepNumber');
+      if (totalStepEl) totalStepEl.textContent = lecture.steps.length;
+
+      const subtitleEl = document.getElementById('lectureSubtitle');
+      if (subtitleEl && lecture.subtitle) {
+        subtitleEl.textContent = lecture.subtitle;
+      }
+
+      // Update pill buttons
+      const pills = document.querySelectorAll('#lectureStepTrack .step-pill');
+      pills.forEach((p, idx) => {
+        if (idx === currentLectureStep) p.classList.add('active');
+        else p.classList.remove('active');
+      });
+
+      // Update nav buttons
+      const prevBtn = document.getElementById('btnPrevStep');
+      if (prevBtn) prevBtn.disabled = (currentLectureStep === 0);
+      const nextBtn = document.getElementById('btnNextStep');
+      if (nextBtn) {
+        if (currentLectureStep === lecture.steps.length - 1) {
+          nextBtn.innerHTML = '🎉 Xong ' + currentLessonId.toUpperCase() + '!';
+        } else {
+          nextBtn.innerHTML = 'Chặng Kế Tiếp ⏭';
+        }
+      }
+
+      speakLecture(step.speech);
+    }
+
+    function nextLectureStep() {
+      const lecture = allLectures[currentLessonId];
+      if (!lecture) return;
+      if (currentLectureStep < lecture.steps.length - 1) {
+        currentLectureStep++;
+        renderLectureStep();
+      } else {
+        const lessonKeys = Object.keys(allLectures);
+        const curIdx = lessonKeys.indexOf(currentLessonId);
+        if (curIdx < lessonKeys.length - 1) {
+          const nextLessonKey = lessonKeys[curIdx + 1];
+          const proceed = confirm('🎉 Xuất sắc! Bạn đã hoàn thành trọn vẹn bài học này cùng Thầy Giáo Bá Khí!\n\nBạn có muốn chuyển sang học tiếp bài tiếp theo (' + allLectures[nextLessonKey].lessonName + ') không?');
+          if (proceed) {
+            switchLectureLesson(nextLessonKey);
+            return;
+          }
+        } else {
+          alert('🏆 ĐỈNH CAO! Bạn đã hoàn thành TOÀN BỘ 6 BÀI HỌC CÙNG THẦY GIÁO BÁ KHÍ! Bạn đã lấy lại gốc xuất sắc và sẵn sàng ẵm điểm 10 giữa kì!');
+        }
+        closeLectureModal();
+      }
+    }
+
+    function prevLectureStep() {
+      if (currentLectureStep > 0) {
+        currentLectureStep--;
+        renderLectureStep();
+      }
+    }
+
+    function jumpToLectureStep(index) {
+      currentLectureStep = index;
+      renderLectureStep();
+    }
+
+    function toggleVoice() {
+      isVoiceActive = !isVoiceActive;
+      const icon = document.getElementById('voiceIcon');
+      const text = document.getElementById('voiceText');
+      if (isVoiceActive) {
+        if (icon) icon.textContent = '🔊';
+        if (text) text.textContent = 'Giọng Thầy: BẬT';
+        const lecture = allLectures[currentLessonId];
+        if (lecture && lecture.steps[currentLectureStep]) {
+          speakLecture(lecture.steps[currentLectureStep].speech);
+        }
+      } else {
+        if (icon) icon.textContent = '🔇';
+        if (text) text.textContent = 'Giọng Thầy: TẮT';
+        if ('speechSynthesis' in window) {
+          window.speechSynthesis.cancel();
+        }
+      }
+    }
+
+    function replaySpeech() {
+      const lecture = allLectures[currentLessonId];
+      if (lecture && lecture.steps[currentLectureStep]) {
+        speakLecture(lecture.steps[currentLectureStep].speech);
+      }
+    }
+
+    function speakLecture(text) {
+      if (!isVoiceActive || !('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'vi-VN';
+      utter.rate = 1.05;
+      utter.pitch = 1.0;
+
+      // Tìm giọng tiếng Việt nếu trình duyệt hỗ trợ
+      const voices = window.speechSynthesis.getVoices();
+      const viVoice = voices.find(v => v.lang.includes('vi') || v.lang.includes('VI'));
+      if (viVoice) utter.voice = viVoice;
+
+      window.speechSynthesis.speak(utter);
+    }
+
+
+        // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      const modal = document.getElementById('lectureModal');
+      if (!modal || !modal.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLectureModal();
+      else if (e.key === 'ArrowRight') nextLectureStep();
+      else if (e.key === 'ArrowLeft') prevLectureStep();
+    });
 
     updateSimulator();
     updatePHFromSlider(7.0);
