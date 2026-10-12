@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
@@ -57,6 +57,12 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    html, body {
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -1557,6 +1563,428 @@
   color: #fdba74;
 }
 
+  
+/* ==========================================================================
+   TOÀN DIỆN RESPONSIVE & SỬA LỖI UI DESKTOP + MOBILE (KHÔNG TRÀN, KHÔNG LỖI)
+   ========================================================================== */
+
+/* 1. CHỐNG TRÀN TOÀN BỘ TRANG */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+}
+
+.app-container {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+main.content {
+  min-width: 0;
+  width: 100%;
+  max-width: 1120px;
+  overflow-x: hidden;
+}
+
+/* Ẩn banner 'Bạn đang học bằng điện thoại' trên màn hình máy tính lớn */
+@media (min-width: 901px) {
+  .mobile-banner {
+    display: none !important;
+  }
+}
+
+/* 2. THANH MOBILE TOPBAR TIỆN ÍCH DÀNH RIÊNG CHO MÀN HÌNH NHỎ (<= 900px) */
+.mobile-topbar {
+  display: none;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  background: var(--bg-sidebar);
+  border-bottom: 1px solid var(--border-color);
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  z-index: 800;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.mobile-topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-hamburger {
+  background: var(--primary-light);
+  color: var(--primary);
+  border: 1.5px solid var(--primary);
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  font-size: 1.25rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-hamburger:hover {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.mobile-topbar-title {
+  font-size: 0.96rem;
+  font-weight: 850;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 160px;
+}
+
+.mobile-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-topbar-tool {
+  background: var(--bg-card);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 750;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s ease;
+}
+
+.btn-topbar-tool:hover {
+  background: var(--primary-light);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* Lớp phủ mờ backdrop khi menu sidebar mở trên mobile */
+.sidebar-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 900;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.sidebar-backdrop.active {
+  display: block;
+  opacity: 1;
+}
+
+/* 3. SIDEBAR RESPONSIVE TRÊN MOBILE */
+@media (max-width: 900px) {
+  .mobile-topbar {
+    display: flex;
+  }
+
+  aside.sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    left: -320px !important;
+    width: 290px !important;
+    max-width: 82vw !important;
+    height: 100vh !important;
+    z-index: 1000 !important;
+    box-shadow: 4px 0 25px rgba(0, 0, 0, 0.4) !important;
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  aside.sidebar.mobile-open {
+    left: 0 !important;
+  }
+
+  main.content {
+    padding: 16px 14px 90px !important;
+  }
+
+  /* Ẩn nút tròn floating cũ để dùng topbar hiện đại */
+  .mobile-menu-btn {
+    display: none !important;
+  }
+
+  /* Hero banner trên mobile */
+  .hero-banner {
+    padding: 24px 18px !important;
+    margin-bottom: 24px !important;
+  }
+
+  .hero-banner h1 {
+    font-size: 1.45rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .hero-banner p {
+    font-size: 0.9rem !important;
+  }
+
+  .quick-stats {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    margin-top: 18px !important;
+  }
+
+  .stat-pill {
+    padding: 10px 12px !important;
+  }
+
+  .stat-pill .num {
+    font-size: 1.15rem !important;
+  }
+
+  .stat-pill .label {
+    font-size: 0.74rem !important;
+  }
+
+  /* Header bài học trên mobile */
+  .lesson-header {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+  }
+
+  .lesson-title-wrap {
+    gap: 12px !important;
+  }
+
+  .lesson-number {
+    width: 38px !important;
+    height: 38px !important;
+    font-size: 1rem !important;
+  }
+
+  .lesson-header h2 {
+    font-size: 1.15rem !important;
+  }
+
+  .btn-tro-giang-ba-khi {
+    width: 100% !important;
+    justify-content: center !important;
+    font-size: 0.88rem !important;
+    padding: 10px 14px !important;
+    text-align: center !important;
+  }
+
+  .lesson-sgk-group {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+    width: 100% !important;
+  }
+
+  .btn-sgk {
+    font-size: 0.76rem !important;
+    padding: 6px 10px !important;
+    margin: 2px !important;
+    flex: 1 1 calc(50% - 6px) !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+}
+
+/* 4. CHỐNG VỠ CÔNG THỨC & BẢNG BIỂU TRÊN MÀN HÌNH HẸP */
+.formula-display, .combo-display, .box-recall-content pre, table {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch;
+  word-break: break-word;
+}
+
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 14px 0;
+}
+
+/* 5. NÂNG CẤP LIGHTBOX XEM SGK GỐC SIÊU NÉT (HD ZOOMABLE) */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(4, 7, 20, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 3500;
+  padding: 10px;
+}
+
+.modal-overlay.active {
+  display: flex !important;
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 1100px;
+  max-height: 95vh;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+}
+
+.modal-header {
+  padding: 10px 16px;
+  background: var(--bg-sidebar);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.modal-zoom-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-zoom {
+  background: var(--primary-light);
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  padding: 5px 9px;
+  border-radius: 8px;
+  font-weight: 750;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-zoom:hover {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.modal-hint-bar {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(13, 148, 136, 0.1));
+  color: var(--primary);
+  padding: 6px 14px;
+  font-size: 0.78rem;
+  font-weight: 650;
+  border-bottom: 1px solid var(--border-color);
+  text-align: center;
+}
+
+[data-theme="dark"] .modal-hint-bar {
+  color: #7dd3fc;
+}
+
+.modal-body {
+  padding: 8px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 280px;
+  max-height: 80vh;
+  background: rgba(0, 0, 0, 0.25);
+  touch-action: pan-x pan-y;
+}
+
+.modal-body img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  transition: width 0.25s ease, transform 0.25s ease;
+  user-select: none;
+}
+
+/* 6. GIAO DIỆN TỐI NÂNG CAO - SIÊU SẮC NÉT KHÔNG LÓA */
+[data-theme="dark"] {
+  --bg-primary: #090d16;
+  --bg-card: #111827;
+  --bg-sidebar: #0d1322;
+  --text-main: #f8fafc;
+  --text-muted: #cbd5e1;
+  --text-light: #94a3b8;
+  --border-color: #1e293b;
+  --code-bg: #1e293b;
+}
+
+[data-theme="dark"] .card {
+  background: #111827;
+  border-color: #1e293b;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .nav-link {
+  color: #cbd5e1;
+}
+
+[data-theme="dark"] .nav-link:hover, [data-theme="dark"] .nav-link.active {
+  background: #1e293b;
+  color: #38bdf8;
+}
+
+[data-theme="dark"] .theme-toggle {
+  background: #1e293b;
+  color: #fbbf24;
+  border-color: #334155;
+}
+
+/* 7. NÚT TẢI BÍ KÍP SIDEBAR HIỆU ỨNG ÁNH SÁNG EMERALD */
+.sidebar-btn-cheatsheet {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #10b981 0%, #0d9488 100%);
+  color: #ffffff;
+  border: none;
+  font-weight: 850;
+  font-size: 0.86rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+  transition: all 0.25s ease;
+  margin: 6px 0 10px;
+}
+
+.sidebar-btn-cheatsheet:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+}
+
   </style>
 
 </head>
@@ -1858,6 +2286,13 @@
         <button onclick="openLectureModal('bai-1')" style="width:100%; margin-bottom:14px; padding:12px 14px; border-radius:12px; background:linear-gradient(135deg, #f59e0b, #ef4444, #8b5cf6); color:#fff; border:none; font-weight:850; font-size:0.92rem; box-shadow:0 4px 15px rgba(239,68,68,0.45); cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px;">
           🔥 🎙️ TRỢ GIẢNG BÁ KHÍ (Thầy Giảng Full Bài 1 Cân Bằng)
         </button>
+        <div class="sgk-mobile-bar" style="display:flex; gap:6px; overflow-x:auto; padding-bottom:8px; margin-bottom:12px; -webkit-overflow-scrolling:touch;">
+          <button class="btn-sgk-pill" onclick="openModal('sgk_b1_p06_07.png', 'SGK BÃ i 1: Trang 6 - 7')">ðŸ“– SGK Tr.6-7</button>
+          <button class="btn-sgk-pill" onclick="openModal('sgk_b1_p08_09.png', 'SGK BÃ i 1: Trang 8 - 9')">ðŸ“– SGK Tr.8-9</button>
+          <button class="btn-sgk-pill" onclick="openModal('sgk_b1_p10_11.png', 'SGK BÃ i 1: Trang 10 - 11')">ðŸ“– SGK Tr.10-11</button>
+          <button class="btn-sgk-pill" onclick="openModal('sgk_b1_p12_13.png', 'SGK BÃ i 1: Trang 12 - 13')">ðŸ“– SGK Tr.12-13</button>
+          <button class="btn-sgk-pill" onclick="openModal('sgk_b1_p14_15.png', 'SGK BÃ i 1: Trang 14 - 15')">ðŸ“– SGK Tr.14-15</button>
+        </div>
         
         <div class="accordion-item open">
           <div class="accordion-header" onclick="toggleAccordion(this)">
@@ -1973,6 +2408,14 @@
         <button onclick="openLectureModal('bai-2')" style="width:100%; margin-bottom:14px; padding:12px 14px; border-radius:12px; background:linear-gradient(135deg, #f59e0b, #ef4444, #8b5cf6); color:#fff; border:none; font-weight:850; font-size:0.92rem; box-shadow:0 4px 15px rgba(239,68,68,0.45); cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px;">
           🔥 🎙️ TRỢ GIẢNG BÁ KHÍ (Thầy Giảng Full Bài 2 Dung Dịch & pH)
         </button>
+        <div class="sgk-mobile-bar" style="display:flex; gap:6px; overflow-x:auto; padding-bottom:8px; margin-bottom:12px; -webkit-overflow-scrolling:touch;">
+          <button class="btn-sgk-pill" onclick="openModal('sgk_b2_p16_17.png', 'SGK BÃ i 2: Trang 16 - 17')">ðŸ“– SGK Tr.16-17</button>
+          <button class="btn-sgk-pill" onclick="openModal('sgk_b2_p18_19.png', 'SGK BÃ i 2: Trang 18 - 19')">ðŸ“– SGK Tr.18-19</button>
+          <button class="btn-sgk-pill" onclick="openModal('sgk_b2_p20_21.png', 'SGK BÃ i 2: Trang 20 - 21')">ðŸ“– SGK Tr.20-21</button>
+          <button class="btn-sgk-pill" onclick="openModal('sgk_b2_p22_23.png', 'SGK BÃ i 2: Trang 22 - 23')">ðŸ“– SGK Tr.22-23</button>
+          <button class="btn-sgk-pill" onclick="openModal('sgk_b2_p24_25.png', 'SGK BÃ i 2: Trang 24 - 25')">ðŸ“– SGK Tr.24-25</button>
+          <button class="btn-sgk-pill" onclick="openModal('sgk_b2_p26.png', 'SGK BÃ i 2: Trang 26')">ðŸ“– SGK Tr.26</button>
+        </div>
 
         <div class="accordion-item open">
           <div class="accordion-header" onclick="toggleAccordion(this)">
@@ -2074,6 +2517,11 @@
         <button onclick="openLectureModal('bai-4')" style="width:100%; margin-bottom:14px; padding:12px 14px; border-radius:12px; background:linear-gradient(135deg, #f59e0b, #ef4444, #8b5cf6); color:#fff; border:none; font-weight:850; font-size:0.92rem; box-shadow:0 4px 15px rgba(239,68,68,0.45); cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px;">
           🔥 🎙️ TRỢ GIẢNG BÁ KHÍ (Thầy Giảng Full Bài 4 Nitrogen)
         </button>
+        <div class="sgk-mobile-bar" style="display:flex; gap:6px; overflow-x:auto; padding-bottom:8px; margin-bottom:12px; -webkit-overflow-scrolling:touch;">
+          <button class="btn-sgk-pill" onclick="openModal('sgk_b4_p29.png', 'SGK BÃ i 4: Trang 29')">ðŸ“– SGK Tr.29</button>
+          <button class="btn-sgk-pill" onclick="openModal('sgk_b4_p30_31.png', 'SGK BÃ i 4: Trang 30 - 31')">ðŸ“– SGK Tr.30-31</button>
+          <button class="btn-sgk-pill" onclick="openModal('sgk_b4_5_p32_33.png', 'SGK BÃ i 4: Trang 32 - 33')">ðŸ“– SGK Tr.32-33</button>
+        </div>
 
         <div class="accordion-item open">
           <div class="accordion-header" onclick="toggleAccordion(this)">
@@ -2160,6 +2608,10 @@
         <button onclick="openLectureModal('bai-5')" style="width:100%; margin-bottom:14px; padding:12px 14px; border-radius:12px; background:linear-gradient(135deg, #f59e0b, #ef4444, #8b5cf6); color:#fff; border:none; font-weight:850; font-size:0.92rem; box-shadow:0 4px 15px rgba(239,68,68,0.45); cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px;">
           🔥 🎙️ TRỢ GIẢNG BÁ KHÍ (Thầy Giảng Full Bài 5 Ammonia & NH₄⁺)
         </button>
+        <div class="sgk-mobile-bar" style="display:flex; gap:6px; overflow-x:auto; padding-bottom:8px; margin-bottom:12px; -webkit-overflow-scrolling:touch;">
+          <button class="btn-sgk-pill" onclick="openModal('sgk_b5_p34_35.png', 'SGK BÃ i 5: Trang 34 - 35')">ðŸ“– SGK Tr.34-35</button>
+          <button class="btn-sgk-pill" onclick="openModal('sgk_b5_p36_37.png', 'SGK BÃ i 5: Trang 36 - 37')">ðŸ“– SGK Tr.36-37</button>
+        </div>
 
         <div class="accordion-item open">
           <div class="accordion-header" onclick="toggleAccordion(this)">
@@ -2249,6 +2701,10 @@
         <button onclick="openLectureModal('bai-6')" style="width:100%; margin-bottom:14px; padding:12px 14px; border-radius:12px; background:linear-gradient(135deg, #f59e0b, #ef4444, #8b5cf6); color:#fff; border:none; font-weight:850; font-size:0.92rem; box-shadow:0 4px 15px rgba(239,68,68,0.45); cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px;">
           🔥 🎙️ TRỢ GIẢNG BÁ KHÍ (Thầy Giảng Full Bài 6 HNO₃ & Phú Dưỡng)
         </button>
+        <div class="sgk-mobile-bar" style="display:flex; gap:6px; overflow-x:auto; padding-bottom:8px; margin-bottom:12px; -webkit-overflow-scrolling:touch;">
+          <button class="btn-sgk-pill" onclick="openModal('sgk_b6_p38_39.png', 'SGK BÃ i 6: Trang 38 - 39')">ðŸ“– SGK Tr.38-39</button>
+          <button class="btn-sgk-pill" onclick="openModal('sgk_b6_p40_41.png', 'SGK BÃ i 6: Trang 40 - 41')">ðŸ“– SGK Tr.40-41</button>
+        </div>
 
         <div class="accordion-item open">
           <div class="accordion-header" onclick="toggleAccordion(this)">
@@ -2784,6 +3240,31 @@
     </div>
   </div>
 </div>
+
+
+      <!-- LIGHTBOX MODAL TO VIEW ORIGINAL SGK SCREENSHOTS (HD ZOOMABLE) -->
+  <div class="modal-overlay" id="imageModal" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span style="font-size:1.2rem;">📖</span>
+          <h3 id="modalTitle" style="margin:0; font-size:1rem; font-weight:800;">Xem Trang SGK Gốc</h3>
+        </div>
+        <div class="modal-zoom-controls">
+          <button type="button" class="btn-zoom" onclick="zoomImage(0.25)" title="Phóng to">🔍+ Phóng to</button>
+          <button type="button" class="btn-zoom" onclick="zoomImage(-0.25)" title="Thu nhỏ">🔍- Thu nhỏ</button>
+          <button type="button" class="btn-zoom" onclick="resetImageZoom()" title="Vừa màn hình">↺ Vừa màn</button>
+          <button type="button" class="modal-close" onclick="closeModal(event)" title="Đóng">&times;</button>
+        </div>
+      </div>
+      <div class="modal-hint-bar">
+        💡 <strong>Mẹo di động:</strong> Chạm vào ảnh hoặc bấm <strong>Phóng to</strong> để đọc rõ từng chữ SGK • Có thể cuộn kéo ngang/dọc tự do!
+      </div>
+      <div class="modal-body" id="modalBody">
+        <img id="modalImg" src="" alt="Trang SGK Gốc" onclick="toggleImageZoom()" title="Chạm để phóng to/thu nhỏ">
+      </div>
+    </div>
+  </div>
 
 
     <nav class="bottom-nav">
@@ -4429,6 +4910,119 @@ function toggleRecall(header) {
   const box = header.closest('.box-recall');
   if (box) {
     box.classList.toggle('open');
+  }
+}
+
+
+
+/* ==========================================================================
+   UI FIX & RESPONSIVE JAVASCRIPT CONTROLLERS
+   ========================================================================== */
+
+// 1. Mobile Topbar & Sidebar Off-canvas
+function toggleMobileMenu() {
+  const sidebar = document.getElementById('sidebar');
+  const backdrop = document.getElementById('sidebarBackdrop');
+  const btn = document.querySelector('.btn-hamburger');
+  if (!sidebar) return;
+  const isOpen = sidebar.classList.toggle('mobile-open');
+  if (backdrop) backdrop.classList.toggle('active', isOpen);
+  if (btn) btn.textContent = isOpen ? '✕' : '☰';
+}
+
+function closeMobileMenu() {
+  const sidebar = document.getElementById('sidebar');
+  const backdrop = document.getElementById('sidebarBackdrop');
+  const btn = document.querySelector('.btn-hamburger');
+  if (sidebar) sidebar.classList.remove('mobile-open');
+  if (backdrop) backdrop.classList.remove('active');
+  if (btn) btn.textContent = '☰';
+}
+
+// Auto close sidebar when clicking links on mobile
+document.addEventListener('DOMContentLoaded', function() {
+  const links = document.querySelectorAll('.sidebar .nav-link, .sidebar button');
+  links.forEach(function(l) {
+    l.addEventListener('click', function() {
+      if (window.innerWidth <= 900) {
+        closeMobileMenu();
+      }
+    });
+  });
+});
+
+// 2. Enhanced Theme Toggler (Syncs all theme buttons)
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', newTheme);
+  try {
+    localStorage.setItem('theme', newTheme);
+  } catch (e) {}
+  updateThemeUI(newTheme);
+}
+
+function updateThemeUI(theme) {
+  // Update sidebar button
+  const icon = document.getElementById('theme-icon');
+  const text = document.getElementById('theme-text');
+  if (icon) icon.textContent = theme === 'dark' ? '☀️' : '🌙';
+  if (text) text.textContent = theme === 'dark' ? 'Giao diện sáng' : 'Giao diện tối';
+  
+  // Update mobile topbar button
+  const topbarThemeBtn = document.getElementById('topbarThemeBtn');
+  if (topbarThemeBtn) topbarThemeBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+}
+
+// 3. HD Zoomable Lightbox Controller for SGK Screenshots
+let currentImageZoom = 1.0;
+
+function openModal(imgSrc, title) {
+  const modalImg = document.getElementById('modalImg');
+  if (modalImg) modalImg.src = imgSrc;
+  const titleEl = document.getElementById('modalTitle');
+  if (titleEl) titleEl.textContent = title || 'Xem Trang Sách Giáo Khoa Gốc';
+  resetImageZoom();
+  const modal = document.getElementById('imageModal');
+  if (modal) modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e) {
+  if (e && e.target && e.target !== document.getElementById('imageModal') && !e.target.classList.contains('modal-close')) {
+    return;
+  }
+  const modal = document.getElementById('imageModal');
+  if (modal) modal.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function zoomImage(delta) {
+  currentImageZoom = Math.min(3.0, Math.max(0.8, currentImageZoom + delta));
+  applyImageZoom();
+}
+
+function resetImageZoom() {
+  currentImageZoom = 1.0;
+  applyImageZoom();
+}
+
+function toggleImageZoom() {
+  currentImageZoom = (currentImageZoom === 1.0) ? 2.0 : 1.0;
+  applyImageZoom();
+}
+
+function applyImageZoom() {
+  const img = document.getElementById('modalImg');
+  if (!img) return;
+  if (currentImageZoom === 1.0) {
+    img.style.maxWidth = '100%';
+    img.style.width = 'auto';
+    img.style.cursor = 'zoom-in';
+  } else {
+    img.style.maxWidth = 'none';
+    img.style.width = (currentImageZoom * 100) + '%';
+    img.style.cursor = 'zoom-out';
   }
 }
 
