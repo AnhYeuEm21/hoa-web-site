@@ -731,12 +731,12 @@
       border-radius: 6px;
     }
 
-    /* NÚT TRỢ GIẢNG BÁ KHÍ & PHÒNG GIẢNG */
+    /* NÚT CÔ GIÁO TRỢ GIẢNG & PHÒNG GIẢNG */
     .btn-tro-giang-ba-khi {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #8b5cf6 100%);
+      background: linear-gradient(135deg, #ec4899 0%, #db2777 50%, #8b5cf6 100%);
       color: #ffffff;
       border: none;
       padding: 10px 20px;
@@ -744,7 +744,7 @@
       font-size: 0.95rem;
       font-weight: 850;
       cursor: pointer;
-      box-shadow: 0 4px 15px rgba(239, 68, 68, 0.45);
+      box-shadow: 0 4px 15px rgba(236, 72, 153, 0.45);
       transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       animation: pulseLecture 2.2s infinite;
       text-transform: uppercase;
@@ -753,12 +753,12 @@
 
     .btn-tro-giang-ba-khi:hover {
       transform: translateY(-2px) scale(1.05);
-      box-shadow: 0 8px 25px rgba(239, 68, 68, 0.7);
+      box-shadow: 0 8px 25px rgba(236, 72, 153, 0.7);
     }
 
     @keyframes pulseLecture {
-      0%, 100% { box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4); }
-      50% { box-shadow: 0 4px 25px rgba(139, 92, 246, 0.7), 0 0 12px rgba(245, 158, 11, 0.6); }
+      0%, 100% { box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4); }
+      50% { box-shadow: 0 4px 25px rgba(139, 92, 246, 0.7), 0 0 12px rgba(236, 72, 153, 0.6); }
     }
 
     /* Modal Bục Giảng Bá Khí */
@@ -887,71 +887,30 @@
       color: #ffffff;
     }
 
-    /* Arisu Blue Archive Anime Mode Styling */
-    .teacher-badge.arisu-mode .teacher-avatar {
-      background: linear-gradient(135deg, #38bdf8, #818cf8);
-      box-shadow: 0 0 16px rgba(56, 189, 248, 0.7);
-      animation: arisuPulse 2s infinite ease-in-out;
-    }
-
-    @keyframes arisuPulse {
-      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.6)); }
-      50% { transform: scale(1.06); filter: drop-shadow(0 0 16px rgba(129, 140, 248, 0.9)); }
-    }
-
-    .lecture-voice-select {
-      background: #090d16;
-      color: #f472b6;
-      border: 1.5px solid #ec4899;
-      padding: 6px 12px;
-      border-radius: 10px;
-      font-weight: 800;
-      font-size: 0.84rem;
-      outline: none;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .lecture-voice-select:hover {
-      background: rgba(236, 72, 153, 0.15);
-    }
-
-    .voice-tuning-bar {
+    /* Cô Giáo Trợ Giảng - Giao Diện Thanh Lịch */
+    .teacher-avatar {
+      font-size: 1.8rem;
+      background: linear-gradient(135deg, #ec4899, #f43f5e);
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 8px 18px;
-      background: #0b1120;
-      border-top: 1px solid #1e293b;
-      font-size: 0.8rem;
-      color: #94a3b8;
-      flex-wrap: wrap;
+      justify-content: center;
+      box-shadow: 0 0 14px rgba(236, 72, 153, 0.4);
     }
 
-    .voice-tuning-bar input[type="range"] {
-      width: 90px;
-      accent-color: #ec4899;
-      cursor: pointer;
-    }
-
-    .voice-tuning-val {
-      color: #ec4899;
-      font-weight: 800;
-      min-width: 38px;
-    }
-
-    .arisu-status-indicator {
+    .voice-status-badge {
+      font-size: 0.76rem;
+      color: #f472b6;
+      background: rgba(236, 72, 153, 0.12);
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(236, 72, 153, 0.3);
+      font-weight: 700;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 3px 8px;
-      border-radius: 999px;
-      background: rgba(236, 72, 153, 0.15);
-      border: 1px solid rgba(236, 72, 153, 0.4);
-      color: #f472b6;
-      font-size: 0.75rem;
-      font-weight: 800;
-      margin-left: 6px;
+      gap: 4px;
     }
 
     /* Thanh chặng học (Step navigator) */
@@ -2770,8 +2729,8 @@ main.content {
             </div>
           </div>
           <div>
-            <button class="btn-tro-giang-ba-khi" onclick="openLectureModal('bai-0')" title="Thầy giáo bá khí giảng Phần 0 Tầng 0 Mất Gốc">
-              🔥 🎙️ TRỢ GIẢNG BÁ KHÍ (Thầy Giảng Tầng 0)
+            <button class="btn-tro-giang-ba-khi" onclick="openLectureModal('bai-0')" title="Nghe Cô Giáo Trợ Giảng Phần 0 Tầng 0 Mất Gốc">
+              🌸 🎙️ CÔ GIÁO TRỢ GIẢNG (Nghe Giảng Tầng 0)
             </button>
           </div>
         </div>
@@ -2993,8 +2952,8 @@ main.content {
             </div>
           </div>
           <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-            <button class="btn-tro-giang-ba-khi" onclick="openLectureModal('bai-1')" title="Thầy giáo bá khí giảng Bài 1 Cân Bằng Hóa Học">
-              🔥 🎙️ TRỢ GIẢNG BÁ KHÍ (Giảng Full Bài 1 A-Z)
+            <button class="btn-tro-giang-ba-khi" onclick="openLectureModal('bai-1')" title="Nghe Cô Giáo Trợ Giảng Bài 1 Cân Bằng Hóa Học">
+              🌸 🎙️ CÔ GIÁO TRỢ GIẢNG (Giảng Full Bài 1 A-Z)
             </button>
             <button class="btn-sgk" onclick="openModal('sgk_b1_p06_07.png', 'SGK Trang 6 - 7')">📖 Tr.6-7</button>
             <button class="btn-sgk" onclick="openModal('sgk_b1_p08_09.png', 'SGK Trang 8 - 9')">📖 Tr.8-9</button>
@@ -3300,8 +3259,8 @@ main.content {
             </div>
           </div>
           <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-            <button class="btn-tro-giang-ba-khi" onclick="openLectureModal('bai-2')" title="Thầy giáo bá khí giảng Bài 2 Dung Dịch & pH">
-              🔥 🎙️ TRỢ GIẢNG BÁ KHÍ (Giảng Full Bài 2 A-Z)
+            <button class="btn-tro-giang-ba-khi" onclick="openLectureModal('bai-2')" title="Nghe Cô Giáo Trợ Giảng Bài 2 Dung Dịch & pH">
+              🌸 🎙️ CÔ GIÁO TRỢ GIẢNG (Giảng Full Bài 2 A-Z)
             </button>
             <button class="btn-sgk" onclick="openModal('sgk_b2_p16_17.png', 'SGK Trang 16 - 17')">📖 Tr.16-17</button>
             <button class="btn-sgk" onclick="openModal('sgk_b2_p18_19.png', 'SGK Trang 18 - 19')">📖 Tr.18-19</button>
@@ -3585,8 +3544,8 @@ main.content {
             </div>
           </div>
           <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-            <button class="btn-tro-giang-ba-khi" onclick="openLectureModal('bai-4')" title="Thầy giáo bá khí giảng Bài 4 Nitrogen">
-              🔥 🎙️ TRỢ GIẢNG BÁ KHÍ (Giảng Full Bài 4 A-Z)
+            <button class="btn-tro-giang-ba-khi" onclick="openLectureModal('bai-4')" title="Nghe Cô Giáo Trợ Giảng Bài 4 Nitrogen">
+              🌸 🎙️ CÔ GIÁO TRỢ GIẢNG (Giảng Full Bài 4 A-Z)
             </button>
             <button class="btn-sgk" onclick="openModal('sgk_b4_p29.png', 'SGK Trang 29')">📖 Tr.29</button>
             <button class="btn-sgk" onclick="openModal('sgk_b4_p30_31.png', 'SGK Trang 30 - 31')">📖 Tr.30-31</button>
@@ -3779,8 +3738,8 @@ main.content {
             </div>
           </div>
           <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-            <button class="btn-tro-giang-ba-khi" onclick="openLectureModal('bai-5')" title="Thầy giáo bá khí giảng Bài 5 Ammonia & Muối Ammonium">
-              🔥 🎙️ TRỢ GIẢNG BÁ KHÍ (Giảng Full Bài 5 A-Z)
+            <button class="btn-tro-giang-ba-khi" onclick="openLectureModal('bai-5')" title="Nghe Cô Giáo Trợ Giảng Bài 5 Ammonia & Muối Ammonium">
+              🌸 🎙️ CÔ GIÁO TRỢ GIẢNG (Giảng Full Bài 5 A-Z)
             </button>
             <button class="btn-sgk" onclick="openModal('sgk_b4_5_p32_33.png', 'SGK Trang 32 - 33')">📖 Tr.32-33</button>
             <button class="btn-sgk" onclick="openModal('sgk_b5_p34_35.png', 'SGK Trang 34 - 35')">📖 Tr.34-35</button>
@@ -3978,8 +3937,8 @@ main.content {
             </div>
           </div>
           <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-            <button class="btn-tro-giang-ba-khi" onclick="openLectureModal('bai-6')" title="Thầy giáo bá khí giảng toàn bộ Bài 6 từ A đến Z">
-              🔥 🎙️ TRỢ GIẢNG BÁ KHÍ (Giảng Full Bài 6 A-Z)
+            <button class="btn-tro-giang-ba-khi" onclick="openLectureModal('bai-6')" title="Nghe Cô Giáo Trợ Giảng toàn bộ Bài 6 từ A đến Z">
+              🌸 🎙️ CÔ GIÁO TRỢ GIẢNG (Giảng Full Bài 6 A-Z)
             </button>
             <button class="btn-sgk" onclick="openModal('sgk_b6_p38_39.png', 'SGK Trang 38 - 39')">📖 Tr.38-39</button>
             <button class="btn-sgk" onclick="openModal('sgk_b6_p40_41.png', 'SGK Trang 40 - 41')">📖 Tr.40-41</button>
@@ -5040,16 +4999,16 @@ main.content {
     </div>
   </div>
 
-  <!-- MODAL BỤC GIẢNG BÁ KHÍ (THẦY GIÁO GIẢNG TẤT CẢ CÁC BÀI TỪ A ĐẾN Z) -->
+  <!-- MODAL BỤC GIẢNG (CÔ GIÁO TRỢ GIẢNG TẤT CẢ CÁC BÀI TỪ A ĐẾN Z) -->
   <div class="lecture-modal-overlay" id="lectureModal" onclick="closeLectureModal(event)">
     <div class="lecture-modal-box" onclick="event.stopPropagation()">
       <!-- Header -->
       <div class="lecture-header">
-        <div class="teacher-badge arisu-mode" id="teacherBadge">
-          <div class="teacher-avatar" id="teacherAvatar">🤖</div>
+        <div class="teacher-badge" id="teacherBadge">
+          <div class="teacher-avatar" id="teacherAvatar">🌸</div>
           <div>
-            <div class="teacher-name" id="teacherName">Arisu Trợ Giảng ⚡ (Blue Archive)</div>
-            <div class="teacher-role" id="lectureSubtitle">Panpakapan~! Arisu cùng Sensei phá đảo Hóa 11!</div>
+            <div class="teacher-name" id="teacherName">Cô Giáo Trợ Giảng 🌸</div>
+            <div class="teacher-role" id="lectureSubtitle">Đồng hành cùng bạn chinh phục Hóa 11 dễ hiểu nhất</div>
           </div>
         </div>
         <div class="lecture-controls-top">
@@ -5061,13 +5020,8 @@ main.content {
             <option value="bai-5">💨 BÀI 5: Ammonia & Muối NH₄⁺</option>
             <option value="bai-6" selected>🧪 BÀI 6: HNO₃ & Phú Dưỡng</option>
           </select>
-          <select id="voiceStyleSelect" onchange="changeVoiceStyle(this.value)" class="lecture-voice-select" title="Chọn kiểu giọng trợ giảng">
-            <option value="arisu" selected>🎀 Giọng Arisu Anime (Panpakapan~)</option>
-            <option value="female_soft">🌸 Nữ Dịu Dàng (Chuẩn Tiếng Việt)</option>
-            <option value="teacher_male">⚡ Thầy Giáo Bá Khí</option>
-          </select>
-          <button class="btn-voice" id="btnVoiceToggle" onclick="toggleVoice()">
-            <span id="voiceIcon">🔊</span> <span id="voiceText">Giọng Arisu: BẬT</span>
+          <button class="btn-voice" id="btnVoiceToggle" onclick="toggleVoice()" title="Bật/Tắt giọng đọc cô giáo">
+            <span id="voiceIcon">🔊</span> <span id="voiceText">Giọng Cô Giáo: BẬT</span>
           </button>
           <button class="btn-close-lecture" onclick="closeLectureModal()" title="Đóng phòng học">&times;</button>
         </div>
@@ -5079,7 +5033,7 @@ main.content {
 
       <!-- Main Stage Body -->
       <div class="lecture-body">
-        <!-- Khu vực lời thầy giảng -->
+        <!-- Khu vực lời giảng -->
         <div class="teacher-box">
           <h4 id="lectureTitle">Chặng 1: 4 Anh Em Oxide & Mưa Acid</h4>
           <div id="lectureSpeechContainer">
@@ -5093,26 +5047,14 @@ main.content {
         </div>
       </div>
 
-      <!-- Thanh Tinh Chỉnh Âm Thanh & Giọng Anime Arisu -->
-      <div class="voice-tuning-bar">
-        <span>🎀 Tông Anime (Cao độ):</span>
-        <input type="range" id="voicePitchSlider" min="1.0" max="1.8" step="0.05" value="1.45" oninput="updatePitch(this.value)" title="Kéo để chỉnh tông Arisu cao hơn/thấp hơn">
-        <span class="voice-tuning-val" id="pitchDisplay">1.45x</span>
-        
-        <span style="margin-left: 10px;">⚡ Tốc độ nói:</span>
-        <input type="range" id="voiceRateSlider" min="0.8" max="1.3" step="0.05" value="1.08" oninput="updateRate(this.value)" title="Kéo để chỉnh tốc độ nói">
-        <span class="voice-tuning-val" id="rateDisplay">1.08x</span>
-
-        <span class="arisu-status-indicator" id="voiceEngineIndicator">✨ Giọng Tiếng Việt Chuẩn 100%</span>
-      </div>
-
       <!-- Bottom Navigation Footer -->
       <div class="lecture-footer">
         <button class="btn-lecture-nav secondary" id="btnPrevStep" onclick="prevLectureStep()">
           ⏮ Chặng Trước
         </button>
-        <div style="font-weight: 750; font-size: 0.9rem; color: #94a3b8;">
-          Tiến độ: <span id="currentStepNumber" style="color: #38bdf8; font-weight: 850;">1</span> / <span id="totalStepNumber">6</span>
+        <div style="font-weight: 750; font-size: 0.9rem; color: #94a3b8; display: flex; align-items: center; gap: 10px;">
+          <span>Tiến độ: <strong id="currentStepNumber" style="color: #ec4899; font-weight: 850;">1</strong> / <span id="totalStepNumber">6</span></span>
+          <span class="voice-status-badge" id="voiceEngineIndicator">✨ Giọng Nữ Chuẩn</span>
         </div>
         <div style="display: flex; gap: 8px;">
           <button class="btn-lecture-nav secondary" onclick="replaySpeech()" title="Nghe lại lời giảng chặng này">
@@ -5227,6 +5169,7 @@ main.content {
       const vessel = document.getElementById('simVessel');
       const label = document.getElementById('vesselLabel');
       const explain = document.getElementById('simResultExplain');
+      if (!vessel || !label || !explain) return;
 
       let score = 0;
       if (simTemp === 'cold') score += 1;
@@ -5258,8 +5201,10 @@ main.content {
     }
 
     function updatePHFromSlider(val) {
+      const phSlider = document.getElementById('phSlider');
+      if (!phSlider) return;
       const ph = parseFloat(val);
-      document.getElementById('phSlider').value = ph;
+      phSlider.value = ph;
       document.getElementById('phInput').value = ph;
 
       const pct = (ph / 14) * 100;
@@ -6540,77 +6485,13 @@ const allLectures = {
     }
 
     // ==========================================================================
-    // TRỢ GIẢNG ANIME ARISU (BLUE ARCHIVE) - PHÁT ÂM TIẾNG VIỆT 100%
-    // ==========================================================================
-        // ==========================================================================
-    // SIDEBAR PIN & COLLAPSE LOGIC (KHẮC PHỤC TRIỆT ĐỂ BẢNG ĐI THEO KHI CUỘN)
-    // ==========================================================================
-    let isSidebarPinned = false; // MẶC ĐỊNH: BỎ GHIM (Cuộn tự nhiên theo trang, lướt chuột là bảng trôi đi!)
-
-    function initSidebarState() {
-      const savedPin = localStorage.getItem('hoa_sidebar_pinned');
-      if (savedPin !== null) {
-        isSidebarPinned = (savedPin === 'true');
-      } else {
-        isSidebarPinned = false; // Mặc định không bám theo màn hình
-      }
-      applySidebarPinState();
-
-      // Đảm bảo sidebar luôn bắt đầu từ đỉnh đầu (Tầng 0)
-      const sidebar = document.getElementById('sidebar');
-      if (sidebar) sidebar.scrollTop = 0;
-    }
-
-    function applySidebarPinState() {
-      const sidebar = document.getElementById('sidebar');
-      const pinIcon = document.getElementById('pinIcon');
-      const pinText = document.getElementById('pinStatusText');
-      if (!sidebar) return;
-
-      if (isSidebarPinned) {
-        sidebar.classList.remove('unpinned');
-        if (pinIcon) pinIcon.textContent = '📌';
-        if (pinText) pinText.textContent = '📌 Đang để: Ghim bảng khi cuộn';
-      } else {
-        sidebar.classList.add('unpinned');
-        if (pinIcon) pinIcon.textContent = '🔓';
-        if (pinText) pinText.textContent = '🔓 Đang để: Cuộn tự nhiên (Không bám theo)';
-      }
-    }
-
-    function toggleSidebarPin() {
-      isSidebarPinned = !isSidebarPinned;
-      localStorage.setItem('hoa_sidebar_pinned', isSidebarPinned);
-      applySidebarPinState();
-    }
-
-    function toggleSidebarCollapse() {
-      const sidebar = document.getElementById('sidebar');
-      const appContainer = document.querySelector('.app-container');
-      const floater = document.getElementById('btnOpenSidebarFloater');
-      if (!sidebar) return;
-
-      const isCollapsed = sidebar.classList.contains('collapsed');
-      if (isCollapsed) {
-        sidebar.classList.remove('collapsed');
-        if (appContainer) appContainer.classList.remove('sidebar-collapsed');
-        if (floater) floater.classList.remove('visible');
-      } else {
-        sidebar.classList.add('collapsed');
-        if (appContainer) appContainer.classList.add('sidebar-collapsed');
-        if (floater) floater.classList.add('visible');
-      }
-    }
-
-    // ==========================================================================
-    // TRỢ GIẢNG ANIME ARISU (BLUE ARCHIVE) - PHÁT ÂM TIẾNG VIỆT 100%
+    // CÔ GIÁO TRỢ GIẢNG - GIỌNG NỮ DỊU DÀNG CHUẨN TIẾNG VIỆT
     // ==========================================================================
     let currentLessonId = 'bai-6';
     let currentLectureStep = 0;
     let isVoiceActive = true;
-    let currentVoiceStyle = 'arisu'; // 'arisu', 'female_soft', 'teacher_male'
-    let currentVoicePitch = 1.45;
-    let currentVoiceRate = 1.08;
+    const currentVoicePitch = 1.15; // Giọng nữ nhẹ nhàng, truyền cảm
+    const currentVoiceRate = 1.02;  // Tốc độ chuẩn sư phạm
     let cachedVoices = [];
     let currentAudioElement = null;
     let isPlayingAudioQueue = false;
@@ -6638,60 +6519,9 @@ const allLectures = {
       return null;
     }
 
-    function changeVoiceStyle(val) {
-      currentVoiceStyle = val;
-      const avatarEl = document.getElementById('teacherAvatar');
-      const nameEl = document.getElementById('teacherName');
-      const voiceText = document.getElementById('voiceText');
-      const badgeEl = document.getElementById('teacherBadge');
-
-      if (val === 'arisu') {
-        if (avatarEl) avatarEl.textContent = '🤖';
-        if (nameEl) nameEl.textContent = 'Arisu Trợ Giảng ⚡ (Blue Archive)';
-        if (voiceText) voiceText.textContent = isVoiceActive ? 'Giọng Arisu: BẬT' : 'Giọng Arisu: TẮT';
-        if (badgeEl) badgeEl.classList.add('arisu-mode');
-        currentVoicePitch = 1.45;
-        currentVoiceRate = 1.08;
-      } else if (val === 'female_soft') {
-        if (avatarEl) avatarEl.textContent = '🌸';
-        if (nameEl) nameEl.textContent = 'Cô Giáo Trợ Giảng 🌸';
-        if (voiceText) voiceText.textContent = isVoiceActive ? 'Giọng Cô Giáo: BẬT' : 'Giọng Cô Giáo: TẮT';
-        if (badgeEl) badgeEl.classList.remove('arisu-mode');
-        currentVoicePitch = 1.15;
-        currentVoiceRate = 1.02;
-      } else {
-        if (avatarEl) avatarEl.textContent = '👨‍🏫';
-        if (nameEl) nameEl.textContent = 'Thầy Trợ Giảng Bá Khí ⚡';
-        if (voiceText) voiceText.textContent = isVoiceActive ? 'Giọng Thầy: BẬT' : 'Giọng Thầy: TẮT';
-        if (badgeEl) badgeEl.classList.remove('arisu-mode');
-        currentVoicePitch = 1.0;
-        currentVoiceRate = 1.05;
-      }
-
-      const pSlider = document.getElementById('voicePitchSlider');
-      if (pSlider) pSlider.value = currentVoicePitch;
-      const pDisp = document.getElementById('pitchDisplay');
-      if (pDisp) pDisp.textContent = currentVoicePitch + 'x';
-
-      const rSlider = document.getElementById('voiceRateSlider');
-      if (rSlider) rSlider.value = currentVoiceRate;
-      const rDisp = document.getElementById('rateDisplay');
-      if (rDisp) rDisp.textContent = currentVoiceRate + 'x';
-
-      replaySpeech();
-    }
-
-    function updatePitch(val) {
-      currentVoicePitch = parseFloat(val);
-      const disp = document.getElementById('pitchDisplay');
-      if (disp) disp.textContent = val + 'x';
-    }
-
-    function updateRate(val) {
-      currentVoiceRate = parseFloat(val);
-      const disp = document.getElementById('rateDisplay');
-      if (disp) disp.textContent = val + 'x';
-    }
+    function changeVoiceStyle(val) {}
+    function updatePitch(val) {}
+    function updateRate(val) {}
 
     function formatTextForSpeech(rawText) {
       if (!rawText) return '';
@@ -6713,25 +6543,15 @@ const allLectures = {
         .replace(/\bO2\b/gi, 'O 2')
         .replace(/\bH2\b/gi, 'H 2');
 
-      if (currentVoiceStyle === 'arisu') {
-        text = text
-          .replace(/Chào các trò!?/gi, 'Panpakapan! Chào Sensei!')
-          .replace(/Chào các bạn!?/gi, 'Panpakapan! Chào Sensei!')
-          .replace(/\bThầy\b/g, 'Arisu')
-          .replace(/\bthầy\b/g, 'Arisu')
-          .replace(/\bcác trò\b/gi, 'Sensei')
-          .replace(/\bcác em\b/gi, 'Sensei')
-          .replace(/\bcác bạn\b/gi, 'Sensei');
-        if (!text.startsWith('Panpakapan')) {
-          text = 'Panpakapan~! ' + text;
-        }
-      } else if (currentVoiceStyle === 'female_soft') {
-        text = text
-          .replace(/Chào các trò!?/gi, 'Chào các bạn nhé!')
-          .replace(/\bThầy\b/g, 'Cô')
-          .replace(/\bthầy\b/g, 'cô')
-          .replace(/\bcác trò\b/gi, 'các bạn');
-      }
+      // Chuyển đổi xưng hô sang cô giáo nhẹ nhàng, chuẩn sư phạm
+      text = text
+        .replace(/Chào các trò!?/gi, 'Chào các bạn nhé!')
+        .replace(/Chào các bạn!?/gi, 'Chào các bạn nhé!')
+        .replace(/\bThầy\b/g, 'Cô')
+        .replace(/\bthầy\b/g, 'cô')
+        .replace(/\bcác trò\b/gi, 'các bạn')
+        .replace(/\bcác em\b/gi, 'các bạn');
+
       return text;
     }
 
@@ -6803,11 +6623,7 @@ const allLectures = {
 
       const titleEl = document.getElementById('lectureTitle');
       if (titleEl) {
-        if (currentVoiceStyle === 'arisu') {
-          titleEl.textContent = '🎮 Quest ' + (currentLectureStep + 1) + ': ' + step.title.replace(/^Chặng \d+:\s*/, '');
-        } else {
-          titleEl.textContent = step.title;
-        }
+        titleEl.textContent = step.title;
       }
 
       document.getElementById('lectureSpeechContainer').innerHTML = step.teacherHtml;
@@ -6818,11 +6634,7 @@ const allLectures = {
 
       const subtitleEl = document.getElementById('lectureSubtitle');
       if (subtitleEl) {
-        if (currentVoiceStyle === 'arisu') {
-          subtitleEl.textContent = 'Panpakapan~! Arisu cùng Sensei phá đảo ' + lecture.lessonName;
-        } else if (lecture.subtitle) {
-          subtitleEl.textContent = lecture.subtitle;
-        }
+        subtitleEl.textContent = 'Đồng hành cùng bạn học ' + lecture.lessonName;
       }
 
       // Update pill buttons
@@ -6838,7 +6650,7 @@ const allLectures = {
       const nextBtn = document.getElementById('btnNextStep');
       if (nextBtn) {
         if (currentLectureStep === lecture.steps.length - 1) {
-          nextBtn.innerHTML = currentVoiceStyle === 'arisu' ? '🎉 Hoàn Thành Quest!' : ('🎉 Xong ' + currentLessonId.toUpperCase() + '!');
+          nextBtn.innerHTML = '🎉 Hoàn Thành Bài!';
         } else {
           nextBtn.innerHTML = 'Chặng Kế Tiếp ⏭';
         }
@@ -6858,13 +6670,13 @@ const allLectures = {
         const curIdx = lessonKeys.indexOf(currentLessonId);
         if (curIdx < lessonKeys.length - 1) {
           const nextLessonKey = lessonKeys[curIdx + 1];
-          const proceed = confirm('🎉 Xuất sắc! Sensei đã hoàn thành trọn vẹn bài học này cùng Arisu!\n\nSensei có muốn nhận tiếp nhiệm vụ bài tiếp theo (' + allLectures[nextLessonKey].lessonName + ') không?');
+          const proceed = confirm('🎉 Xuất sắc! Bạn đã hoàn thành trọn vẹn bài học này cùng Cô Giáo Trợ Giảng!\n\nBạn có muốn chuyển sang học tiếp bài tiếp theo (' + allLectures[nextLessonKey].lessonName + ') không?');
           if (proceed) {
             switchLectureLesson(nextLessonKey);
             return;
           }
         } else {
-          alert('🏆 LEVEL UP! Panpakapan~! Sensei đã hoàn thành TOÀN BỘ 6 BÀI HỌC CÙNG ARISU! Sensei đã nắm chắc 10 điểm Hóa giữa kì trong lòng bàn tay!');
+          alert('🏆 XUẤT SẮC! Bạn đã hoàn thành TOÀN BỘ 6 BÀI HỌC CÙNG CÔ GIÁO TRỢ GIẢNG! Nắm chắc điểm 10 Hóa trong lòng bàn tay!');
         }
         closeLectureModal();
       }
@@ -6886,17 +6698,16 @@ const allLectures = {
       isVoiceActive = !isVoiceActive;
       const icon = document.getElementById('voiceIcon');
       const text = document.getElementById('voiceText');
-      const label = currentVoiceStyle === 'arisu' ? 'Giọng Arisu' : (currentVoiceStyle === 'female_soft' ? 'Giọng Cô Giáo' : 'Giọng Thầy');
       if (isVoiceActive) {
         if (icon) icon.textContent = '🔊';
-        if (text) text.textContent = label + ': BẬT';
+        if (text) text.textContent = 'Giọng Cô Giáo: BẬT';
         const lecture = allLectures[currentLessonId];
         if (lecture && lecture.steps[currentLectureStep]) {
           speakLecture(lecture.steps[currentLectureStep].speech);
         }
       } else {
         if (icon) icon.textContent = '🔇';
-        if (text) text.textContent = label + ': TẮT';
+        if (text) text.textContent = 'Giọng Cô Giáo: TẮT';
         stopAllAudio();
       }
     }
@@ -6916,20 +6727,16 @@ const allLectures = {
       const viVoice = getVietnameseVoice();
       const indicator = document.getElementById('voiceEngineIndicator');
 
-      // TRƯỜNG HỢP 1: TRÌNH DUYỆT CÓ SẴN GIỌNG TIẾNG VIỆT
       if (viVoice && ('speechSynthesis' in window)) {
-        if (indicator) indicator.textContent = '✨ Giọng ' + (currentVoiceStyle === 'arisu' ? 'Arisu Anime' : 'Chuẩn') + ' (Hệ thống)';
+        if (indicator) indicator.textContent = '✨ Giọng Nữ (Hệ thống)';
         const utter = new SpeechSynthesisUtterance(text);
         utter.voice = viVoice;
         utter.lang = viVoice.lang || 'vi-VN';
         utter.pitch = currentVoicePitch;
         utter.rate = currentVoiceRate;
         window.speechSynthesis.speak(utter);
-      } 
-      // TRƯỜNG HỢP 2: MÁY TÍNH KHÔNG CÓ GIỌNG TIẾNG VIỆT (Chỉ có tiếng Anh)
-      // Dùng Audio TTS Tiếng Việt Nữ trực tuyến - TUYỆT ĐỐI KHÔNG để tiếng Anh đọc bậy!
-      else {
-        if (indicator) indicator.textContent = '🌐 Giọng ' + (currentVoiceStyle === 'arisu' ? 'Arisu Anime' : 'Nữ') + ' (Trực Tuyến)';
+      } else {
+        if (indicator) indicator.textContent = '🌐 Giọng Nữ (Trực Tuyến)';
         playOnlineVietnameseTTS(text);
       }
     }
@@ -6964,8 +6771,7 @@ const allLectures = {
         const url = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=vi&client=tw-ob&q=' + encodeURIComponent(chunkText);
         
         currentAudioElement = new Audio(url);
-        const speedBoost = currentVoiceStyle === 'arisu' ? (currentVoiceRate * 1.1) : currentVoiceRate;
-        currentAudioElement.playbackRate = Math.min(speedBoost, 1.35);
+        currentAudioElement.playbackRate = Math.min(currentVoiceRate, 1.25);
 
         currentAudioElement.onended = () => {
           if (isPlayingAudioQueue) playNext();
@@ -6982,63 +6788,7 @@ const allLectures = {
 
       playNext();
     }
- 
-      // TRƯỜNG HỢP 2: MÁY TÍNH KHÔNG CÓ GIỌNG TIẾNG VIỆT (Chỉ có tiếng Anh)
-      // Dùng Audio TTS Tiếng Việt Nữ trực tuyến - TUYỆT ĐỐI KHÔNG để tiếng Anh đọc bậy!
-      else {
-        if (indicator) indicator.textContent = '🌐 Giọng ' + (currentVoiceStyle === 'arisu' ? 'Arisu Anime' : 'Nữ') + ' (Trực Tuyến)';
-        playOnlineVietnameseTTS(text);
-      }
-    }
 
-    function playOnlineVietnameseTTS(text) {
-      const sentences = text.match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [text];
-      const chunks = [];
-      let cur = '';
-      for (let s of sentences) {
-        s = s.trim();
-        if (!s) continue;
-        if ((cur + ' ' + s).length <= 130) {
-          cur = cur ? (cur + ' ' + s) : s;
-        } else {
-          if (cur) chunks.push(cur);
-          cur = s;
-        }
-      }
-      if (cur) chunks.push(cur);
-      if (chunks.length === 0) return;
-
-      isPlayingAudioQueue = true;
-      let idx = 0;
-
-      function playNext() {
-        if (!isPlayingAudioQueue || idx >= chunks.length) {
-          isPlayingAudioQueue = false;
-          return;
-        }
-
-        const chunkText = chunks[idx++];
-        const url = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=vi&client=tw-ob&q=' + encodeURIComponent(chunkText);
-        
-        currentAudioElement = new Audio(url);
-        const speedBoost = currentVoiceStyle === 'arisu' ? (currentVoiceRate * 1.1) : currentVoiceRate;
-        currentAudioElement.playbackRate = Math.min(speedBoost, 1.35);
-
-        currentAudioElement.onended = () => {
-          if (isPlayingAudioQueue) playNext();
-        };
-
-        currentAudioElement.onerror = () => {
-          if (isPlayingAudioQueue) playNext();
-        };
-
-        currentAudioElement.play().catch(e => {
-          console.warn('Audio notice:', e);
-        });
-      }
-
-      playNext();
-    }
 
 
         // Keyboard navigation
