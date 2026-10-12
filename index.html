@@ -1830,6 +1830,128 @@
   }
 }
 
+/* ==========================================================================
+   BRIEF 11: GÓC HỒI TƯỞNG (KÝ ỨC LỚP 10 ÙA VỀ - ACCORDION GẬP MỞ)
+   ========================================================================== */
+.box-recall {
+  margin: 18px 0;
+  border-radius: 14px;
+  border: 2px dashed #8b5cf6;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.08) 0%, rgba(99, 102, 241, 0.04) 100%);
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.08);
+}
+.box-recall-header {
+  padding: 12px 18px;
+  background: rgba(139, 92, 246, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+}
+.box-recall-header:hover {
+  background: rgba(139, 92, 246, 0.2);
+}
+.box-recall-title {
+  font-weight: 850;
+  font-size: 0.96rem;
+  color: #7c3aed;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+[data-theme="dark"] .box-recall-title {
+  color: #c084fc;
+}
+.box-recall-icon {
+  font-size: 0.85rem;
+  color: #7c3aed;
+  transition: transform 0.25s ease;
+  font-weight: 800;
+}
+[data-theme="dark"] .box-recall-icon {
+  color: #c084fc;
+}
+.box-recall.open .box-recall-icon {
+  transform: rotate(180deg);
+}
+.box-recall-content {
+  display: none;
+  padding: 16px 20px;
+  font-size: 0.94rem;
+  line-height: 1.74;
+  border-top: 1px dashed rgba(139, 92, 246, 0.3);
+  animation: slideDownFade 0.25s ease;
+}
+.box-recall.open .box-recall-content {
+  display: block;
+}
+.recall-origin-tag {
+  display: inline-block;
+  background: #7c3aed;
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 850;
+  padding: 2px 10px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  letter-spacing: 0.4px;
+}
+
+/* ==========================================================================
+   BRIEF 12: CÔNG THỨC COMBO HỦY DIỆT (LẮP RÁP ĐỒ CHƠI PHÒNG THI)
+   ========================================================================== */
+.box-combo {
+  background: linear-gradient(135deg, rgba(234, 88, 12, 0.1) 0%, rgba(217, 119, 6, 0.05) 100%);
+  border: 2px solid #ea580c;
+  border-radius: 16px;
+  padding: 22px 26px;
+  margin: 26px 0;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.15);
+}
+.box-combo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #ea580c, #f59e0b);
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 900;
+  padding: 4px 12px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+.combo-display {
+  background: #0f172a;
+  color: #fbbf24;
+  border: 2px solid #f59e0b;
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 1.15rem;
+  font-weight: 850;
+  text-align: center;
+  margin: 14px 0;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.4);
+}
+.combo-signal {
+  background: rgba(234, 88, 12, 0.12);
+  border-left: 4px solid #ea580c;
+  padding: 10px 14px;
+  border-radius: 0 8px 8px 0;
+  margin: 12px 0;
+  font-size: 0.94rem;
+  color: #c2410c;
+  font-weight: 750;
+}
+[data-theme="dark"] .combo-signal {
+  color: #fdba74;
+}
+
   </style>
 </head>
 <body>
@@ -1851,6 +1973,12 @@
       </div>
 
       <ul class="nav-list">
+        <li class="nav-item" style="margin: 8px 0;">
+          <button onclick="openCheatSheet()" style="width: 100%; padding: 10px 14px; border-radius: 10px; background: linear-gradient(135deg, #10b981, #0d9488); color: #ffffff; border: none; font-weight: 850; font-size: 0.86rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);">
+            🎒 TẢI BÍ KÍP TRƯỚC GIỜ G (1 Trang A4)
+          </button>
+        </li>
+
         <li class="nav-item">
           <a href="#tong-quan" class="nav-link active">
             <span>🏠 Tổng Quan</span>
@@ -2292,6 +2420,27 @@
             </ul>
           </div>
 
+          <!-- MỤC 11: GÓC HỒI TƯỞNG LỚP 10 (ACCORDION GẬP MỞ) -->
+          <div class="box-recall">
+            <div class="box-recall-header" onclick="toggleRecall(this)">
+              <div class="box-recall-title">
+                <span>🧠 KÝ ỨC LỚP 10 ÙA VỀ: Định Luật Tác Dụng Khối Lượng & Nguồn Gốc K_C</span>
+              </div>
+              <span class="box-recall-icon">▼ Click mở cứu nạn</span>
+            </div>
+            <div class="box-recall-content">
+              <span class="recall-origin-tag">📖 Mượn tạm từ Bài 16 Hóa 10: Tốc độ phản ứng hóa học</span>
+              <p><em>"Công thức này mượn tạm từ Bài 16 Hóa 10, lôi ra đây để giải quyết câu hỏi: Tại sao lúc cân bằng nồng độ các chất lại nhảy lên lũy thừa mũ a, b, c, d nhé!"</em></p>
+              <p>• <strong>Định luật tác dụng khối lượng Lớp 10:</strong> Tốc độ phản ứng tỉ lệ thuận với tích nồng độ các chất phản ứng:</p>
+              <p>- Tốc độ thuận: <code>v<sub>thuận</sub> = k<sub>thuận</sub> &middot; [A]<sup>a</sup> &middot; [B]<sup>b</sup></code></p>
+              <p>- Tốc độ nghịch: <code>v<sub>nghịch</sub> = k<sub>nghịch</sub> &middot; [C]<sup>c</sup> &middot; [D]<sup>d</sup></code></p>
+              <p>• <strong>Khi cân bằng động đạt được:</strong> <code>v<sub>thuận</sub> = v<sub>nghịch</sub></code></p>
+              <p>&hArr; <code>k<sub>thuận</sub> &middot; [A]<sup>a</sup> &middot; [B]<sup>b</sup> = k<sub>nghịch</sub> &middot; [C]<sup>c</sup> &middot; [D]<sup>d</sup></code></p>
+              <p>&hArr; <code>k<sub>thuận</sub> / k<sub>nghịch</sub> = ([C]<sup>c</sup> &middot; [D]<sup>d</sup>) / ([A]<sup>a</sup> &middot; [B]<sup>b</sup>) = <strong>K<sub>C</sub></strong></code>!</p>
+              <p>👉 <strong>HIỂU TẬN GỐC RỄ:</strong> K<sub>C</sub> chính là <strong>tỉ số giữa 2 hằng số tốc độ thuận và nghịch</strong>! Và vì hằng số tốc độ k chỉ phụ thuộc vào nhiệt độ, nên <strong>K<sub>C</sub> CŨNG CHỈ PHỤ THUỘC VÀO NHIỆT ĐỘ</strong>!</p>
+            </div>
+          </div>
+
           <div class="box-trap">
             <span class="box-badge">🚨 2 BẪY TỬ HUYỆT ĐỀ THI 100% GÀI BẪY HỌC SINH</span>
             <h4>Bẫy 1: TUYỆT ĐỐI BỎ CHẤT RẮN (SOLID - KÍ HIỆU LÀ s) RA KHỎI BIỂU THỨC K<sub>C</sub>!</h4>
@@ -2324,6 +2473,22 @@
             <p>
               👉 <strong>Nguyên lý:</strong> <em>Một phản ứng đang ở trạng thái cân bằng, nếu ta tác động vào nó một yếu tố bên ngoài (nồng độ, nhiệt độ, áp suất), thì cân bằng sẽ tự động dịch chuyển theo chiều <strong>LÀM GIẢM TÁC ĐỘNG BÊN NGOÀI ĐÓ</strong>!</em>
             </p>
+          </div>
+
+          <!-- MỤC 11: GÓC HỒI TƯỞNG THU NHIỆT - TỎA NHIỆT LỚP 10 -->
+          <div class="box-recall">
+            <div class="box-recall-header" onclick="toggleRecall(this)">
+              <div class="box-recall-title">
+                <span>🧠 KÝ ỨC LỚP 10 ÙA VỀ: Dấu &Delta;H (Enthalpy) Âm Là Tỏa, Dương Là Thu</span>
+              </div>
+              <span class="box-recall-icon">▼ Click mở cứu nạn</span>
+            </div>
+            <div class="box-recall-content">
+              <span class="recall-origin-tag">📖 Mượn tạm từ Bài 17 Hóa 10: Biến thiên enthalpy phản ứng</span>
+              <p>• <code>&Delta;<sub>r</sub>H&deg;₂₉₈ &lt; 0</code> (Số Âm): Phản ứng <strong>TỎA NHIỆT</strong> &rarr; Chiều thuận tỏa nhiệt, chiều nghịch sẽ là thu nhiệt.</p>
+              <p>• <code>&Delta;<sub>r</sub>H&deg;₂₉₈ &gt; 0</code> (Số Dương): Phản ứng <strong>THU NHIỆT</strong> &rarr; Chiều thuận thu nhiệt, chiều nghịch sẽ là tỏa nhiệt.</p>
+              <p>👉 <strong>Thần chú nối mạch Le Chatelier:</strong> Tăng nhiệt độ thì hệ thích THU NHIỆT (chạy theo chiều có &Delta;H &gt; 0); Giảm nhiệt độ thì hệ thích TỎA NHIỆT (chạy theo chiều có &Delta;H &lt; 0).</p>
+            </div>
           </div>
 
           <div class="table-responsive">
@@ -2363,6 +2528,31 @@
                 </tr>
               </tbody>
             </table>
+          </div>
+        </div>
+
+        <!-- MỤC 12: CÔNG THỨC COMBO HỦY DIỆT BÀI 1 -->
+        <div class="box-combo">
+          <span class="box-combo-badge">🔥 COMBO HỦY DIỆT BÀI 1: LẮP RÁP ĐỒ CHƠI PHÒNG THI</span>
+          
+          <h4 style="color:#c2410c; margin-bottom:8px;">COMBO 1: HIỆU SUẤT H% KẸP BẢNG 3 DÒNG TÍNH THẲNG NỒNG ĐỘ PHẢN ỨNG</h4>
+          <div class="combo-display">
+            x = [Chất ban đầu] &times; H%
+          </div>
+          <div class="combo-signal">
+            🎯 <strong>DẤU HIỆU NHẬN BIẾT COMBO 1:</strong><br>
+            Thấy đề bài cho nồng độ ban đầu của các chất và <strong>quăng thêm hiệu suất phản ứng H%</strong> (ví dụ: H = 25% hoặc H = 40%), bắt tìm K<sub>C</sub> hoặc nồng độ các chất lúc cân bằng.<br>
+            👉 <strong>Tư duy xâu chuỗi:</strong> Lấy luôn nồng độ chất thiếu ban đầu nhân thẳng với H% để ra lượng phản ứng x ở dòng 2 (PƯ). CẤM đặt ẩn x rồi giải phương trình bậc 2 lằng ngoằng làm gì cho mệt óc!
+          </div>
+
+          <h4 style="color:#c2410c; margin-top:20px; margin-bottom:8px;">COMBO 2: CHUYỂN ĐỔI NỒNG ĐỘ C_M TỪ C% VÀ KHỐI LƯỢNG RIÊNG d TRONG 3 GIÂY</h4>
+          <div class="combo-display">
+            C<sub>M</sub> = (10 &times; C% &times; d) / M
+          </div>
+          <div class="combo-signal">
+            🎯 <strong>DẤU HIỆU NHẬN BIẾT COMBO 2:</strong><br>
+            Thấy đề bài cho dung dịch ở dạng <strong>nồng độ phần trăm C%</strong> kèm theo <strong>khối lượng riêng d (g/mL)</strong>, bắt tính hằng số K<sub>C</sub> hoặc nồng độ mol ban đầu.<br>
+            👉 <strong>Tư duy xâu chuỗi:</strong> Ốp thẳng công thức 1 dòng này để đổi ra C<sub>M</sub> trong 3 giây. Cấm đi đường vòng tính m<sub>dung dịch</sub> &rarr; V<sub>dung dịch</sub> &rarr; số mol n vừa lâu vừa dễ bấm máy tính sai!
           </div>
         </div>
 
@@ -2479,6 +2669,23 @@
             <p>
               Các ion tự do bơi lội tung tăng trong nước tạo thành những chiếc bè chở dòng điện &rarr; <strong>Dung dịch dẫn điện và làm bóng đèn bật sáng rực rỡ!</strong>
             </p>
+          </div>
+
+          <!-- MỤC 11: GÓC HỒI TƯỞNG LỚP 10 - ĐỘ ÂM ĐIỆN VÀ PHÂN CỰC CỦA NƯỚC -->
+          <div class="box-recall">
+            <div class="box-recall-header" onclick="toggleRecall(this)">
+              <div class="box-recall-title">
+                <span>🧠 KÝ ỨC LỚP 10 ÙA VỀ: Độ Âm Điện & Tại Sao Nước Là Dung Môi Phân Cực?</span>
+              </div>
+              <span class="box-recall-icon">▼ Click mở cứu nạn</span>
+            </div>
+            <div class="box-recall-content">
+              <span class="recall-origin-tag">📖 Mượn tạm từ Bài 11 Hóa 10: Liên kết cộng hóa trị phân cực</span>
+              <p><em>"Khái niệm này mượn tạm từ Bài 11 Lớp 10, lôi ra đây để giải thích vì sao nước lại đóng vai trò như kẻ bẻ khóa tinh thể muối nhé!"</em></p>
+              <p>• Trong phân tử nước (H₂O), độ âm điện của Oxygen (3.44) lớn hơn nhiều so với Hydrogen (2.20). Đôi electron dùng chung bị kéo lệch hẳn về phía O.</p>
+              <p>• Phân tử H₂O có cấu trúc góc 104.5° làm cho trọng tâm điện tích âm và dương không trùng nhau &rarr; <strong>Phân tử nước bị phân cực mạnh</strong>: đầu O mang điện tích riêng phần âm (&delta;⁻), hai đầu H mang điện tích riêng phần dương (&delta;⁺).</p>
+              <p>👉 Chính nhờ 2 cực này mà nước mới tạo lực hút tĩnh điện lôi giật các ion Na⁺ và Cl⁻ ra khỏi mạng tinh thể!</p>
+            </div>
           </div>
 
           <div class="table-responsive">
@@ -2601,6 +2808,35 @@
           </div>
         </div>
 
+        <!-- MỤC 12: CÔNG THỨC COMBO HỦY DIỆT BÀI 2 -->
+        <div class="box-combo">
+          <span class="box-combo-badge">🔥 COMBO HỦY DIỆT BÀI 2: LẮP RÁP ĐỒ CHƠI PHÒNG THI</span>
+          
+          <h4 style="color:#c2410c; margin-bottom:8px;">COMBO 1: SIÊU COMBO PHA LOÃNG ĐỔI pH (QUY TẮC 10^x LẦN)</h4>
+          <div class="combo-display">
+            Acid: Pha loãng 10<sup>x</sup> lần &rArr; pH TĂNG x đơn vị (pH &lt; 7)<br>
+            Base: Pha loãng 10<sup>x</sup> lần &rArr; pH GIẢM x đơn vị (pH &gt; 7)<br>
+            V<sub>nước thêm</sub> = (10<sup>x</sup> - 1) &times; V<sub>đầu</sub>
+          </div>
+          <div class="combo-signal">
+            🎯 <strong>DẤU HIỆU NHẬN BIẾT COMBO 1:</strong><br>
+            Thấy đề bài hỏi: <em>"Cần thêm bao nhiêu mL nước cất vào 10 mL dung dịch HCl pH = 1 để thu được dung dịch có pH = 3?"</em><br>
+            👉 <strong>Tư duy xâu chuỗi:</strong> pH tăng từ 1 lên 3 &rarr; chênh lệch <code>&Delta;pH = 2</code> &rarr; <code>x = 2</code>.<br>
+            &rArr; Dung dịch bị pha loãng <code>10² = 100 lần</code> &rArr; Thể tích nước cần thêm là: <code>(100 - 1) &times; 10 = 990 mL nước</code>! Ra số ngay trong 5 giây mà không cần tính nồng độ!
+          </div>
+
+          <h4 style="color:#c2410c; margin-top:20px; margin-bottom:8px;">COMBO 2: SIÊU COMBO TRỘN ACID MẠNH VỚI BASE MẠNH TÌM pH 1 DÒNG</h4>
+          <div class="combo-display">
+            Nếu n<sub>H⁺</sub> &gt; n<sub>OH⁻</sub> : [H⁺]<sub>dư</sub> = (n<sub>H⁺</sub> - n<sub>OH⁻</sub>) / (V₁ + V₂)<br>
+            Nếu n<sub>OH⁻</sub> &gt; n<sub>H⁺</sub> : [OH⁻]<sub>dư</sub> = (n<sub>OH⁻</sub> - n<sub>H⁺</sub>) / (V₁ + V₂)
+          </div>
+          <div class="combo-signal">
+            🎯 <strong>DẤU HIỆU NHẬN BIẾT COMBO 2:</strong><br>
+            Thấy đề bài cho trộn V₁ mL dung dịch acid với V₂ mL dung dịch base, hỏi pH của dung dịch thu được.<br>
+            👉 <strong>Tư duy xâu chuỗi:</strong> Bấm máy tính ngay số mol <code>n<sub>H⁺</sub></code> và <code>n<sub>OH⁻</sub></code>. Lấy số lớn trừ số bé rồi chia cho <code>(V₁ + V₂)</code> ra ngay nồng độ dư! Dư H⁺ thì bấm <code>-log[H⁺]</code>; Dư OH⁻ thì bấm <code>14 - (-log[OH⁻])</code>!
+          </div>
+        </div>
+
         <!-- 2.5 BÀI TẬP MẪU THỰC CHIẾN BÀI 2 -->
         <div class="practice-card">
           <div class="practice-header">
@@ -2720,6 +2956,27 @@
             </p>
           </div>
 
+          <!-- MỤC 11: GÓC HỒI TƯỞNG LỚP 10 - NĂNG LƯỢNG LIÊN KẾT E_b -->
+          <div class="box-recall">
+            <div class="box-recall-header" onclick="toggleRecall(this)">
+              <div class="box-recall-title">
+                <span>🧠 KÝ ỨC LỚP 10 ÙA VỀ: Năng Lượng Liên Kết E_b & Tại Sao Liên Kết Ba Lại Siêu Khỏe?</span>
+              </div>
+              <span class="box-recall-icon">▼ Click mở cứu nạn</span>
+            </div>
+            <div class="box-recall-content">
+              <span class="recall-origin-tag">📖 Mượn tạm từ Bài 12 Hóa 10: Năng lượng liên kết hóa học</span>
+              <p><em>"Khái niệm này mượn tạm từ Bài 12 Lớp 10, lôi ra đây để giải thích con số 945 kJ/mol to cỡ nào nhé!"</em></p>
+              <p>• <strong>Năng lượng liên kết E_b:</strong> Là năng lượng cần cung cấp để bẻ gãy 1 mol liên kết đó ở thể khí thành các nguyên tử riêng rẽ.</p>
+              <p>• So sánh giật mình:</p>
+              <p>- Liên kết đơn <code>C - C</code> chỉ có E_b = 347 kJ/mol.</p>
+              <p>- Liên kết đơn <code>H - H</code> chỉ có E_b = 436 kJ/mol.</p>
+              <p>- Liên kết đôi <code>O = O</code> chỉ có E_b = 498 kJ/mol.</p>
+              <p>- Liên kết ba <code>N &equiv; N</code> vọt lên tới <strong>945 kJ/mol</strong> (gấp gần 3 lần liên kết đơn thông thường)!</p>
+              <p>👉 Vì thế ở điều kiện thường, không có tác nhân nào đủ năng lượng bẻ gãy nổi liên kết ba N&equiv;N!</p>
+            </div>
+          </div>
+
           <div class="analogy-box">
             <div class="analogy-title">🤿 Câu chuyện SGK Trang 29: Bệnh giảm áp kinh hoàng của thợ lặn biển sâu</div>
             <p>
@@ -2790,6 +3047,21 @@
             <li><strong>Nitrogen lỏng (-196°C):</strong> Đông lạnh siêu tốc bảo quản tinh trùng, phôi thụ tinh nhân tạo trong y học, mẫu bệnh phẩm sinh học; làm lạnh áp băng trị mụn cóc da liễu.</li>
             <li>Nguyên liệu tổng hợp khí ammonia để sản xuất phân đạm và acid nitric.</li>
           </ul>
+        </div>
+
+        <!-- MỤC 12: CÔNG THỨC COMBO HỦY DIỆT BÀI 4 -->
+        <div class="box-combo">
+          <span class="box-combo-badge">🔥 COMBO HỦY DIỆT BÀI 4: LẮP RÁP ĐỒ CHƠI PHÒNG THI</span>
+          
+          <h4 style="color:#c2410c; margin-bottom:8px;">COMBO: TÍNH THỂ TÍCH N₂ PHẢN ỨNG VỚI KIM LOẠI Ở ĐKC TRONG 5 GIÂY</h4>
+          <div class="combo-display">
+            n<sub>N₂</sub> = (n<sub>Kim Loại</sub> &times; Hóa Trị) / 6 &rArr; V<sub>N₂ (đkc)</sub> = n<sub>N₂</sub> &times; 24.79
+          </div>
+          <div class="combo-signal">
+            🎯 <strong>DẤU HIỆU NHẬN BIẾT COMBO BÀI 4:</strong><br>
+            Thấy đề bài cho m gam kim loại (như Mg hóa trị 2, Ca hóa trị 2, Li hóa trị 1) tác dụng vừa đủ với khí N₂ để tạo muối nitride Mg₃N₂, Li₃N... bắt tìm thể tích khí N₂ ở đkc (25°C, 1 bar).<br>
+            👉 <strong>Tư duy xâu chuỗi:</strong> 1 phân tử N₂ nhận 6 electron: <code>N₂⁰ + 6e &rarr; 2N⁻³</code>. Dùng ngay bảo toàn electron: <code>n<sub>KL</sub> &times; HóaTrị = 6 &times; n<sub>N₂</sub></code>! Tính ra số mol N₂ chia 6 rồi nhân 24.79 là xong, CẤM cân bằng phương trình mất thời gian!
+          </div>
         </div>
 
         <!-- 4.4 THỰC CHIẾN STEP-BY-STEP BÀI 4 -->
@@ -2877,6 +3149,22 @@
               • <strong>Độ tan kỉ lục:</strong> Cặp electron tự do trên N bắt cặp tạo ra <strong>liên kết hydrogen cực mạnh với phân tử nước</strong> (Hình 5.2 SGK). Kết quả: <em>Ở 20°C, 1 LÍT NƯỚC HÒA TAN TỚI 700 LÍT KHÍ NH₃!</em> Thí nghiệm phun nước đài hoa sen trong SGK: Khí NH₃ tan làm giảm áp suất trong bình hút nước phun ngược lên như đài phun nước!
             </p>
           </div>
+
+          <!-- MỤC 11: GÓC HỒI TƯỞNG LỚP 10 - LIÊN KẾT HYDROGEN -->
+          <div class="box-recall">
+            <div class="box-recall-header" onclick="toggleRecall(this)">
+              <div class="box-recall-title">
+                <span>🧠 KÝ ỨC LỚP 10 ÙA VỀ: Liên Kết Hydrogen Là Gì Mà Khiến NH₃ Tan Kỉ Lục?</span>
+              </div>
+              <span class="box-recall-icon">▼ Click mở cứu nạn</span>
+            </div>
+            <div class="box-recall-content">
+              <span class="recall-origin-tag">📖 Mượn tạm từ Bài 13 Hóa 10: Liên kết hydrogen</span>
+              <p><em>"Khái niệm này mượn tạm từ Bài 13 Lớp 10, lôi ra đây để giải thích vì sao NH₃ không chỉ tan mà còn tan tới 700 LÍT/1 LÍT NƯỚC nhé!"</em></p>
+              <p>• <strong>Điều kiện tạo liên kết hydrogen:</strong> Nguyên tử H gắn với nguyên tử có độ âm điện lớn (N, O, F) tương tác hút tĩnh điện với một nguyên tử khác cũng có độ âm điện lớn và còn <strong>cặp electron tự do</strong>.</p>
+              <p>• Phân tử NH₃ thỏa mãn cả hai: N có độ âm điện lớn (3.04), còn 1 cặp e tự do ở đỉnh chóp, và có 3 liên kết N-H phân cực &rarr; Nó tạo ra mạng lưới liên kết hydrogen chằng chịt <code>N - H &middot;&middot;&middot; O - H</code> với phân tử nước! Các phân tử nước kéo NH₃ tan ồ ạt không phanh!</p>
+            </div>
+          </div>
         </div>
 
         <!-- 5.2 TÍNH CHẤT HÓA HỌC CỦA NH3 -->
@@ -2952,6 +3240,31 @@
             <p>• <code>NH₄NO₂ &rarr; (t°) N₂ + 2H₂O</code> (Dùng điều chế N₂ tinh khiết trong phòng thí nghiệm).</p>
             <p>• <code>NH₄NO₃ &rarr; (200°C) N₂O (khí cười) + 2H₂O</code>. <strong>KHÔNG CÓ KHÍ NH₃ NÀO SINH RA!</strong></p>
             <p>• Ở nhiệt độ cao &gt; 300°C: <code>2NH₄NO₃ &rarr; 2N₂ + O₂ + 4H₂O</code> (Phản ứng nổ tung kinh hoàng giải phóng thể tích khí khổng lồ - Thảm họa nổ cảng Beirut tháng 8/2020 làm rung chuyển Lebanon!).</p>
+          </div>
+        </div>
+
+        <!-- MỤC 12: CÔNG THỨC COMBO HỦY DIỆT BÀI 5 -->
+        <div class="box-combo">
+          <span class="box-combo-badge">🔥 COMBO HỦY DIỆT BÀI 5: LẮP RÁP ĐỒ CHƠI PHÒNG THI</span>
+          
+          <h4 style="color:#c2410c; margin-bottom:8px;">COMBO 1: ĐỊNH LƯỢNG NH₄⁺ QUA THỂ TÍCH KHÍ NH₃ BAY RA</h4>
+          <div class="combo-display">
+            n<sub>NH₄⁺</sub> = n<sub>OH⁻ phản ứng</sub> = n<sub>NH₃</sub> = V<sub>NH₃ (đkc)</sub> / 24.79
+          </div>
+          <div class="combo-signal">
+            🎯 <strong>DẤU HIỆU NHẬN BIẾT COMBO 1:</strong><br>
+            Đề bài cho dung dịch chứa muối ammonium tác dụng với dung dịch kiềm dư, đun nóng thu được V lít khí mùi khai ở đkc (25°C, 1 bar), bắt tính nồng độ hoặc khối lượng muối ammonium ban đầu.<br>
+            👉 <strong>Tư duy xâu chuỗi:</strong> 1 ion NH₄⁺ sinh ra đúng 1 phân tử khí NH₃. Bấm luôn: <code>n = V / 24.79</code> ra ngay số mol ion NH₄⁺ trong 3 giây!
+          </div>
+
+          <h4 style="color:#c2410c; margin-top:20px; margin-bottom:8px;">COMBO 2: HIỆU SUẤT TỔNG HỢP NH₃ THEO ĐỘ GIẢM SỐ MOL KHÍ</h4>
+          <div class="combo-display">
+            n<sub>NH₃ sinh ra</sub> = &Delta;n<sub>giảm</sub> = n<sub>trước</sub> - n<sub>sau</sub> = 2 &times; n<sub>N₂ phản ứng</sub>
+          </div>
+          <div class="combo-signal">
+            🎯 <strong>DẤU HIỆU NHẬN BIẾT COMBO 2:</strong><br>
+            Đề cho phản ứng tổng hợp NH₃ trong bình kín: <code>N₂ + 3H₂ &#8652; 2NH₃</code>. Sau phản ứng đo thấy số mol khí trong bình (hoặc áp suất bình) giảm đi một lượng &Delta;n.<br>
+            👉 <strong>Tư duy xâu chuỗi:</strong> Cứ 1 mol N₂ phản ứng với 3 mol H₂ (tổng 4 mol) thì chỉ sinh ra 2 mol NH₃ &rarr; Số mol khí giảm đúng bằng số mol NH₃ sinh ra! Lấy luôn độ giảm mol làm số mol NH₃ để tính hiệu suất H%!
           </div>
         </div>
 
@@ -3058,6 +3371,23 @@
             </p>
           </div>
 
+          <!-- MỤC 11: GÓC HỒI TƯỞNG LỚP 10 - THĂNG BẰNG ELECTRON & OBITAN -->
+          <div class="box-recall">
+            <div class="box-recall-header" onclick="toggleRecall(this)">
+              <div class="box-recall-title">
+                <span>🧠 KÝ ỨC LỚP 10 ÙA VỀ: Định Luật Bảo Toàn Electron & Số Obitan Lớp Ngoài Cùng</span>
+              </div>
+              <span class="box-recall-icon">▼ Click mở cứu nạn</span>
+            </div>
+            <div class="box-recall-content">
+              <span class="recall-origin-tag">📖 Mượn tạm từ Bài 6 & 15 Hóa 10: Cấu hình e & Phản ứng oxi hóa - khử</span>
+              <p><em>"Kiến thức này mượn tạm từ Lớp 10, lôi ra đây để giải phóng bạn khỏi việc phải ngồi cân bằng phương trình HNO₃ dài dằng dặc nhé!"</em></p>
+              <p>• <strong>Định luật bảo toàn electron Lớp 10:</strong> Trong mọi phản ứng oxi hóa - khử, tổng số mol electron chất khử CHO bằng đúng tổng số mol electron chất oxi hóa NHẬN:</p>
+              <div class="eq"><strong>&sum; n<sub>e cho</sub> = &sum; n<sub>e nhận</sub></strong></div>
+              <p>• <strong>Cấu hình e của N (Z=7):</strong> <code>1s² 2s² 2p³</code>. Lớp ngoài cùng (lớp n=2) chỉ có 1 obitan 2s và 3 obitan 2p &rarr; Tối đa chỉ có 4 obitan lai hóa sp³ tham gia liên kết, KHÔNG CÓ OBITAN d &rarr; <strong>Hóa trị tối đa của N chỉ là IV</strong>!</p>
+            </div>
+          </div>
+
           <div class="box-theory">
             <span class="box-badge">📘 Tính chất vật lí & Bảo quản</span>
             <p>
@@ -3112,10 +3442,41 @@
               <li><code>2N⁺⁵ + 10e &rarr; N₂⁰</code> &rArr; Hệ số 10.</li>
               <li><code>N⁺⁵ + 8e &rarr; N⁻³ (NH₄NO₃)</code> &rArr; Hệ số 8.</li>
             </ul>
-            <p>• <strong>Công thức tính nhanh số mol HNO₃ phản ứng:</strong></p>
-            <div class="formula-display" style="color:#047857; border-color:#10b981;">
-              n<sub>HNO₃ pư</sub> = 2&middot;n<sub>NO₂</sub> + 4&middot;n<sub>NO</sub> + 10&middot;n<sub>N₂O</sub> + 12&middot;n<sub>N₂</sub> + 10&middot;n<sub>NH₄NO₃</sub>
-            </div>
+          </div>
+        </div>
+
+        <!-- MỤC 12: CÔNG THỨC COMBO HỦY DIỆT BÀI 6 -->
+        <div class="box-combo">
+          <span class="box-combo-badge">🔥 BỘ 3 COMBO HỦY DIỆT BÀI 6: LẮP RÁP ĐỒ CHƠI PHÒNG THI</span>
+          
+          <h4 style="color:#c2410c; margin-bottom:8px;">SIÊU COMBO 1: TÍNH KHỐI LƯỢNG MUỐI NITRATE KHAN TRONG 5 GIÂY</h4>
+          <div class="combo-display">
+            m<sub>muối nitrate</sub> = m<sub>kim loại</sub> + 62 &times; &sum; n<sub>e nhận</sub>
+          </div>
+          <div class="combo-signal">
+            🎯 <strong>DẤU HIỆU NHẬN BIẾT COMBO 1:</strong><br>
+            Thấy đề bài cho m gam hỗn hợp nhiều kim loại (ví dụ: Cu, Fe, Mg, Al...) tác dụng hoàn toàn với dung dịch HNO₃, sinh ra V lít hỗn hợp khí sản phẩm khử (NO, NO₂...), bắt tìm <strong>khối lượng muối khan</strong> sau khi cô cạn.<br>
+            👉 <strong>Tư duy xâu chuỗi:</strong> Khối lượng muối = m kim loại + m gốc NO₃⁻ tạo muối. Số mol gốc NO₃⁻ tạo muối bằng đúng tổng mol electron nhận: <code>n<sub>NO₃⁻ tạo muối</sub> = n<sub>e nhận</sub></code>. Khối lượng mol NO₃⁻ là 62 g/mol. Ốp thẳng công thức: <code>m<sub>muối</sub> = m<sub>KL</sub> + 62 &times; (1&middot;n<sub>NO₂</sub> + 3&middot;n<sub>NO</sub> + 8&middot;n<sub>N₂O</sub> + 10&middot;n<sub>N₂</sub>)</code>. Ra kết quả trong 5 giây, CẤM tìm từng kim loại!
+          </div>
+
+          <h4 style="color:#c2410c; margin-top:20px; margin-bottom:8px;">SIÊU COMBO 2: TÍNH SỐ MOL AXIT HNO₃ PHẢN ỨNG SIÊU TỐC</h4>
+          <div class="combo-display">
+            n<sub>HNO₃ phản ứng</sub> = 2&middot;n<sub>NO₂</sub> + 4&middot;n<sub>NO</sub> + 10&middot;n<sub>N₂O</sub> + 12&middot;n<sub>N₂</sub> + 10&middot;n<sub>NH₄NO₃</sub>
+          </div>
+          <div class="combo-signal">
+            🎯 <strong>DẤU HIỆU NHẬN BIẾT COMBO 2:</strong><br>
+            Đề cho lượng khí thoát ra, bắt tìm thể tích dung dịch HNO₃ nồng độ C<sub>M</sub> cần dùng.<br>
+            👉 <strong>Tư duy xâu chuỗi:</strong> <code>n<sub>HNO₃</sub> = n<sub>gốc NO₃⁻ tạo muối</sub> + n<sub>N trong khí</sub></code>. Ốp thẳng các hệ số 2, 4, 10, 12 nhân với số mol từng khí, cấm viết và cân bằng từng phương trình hóa học!
+          </div>
+
+          <h4 style="color:#c2410c; margin-top:20px; margin-bottom:8px;">SIÊU COMBO 3: BẪY PHÁT HIỆN MUỐI NH₄NO₃ TÀNG HÌNH</h4>
+          <div class="combo-display">
+            n<sub>NH₄NO₃ (tàng hình)</sub> = [ &sum; (n<sub>Kim Loại</sub> &times; Hóa Trị) - &sum; n<sub>e khí</sub> ] / 8
+          </div>
+          <div class="combo-signal">
+            🎯 <strong>DẤU HIỆU NHẬN BIẾT COMBO 3:</strong><br>
+            Khi đề bài cho kim loại có tính khử mạnh như <strong>Mg, Al, Zn</strong> tác dụng HNO₃, sau đó cho số mol khí nhưng tính thấy tổng electron kim loại nhường <strong>LỚN HƠN</strong> tổng electron khí nhận.<br>
+            👉 <strong>Tư duy xâu chuỗi:</strong> Phần electron chênh lệch đó đã bị N⁺⁵ nuốt để tạo thành muối <strong>NH₄NO₃ tàng hình</strong> trong dung dịch! Lấy độ chênh electron chia cho 8 sẽ ra ngay số mol NH₄NO₃!
           </div>
         </div>
 
@@ -3152,6 +3513,7 @@
             <strong>Đề bài:</strong> Hòa tan hoàn toàn 3.84 gam kim loại Đồng (Cu) vào dung dịch HNO₃ loãng dư, thu được V lít khí NO (sản phẩm khử duy nhất ở điều kiện chuẩn 25°C, 1 bar).
             <br>a) Tính thể tích khí NO thu được?
             <br>b) Tính số mol HNO₃ tối thiểu đã tham gia phản ứng?
+            <br>c) Tính khối lượng muối Cu(NO₃)₂ tạo thành mà không cần viết phương trình?
           </div>
           <button class="btn-reveal-solution" onclick="toggleSolution(this)">
             👉 Bấm vào để xem đáp án hoặc ăn chửi nếu nghĩ sai 💥
@@ -3176,10 +3538,10 @@
               <p>• <code>V<sub>NO</sub> = n &times; 24.79 = 0.04 &times; 24.79 = 0.9916 Lít</code>!</p>
             </div>
             <div class="solution-step">
-              <div class="step-heading">⚡ BƯỚC 4: TÍNH SỐ MOL HNO₃ PHẢN ỨNG QUA CÔNG THỨC NHANH</div>
-              <p>Mỗi phân tử NO thoát ra cần 1 phân tử HNO₃ tạo khí và 3 phân tử HNO₃ tạo gốc muối Cu(NO₃)₂ &rarr; Hệ số là 4:</p>
-              <p><code>n<sub>HNO₃ pư</sub> = 4 &times; n<sub>NO</sub> = 4 &times; 0.04 = 0.16 mol</code>.</p>
-              <p style="color:#10b981; font-weight:800;">👉 Kết luận: Thể tích khí NO = 0.9916 Lít; Số mol HNO₃ phản ứng = 0.16 mol!</p>
+              <div class="step-heading">⚡ BƯỚC 4: ỐP COMBO SỐ MOL HNO₃ VÀ COMBO MUỐI NITRATE</div>
+              <p>• <strong>Số mol HNO₃ phản ứng:</strong> <code>n<sub>HNO₃</sub> = 4 &times; n<sub>NO</sub> = 4 &times; 0.04 = 0.16 mol</code>.</p>
+              <p>• <strong>Khối lượng muối Cu(NO₃)₂:</strong> Ốp siêu combo 1: <code>m<sub>muối</sub> = m<sub>KL</sub> + 62 &times; n<sub>e nhận</sub> = 3.84 + 62 &times; (3 &times; 0.04) = 3.84 + 7.44 = 11.28 gam</code>!</p>
+              <p style="color:#10b981; font-weight:800;">👉 Kết luận: V<sub>NO</sub> = 0.9916 Lít; n<sub>HNO₃</sub> = 0.16 mol; m<sub>muối</sub> = 11.28 gam!</p>
             </div>
           </div>
         </div>
@@ -3859,6 +4221,145 @@
     </main>
   </div>
 
+  <!-- ==========================================================================
+     MODAL GÓC TRÙM CUỐI: TÀI LIỆU BỎ TÚI / PHAO CỨU SINH 1 TRANG A4
+     ========================================================================== -->
+<div class="cheat-modal-overlay" id="cheatSheetModal" onclick="closeCheatSheet(event)">
+  <div class="cheat-modal-box">
+    <div class="cheat-modal-header">
+      <h3>🎒 BÍ KÍP CỨU SINH TRƯỚC GIỜ G (CHUẨN 1 TRANG A4)</h3>
+      <div class="cheat-modal-actions">
+        <button class="btn-print-cheat" onclick="printCheatSheet()">🖨️ In / Tải PDF Ngay (1 Trang A4)</button>
+        <button class="modal-close btn-close-cheat" onclick="closeCheatSheet()">&times;</button>
+      </div>
+    </div>
+    
+    <div class="cheat-modal-body">
+      <!-- VÙNG IN DUY NHẤT CHUẨN 1 TRANG A4 -->
+      <div id="cheatSheetPrintArea">
+        <div class="cheat-header-print">
+          <h2>⚛️ BÍ KÍP HÓA 11 TRƯỚC GIỜ G — PHAO CỨU SINH 1 TRANG A4</h2>
+          <p>Tóm tắt tinh hoa công thức, combo hủy diệt & bẫy sai ngu 6 bài học sống còn (SGK Kết Nối Tri Thức) • Tụng 5 phút trước khi thi!</p>
+        </div>
+
+        <div class="cheat-sheet-grid">
+          <!-- CARD 1: TẦNG 0 -->
+          <div class="cheat-card">
+            <div class="cheat-card-header">
+              <span>🔰 TẦNG 0: NỀN TẢNG MẤT GỐC</span>
+              <span class="cheat-key">CỐT LÕI</span>
+            </div>
+            <ul class="cheat-list">
+              <li><strong>4 Công thức mol:</strong> <code>n = m / M</code> (m tính bằng GAM); <code>n = V / 24.79</code> (ở 25°C, 1 bar); <code>C<sub>M</sub> = n / V</code> (V tính bằng LÍT); <code>m<sub>ct</sub> = m<sub>dd</sub> &times; C% / 100%</code>.</li>
+              <li><strong>Hóa trị chéo:</strong> I (K, Na, Ag, Cl, NO₃); II (Mg, Ca, Ba, Zn, Cu, SO₄, CO₃); III (Al, Fe). Ghép chéo: A<sub>x</sub>B<sub>y</sub> &rarr; <code>x &times; a = y &times; b</code>.</li>
+              <li><strong>Khử cho tăng - O nhận giảm:</strong> Chất khử cho e (số oxh tăng); Chất oxi hóa nhận e (số oxh giảm).</li>
+              <li><strong>&Delta;H:</strong> <code>&Delta;H &lt; 0</code>: Tỏa nhiệt (nóng xung quanh); <code>&Delta;H &gt; 0</code>: Thu nhiệt (lạnh xung quanh).</li>
+            </ul>
+          </div>
+
+          <!-- CARD 2: BÀI 1 -->
+          <div class="cheat-card">
+            <div class="cheat-card-header">
+              <span>⚖️ BÀI 1: CÂN BẰNG HÓA HỌC</span>
+              <span class="cheat-key">K<sub>C</sub> & LE CHATELIER</span>
+            </div>
+            <ul class="cheat-list">
+              <li><strong>Cân bằng động:</strong> <code>v<sub>thuận</sub> = v<sub>nghịch</sub> &ne; 0</code> (phản ứng không dừng, nồng độ không đổi).</li>
+              <li><strong>Hằng số K<sub>C</sub>:</strong> <code>K<sub>C</sub> = ([C]<sup>c</sup> &middot; [D]<sup>d</sup>) / ([A]<sup>a</sup> &middot; [B]<sup>b</sup>)</code>.</li>
+              <li><strong style="color:#dc2626;">BẪY TỬ HUYỆT:</strong> BỎ CHẤT RẮN (s) RA KHỎI K<sub>C</sub>! K<sub>C</sub> CHỈ PHỤ THUỘC VÀO NHIỆT ĐỘ T!</li>
+              <li><strong>Le Chatelier:</strong>
+                <br>• Tăng T &rarr; chiều Thu nhiệt (&Delta;H &gt; 0); Giảm T &rarr; chiều Tỏa nhiệt (&Delta;H &lt; 0).
+                <br>• Tăng P (nén) &rarr; chiều Giảm mol khí; Giảm P &rarr; chiều Tăng mol khí.
+                <br>• Thêm chất &rarr; chiều Tiêu chất; XÚC TÁC KHÔNG ĐỔI CÂN BẰNG!
+              </li>
+            </ul>
+          </div>
+
+          <!-- CARD 3: BÀI 2 -->
+          <div class="cheat-card">
+            <div class="cheat-card-header">
+              <span>💧 BÀI 2: DUNG DỊCH & ĐIỆN LI</span>
+              <span class="cheat-key">pH & BRØNSTED</span>
+            </div>
+            <ul class="cheat-list">
+              <li><strong>Thuyết Brønsted:</strong> Acid = Cho H⁺; Base = Nhận H⁺. Lưỡng tính: HCO₃⁻, H₂O.</li>
+              <li><strong style="color:#dc2626;">BẪY SỐNG CÒN:</strong> Ion <strong>HSO₄⁻ là ACID MẠNH</strong>, KHÔNG PHẢI lưỡng tính!</li>
+              <li><strong>Công thức tính pH:</strong> <code>pH = -log[H⁺]</code>; <code>[H⁺] = 10<sup>-pH</sup></code>; <code>[H⁺]&middot;[OH⁻] = 10<sup>-14</sup></code>; <code>pH + pOH = 14</code>.</li>
+              <li><strong>Thang pH:</strong> pH &lt; 7 (Acid, đỏ quỳ); pH = 7 (Trung tính); pH &gt; 7 (Base, xanh quỳ, hồng phenolphthalein khi pH &ge; 8.3).</li>
+              <li><strong>Chuẩn độ Acid - Base:</strong> <code>C<sub>A</sub> &middot; V<sub>A</sub> = C<sub>B</sub> &middot; V<sub>B</sub></code>. Điểm tương đương: hồng nhạt bền 15-20s.</li>
+            </ul>
+          </div>
+
+          <!-- CARD 4: BÀI 4 -->
+          <div class="cheat-card">
+            <div class="cheat-card-header">
+              <span>⚡ BÀI 4: KHÍ NITROGEN (N₂)</span>
+              <span class="cheat-key">LIÊN KẾT BA & Li</span>
+            </div>
+            <ul class="cheat-list">
+              <li><strong>Chiếm 78.1% thể tích:</strong> Liên kết ba <code>N&equiv;N</code> năng lượng 945 kJ/mol &rarr; Cực trơ ở nhiệt độ thường.</li>
+              <li><strong style="color:#dc2626;">NGOẠI LỆ 100% RA ĐỀ:</strong> Kim loại DUY NHẤT phản ứng ở nhiệt độ phòng là <strong>Lithium (Li)</strong>: <code>6Li + N₂ &rarr; 2Li₃N</code>! Kim loại khác (Mg, Ca...) phải nung nóng.</li>
+              <li><strong>Sấm sét tạo đạm:</strong> <code>N₂ &rarr; (+O₂, sét 3000°C) &rarr; NO &rarr; (+O₂) &rarr; NO₂ &rarr; (+O₂+H₂O) &rarr; HNO₃ &rarr; H⁺ + NO₃⁻</code> (nuôi lúa vụ chiêm).</li>
+              <li><strong>Ứng dụng:</strong> Bơm gói bim bim, lốp máy bay, N₂ lỏng (-196°C) bảo quản mẫu y học sinh học.</li>
+            </ul>
+          </div>
+
+          <!-- CARD 5: BÀI 5 -->
+          <div class="cheat-card">
+            <div class="cheat-card-header">
+              <span>💨 BÀI 5: AMMONIA & MUỐI NH₄⁺</span>
+              <span class="cheat-key">KHÓI TRẮNG & NHẬN BIẾT</span>
+            </div>
+            <ul class="cheat-list">
+              <li><strong>Cấu tạo NH₃:</strong> Hình chóp tam giác, còn 1 cặp electron tự do &rarr; Tạo liên kết hydrogen mạnh với nước &rarr; 1L nước tan 700L khí NH₃!</li>
+              <li><strong>Tính chất:</strong> Base yếu (quỳ ẩm hóa xanh); Tính khử mạnh do N có số oxi hóa -3 cực tiểu.</li>
+              <li><strong>Khói trắng:</strong> <code>NH₃(g) + HCl(g) &rarr; NH₄Cl(s)</code> (tinh thể muối rắn lơ lửng).</li>
+              <li><strong>Nhận biết NH₄⁺:</strong> Đun với kiềm NaOH &rarr; Thoát khí NH₃ mùi khai làm xanh quỳ tím ẩm: <code>NH₄⁺ + OH⁻ &rarr; NH₃&uarr; + H₂O</code>.</li>
+              <li><strong style="color:#dc2626;">BẪY NHIỆT PHÂN:</strong> <code>NH₄NO₃ &rarr; N₂O + 2H₂O</code> (KHÔNG sinh NH₃, nổ mạnh ở nhiệt độ cao!). <code>NH₄HCO₃ &rarr; NH₃ + CO₂ + H₂O</code> (bột nở).</li>
+            </ul>
+          </div>
+
+          <!-- CARD 6: BÀI 6 -->
+          <div class="cheat-card">
+            <div class="cheat-card-header">
+              <span>🧪 BÀI 6: HNO₃ & PHÚ DƯỠNG</span>
+              <span class="cheat-key">BẢO TOÀN E & THỤ ĐỘNG</span>
+            </div>
+            <ul class="cheat-list">
+              <li><strong>Cấu tạo HNO₃:</strong> Số oxi hóa +5 nhưng <strong>HÓA TRỊ CỦA N CHỈ LÀ IV</strong>! (Vì không có orbital d).</li>
+              <li><strong>Tính oxi hóa mạnh:</strong> Oxi hóa kim loại (trừ Au, Pt), <strong>TUYỆT ĐỐI KHÔNG SINH KHÍ H₂!</strong></li>
+              <li><strong style="color:#dc2626;">THỤ ĐỘNG HÓA:</strong> <strong>Al, Fe, Cr</strong> bị thụ động trong HNO₃ ĐẶC NGUỘI! (Chở axit bằng xe bồn nhôm/thép).</li>
+              <li><strong>Nước cường toan:</strong> <code>1 thể tích HNO₃ đặc + 3 thể tích HCl đặc</code> hòa tan vàng Au.</li>
+              <li><strong>Phú dưỡng:</strong> Dư thừa N (&ge;300&mu;g/L) và P (&ge;20&mu;g/L) &rarr; Tảo nở hoa &rarr; Cạn oxy hòa tan &rarr; Cá tôm chết ngạt thành hồ chết.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- CARD 7: SIÊU COMBO HỦY DIỆT PHÒNG THI -->
+        <div class="cheat-card" style="margin-top: 10px; border: 2px solid #ea580c; background: rgba(234, 88, 12, 0.04);">
+          <div class="cheat-card-header" style="color: #c2410c; border-bottom-color: #ea580c;">
+            <span>🔥 SIÊU COMBO HỦY DIỆT PHÒNG THI (ỐP SỐ RA ĐÁP ÁN TRONG 5 GIÂY)</span>
+            <span class="cheat-key" style="color: #ea580c;">BẢO BỐI</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; font-size: 8.5pt; line-height: 1.45;">
+            <div>
+              <p>• <strong>Đổi C<sub>M</sub> từ C% & d:</strong> <code>C<sub>M</sub> = (10 &times; C% &times; d) / M</code></p>
+              <p>• <strong>Pha loãng đổi pH:</strong> Pha 10<sup>x</sup> lần &rArr; <code>&Delta;pH = &plusmn;x</code>; <code>V<sub>nước</sub> = (10<sup>x</sup> - 1)&middot;V<sub>đầu</sub></code></p>
+              <p>• <strong>Kim loại + N₂:</strong> <code>n<sub>N₂</sub> = (n<sub>KL</sub> &times; HóaTrị) / 6 &rArr; V = n<sub>N₂</sub> &times; 24.79</code></p>
+            </div>
+            <div>
+              <p>• <strong>Khối lượng muối nitrate:</strong> <code>m<sub>muối</sub> = m<sub>KL</sub> + 62 &times; &sum; n<sub>e nhận</sub></code></p>
+              <p>• <strong>Mol HNO₃ phản ứng:</strong> <code>n<sub>HNO₃</sub> = 2n<sub>NO₂</sub> + 4n<sub>NO</sub> + 10n<sub>N₂O</sub> + 12n<sub>N₂</sub> + 10n<sub>NH₄NO₃</sub></code></p>
+              <p>• <strong>Phát hiện NH₄NO₃ tàng hình:</strong> <code>n<sub>NH₄NO₃</sub> = (&sum; n<sub>e cho</sub> - &sum; n<sub>e khí</sub>) / 8</code></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
   <!-- LIGHTBOX MODAL TO VIEW ORIGINAL SGK SCREENSHOTS -->
   <div class="modal-overlay" id="imageModal" onclick="closeModal(event)">
     <div class="modal-content" onclick="event.stopPropagation()">
@@ -4081,7 +4582,7 @@
       let hStr = hConc < 1e-3 ? hConc.toExponential(2) : hConc.toFixed(4);
       const ohConc = Math.pow(10, -(14 - ph));
       let ohStr = ohConc < 1e-3 ? ohConc.toExponential(2) : ohConc.toFixed(4);
-      document.getElementById('phConcText').innerHTML = `[H⁺] = ${hStr} M &nbsp;|&nbsp; [OH⁻] = ${ohStr} M`;
+      document.getElementById('phConcText').innerHTML = '[H<sup>+</sup>] = ' + hStr + ' M &nbsp;|&nbsp; [OH<sup>-</sup>] = ' + ohStr + ' M';
 
       const env = document.getElementById('phEnvText');
       const litmus = document.getElementById('phLitmusText');
@@ -4154,8 +4655,8 @@
 
     // ==========================================
     // LOGIC TRỢ GIẢNG BÁ KHÍ (BÀI 6 TỪ A ĐẾN Z)
-
     // ==========================================
+// ==========================================
     // LOGIC TRO GIANG BA KHI (TAT CA 6 BAI TU A DEN Z)
     // ==========================================
 // ==========================================================================
@@ -5291,7 +5792,6 @@ const allLectures = {
 };
 
 
-
     let currentLessonId = 'bai-6';
     let currentLectureStep = 0;
     let isVoiceActive = true;
@@ -5463,7 +5963,7 @@ const allLectures = {
 
       window.speechSynthesis.speak(utter);
     }
-
+"@
 
         // Keyboard navigation
     document.addEventListener('keydown', (e) => {
@@ -5528,6 +6028,14 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.chem-tip.tip-active').forEach(t => t.classList.remove('tip-active'));
   });
 });
+
+/* JS for Brief 11: Toggle Góc Hồi Tưởng Accordion */
+function toggleRecall(header) {
+  const box = header.closest('.box-recall');
+  if (box) {
+    box.classList.toggle('open');
+  }
+}
 
   </script>
 </body>
