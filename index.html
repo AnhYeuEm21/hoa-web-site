@@ -204,11 +204,41 @@ body {
 .box-combo { background: rgba(255,171,64,0.07); border: 1px solid rgba(255,171,64,0.3); border-left: 4px solid var(--accent-orange); border-radius: var(--radius); }
 .box-combo .box-title { color: var(--accent-orange); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
 
-/* FORMULA DISPLAY */
+/* FORMULA DISPLAY & MATH */
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sub { bottom: -0.25em; }
+sup { top: -0.5em; }
+
+.fraction {
+  display: inline-flex;
+  flex-direction: column;
+  vertical-align: middle;
+  text-align: center;
+  padding: 0 4px;
+  line-height: 1.15;
+  font-size: 0.95em;
+}
+.fraction .num {
+  border-bottom: 2px solid currentColor;
+  padding-bottom: 3px;
+  margin-bottom: 2px;
+  display: block;
+}
+.fraction .den {
+  padding-top: 2px;
+  display: block;
+}
+
 .formula-display {
   background: var(--bg-card); border: 1px solid var(--border-bright); border-radius: var(--radius-sm);
   padding: 16px 20px; margin: 12px 0; font-family: var(--font-mono); font-size: 1.05rem;
   font-weight: 600; color: var(--accent-yellow); text-align: center;
+  overflow-x: auto;
 }
 .formula-label { font-size: 0.72rem; color: var(--text-muted); text-align: center; margin-top: -8px; margin-bottom: 8px; font-weight: 500; }
 
@@ -765,7 +795,7 @@ strong { color: var(--text-primary); }
       aA + bB &hArr; cC + dD
     </div>
     <div class="formula-display">
-      K<sub>c</sub> = &frac{[C]<sup>c</sup> &times; [D]<sup>d</sup>}{[A]<sup>a</sup> &times; [B]<sup>b</sup>}
+      K<sub>c</sub> = <span class="fraction"><span class="num">[C]<sup>c</sup> &times; [D]<sup>d</sup></span><span class="den">[A]<sup>a</sup> &times; [B]<sup>b</sup></span></span>
     </div>
     <div class="formula-label">Quy tắc vàng: TỬ SỐ LÀ SẢN PHẨM &ndash; MẪU SỐ LÀ CHẤT THAM GIA &ndash; HỆ SỐ LÀM SỐ MŨ</div>
     <ul class="content-list">
