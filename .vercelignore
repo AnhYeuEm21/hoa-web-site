@@ -1,0 +1,9 @@
+*.mp4
+*.py
+*.pdf
+audio_compact.json
+frames/
+hires_frames/
+sgk_pages/
+__pycache__/
+.git/
